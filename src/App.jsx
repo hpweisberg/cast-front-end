@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import FakeComponent from './components/FakeComponent/FakeComponent'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -36,6 +37,7 @@ const App = () => {
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
+      <FakeComponent />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
