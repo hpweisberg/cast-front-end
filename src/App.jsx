@@ -16,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import TalentSearch from './pages/TalentSearch/TalentSearch'
 import Profile from './pages/Profile/Profile'
 import EditProfile from './pages/Profile/EditProfile'
+import TalentDetails from './pages/TalentDetails/TalentDetails'
 
 // services
 import * as authService from './services/authService'
@@ -87,6 +88,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <EditProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/profiles/:profileId"
+          element={
+            <ProtectedRoute user={user}>
+              <TalentDetails />
             </ProtectedRoute>
           }
         />   

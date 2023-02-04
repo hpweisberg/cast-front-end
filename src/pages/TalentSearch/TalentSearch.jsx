@@ -1,6 +1,6 @@
 const TalentSearch = () => {
   return ( 
-    <h1>Talent Search</h1>
+    <h1>Talent Search Component</h1>
   );
 }
 

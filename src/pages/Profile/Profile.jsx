@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 
 const Profile = () => {
   
-  const handleSubmit = async evt => {
-    evt.preventDefault()
-  }
   
   return ( 
     <>
