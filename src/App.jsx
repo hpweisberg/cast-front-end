@@ -17,6 +17,7 @@ import TalentSearch from './pages/TalentSearch/TalentSearch'
 import Profile from './pages/Profile/Profile'
 import EditProfile from './pages/Profile/EditProfile'
 import TalentDetails from './pages/TalentDetails/TalentDetails'
+import ListIndex from './pages/ListIndex/ListIndex'
 
 // services
 import * as authService from './services/authService'
@@ -96,6 +97,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <TalentDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/lists'
+          element={
+            <ProtectedRoute user={user}>
+              <ListIndex />
             </ProtectedRoute>
           }
         />   
