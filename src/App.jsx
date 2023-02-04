@@ -40,6 +40,11 @@ const App = () => {
     setUser(authService.getUser())
   }
 
+  const handleEditProfile = async (profileData) => {
+    const profileUpdate = await profileService.update(profileData)
+    navigate('/profile')
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -89,7 +94,7 @@ const App = () => {
           path='/profile/edit'
           element={
             <ProtectedRoute user={user}>
-              <EditProfile />
+              <EditProfile handleEditProfile={handleEditProfile}/>
             </ProtectedRoute>
           }
         />
