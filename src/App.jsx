@@ -13,6 +13,8 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import TalentSearch from './pages/TalentSearch/TalentSearch'
+import Profile from './pages/Profile/Profile'
 
 // services
 import * as authService from './services/authService'
@@ -63,6 +65,22 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route 
+          path="/talent"
+          element={
+            <ProtectedRoute user={user}>
+              <TalentSearch />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/profile"
+          element={
+            <ProtectedRoute user={user}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />   
       </Routes>
     </>
   )
