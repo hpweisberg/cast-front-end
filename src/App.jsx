@@ -15,6 +15,7 @@ import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 import TalentSearch from './pages/TalentSearch/TalentSearch'
 import Profile from './pages/Profile/Profile'
+import EditProfile from './pages/Profile/EditProfile'
 
 // services
 import * as authService from './services/authService'
@@ -78,6 +79,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/edit'
+          element={
+            <ProtectedRoute user={user}>
+              <EditProfile />
             </ProtectedRoute>
           }
         />   
