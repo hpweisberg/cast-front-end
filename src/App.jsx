@@ -22,6 +22,7 @@ import ListDetails from './pages/ListDetails/ListDetails'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 // styles
 import './App.css'

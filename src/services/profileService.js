@@ -19,5 +19,12 @@ async function addPhoto(photoData, profileId) {
   })
   return await res.json()
 }
+async function update() {
+try {
 
-export { getAllProfiles, addPhoto }
+} catch (error) {
+
+}
+}
+
+export { getAllProfiles, addPhoto, update }
