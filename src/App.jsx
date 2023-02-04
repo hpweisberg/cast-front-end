@@ -8,11 +8,17 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-import FakeComponent from './components/FakeComponent/FakeComponent'
+
 
 // components
 import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import TalentSearch from './pages/TalentSearch/TalentSearch'
+import Profile from './pages/Profile/Profile'
+import EditProfile from './pages/Profile/EditProfile'
+import TalentDetails from './pages/TalentDetails/TalentDetails'
+import ListIndex from './pages/ListIndex/ListIndex'
+import ListDetails from './pages/ListDetails/ListDetails'
 
 // services
 import * as authService from './services/authService'
@@ -37,7 +43,6 @@ const App = () => {
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
-      <FakeComponent />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -64,6 +69,54 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route 
+          path="/talent"
+          element={
+            <ProtectedRoute user={user}>
+              <TalentSearch />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/profile"
+          element={
+            <ProtectedRoute user={user}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/edit'
+          element={
+            <ProtectedRoute user={user}>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/profiles/:profileId"
+          element={
+            <ProtectedRoute user={user}>
+              <TalentDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/lists'
+          element={
+            <ProtectedRoute user={user}>
+              <ListIndex />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/list/:listId'
+          element={
+            <ProtectedRoute user={user}>
+              <ListDetails />
+            </ProtectedRoute>
+          }
+        />   
       </Routes>
     </>
   )
