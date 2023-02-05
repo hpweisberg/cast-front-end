@@ -19,6 +19,7 @@ const EditProfile = (props) => {
     e.preventDefault()
     props.handleEditProfile(form)
   }
+ 
 
   
   return (

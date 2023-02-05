@@ -9,6 +9,29 @@ async function getAllProfiles() {
   return await res.json()
 }
 
+// async function getProfile(profileId) {
+//   const res = await fetch(`${BASE_URL}/${profileId}`, {
+//     headers: { 
+//       'Authorization': `Bearer ${tokenService.getToken()}`
+//     }
+//   })
+//   return await res.json()
+// }
+
+const getProfile = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
 async function addPhoto(photoData, profileId) {
   const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
     method: 'PUT',
@@ -19,12 +42,16 @@ async function addPhoto(photoData, profileId) {
   })
   return await res.json()
 }
-async function update() {
-try {
+async function update (profileData, profileId) {
 
-} catch (error) {
-
+  const res = await fetch(`${BASE_URL}/${profileId}`, {
+    method: 'PUT',
+    headers: {
+      'Auhtorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: profileData
+  })
+  return await res.json()
 }
-}
 
-export { getAllProfiles, addPhoto, update }
+export { getAllProfiles, getProfile, addPhoto, update }

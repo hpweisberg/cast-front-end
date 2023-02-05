@@ -29,6 +29,7 @@ import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState(profileService.getProfile(user.profile))
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -42,9 +43,16 @@ const App = () => {
   }
 
   const handleEditProfile = async (profileData) => {
-    const profileUpdate = await profileService.update(profileData)
-    navigate('/profile')
+    try {
+      await profileService.update(profileData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
   }
+
+  console.log("profile: ", profile)
+  
 
   return (
     <>
