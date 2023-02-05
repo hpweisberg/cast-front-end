@@ -102,7 +102,12 @@ const Icon = ({name}) => {
     Website: Website,
   }
 
-  return <img className='icon' src={icons.name} alt={`A ${Icon} icon`} />
+  return <img className='icon' src={icons[name]} alt={`A ${Icon} icon`} />
 }
 
 export default Icon
+
+
+//! To use an Icon:
+//import Icon from '../../components/Icon/Icon'
+//<Icon name='<icon name>'/>
