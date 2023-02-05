@@ -35,16 +35,22 @@ async function addPhoto(photoData, profileId) {
   })
   return await res.json()
 }
-async function update (profileData, profileId) {
 
-  const res = await fetch(`${BASE_URL}/${profileId}`, {
-    method: 'PUT',
-    headers: {
-      'Auhtorization': `Bearer ${tokenService.getToken()}`
-    },
-    body: profileData
-  })
-  return await res.json()
+
+const update = async (profileData, profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(profileData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export { getAllProfiles, getProfile, addPhoto, update }

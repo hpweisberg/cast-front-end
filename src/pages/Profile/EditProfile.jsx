@@ -19,7 +19,6 @@ const EditProfile = (props) => {
     e.preventDefault()
     props.handleEditProfile(form)
   }
- 
 
   
   return (
@@ -40,7 +39,6 @@ const EditProfile = (props) => {
         </select>
         <label htmlFor="location-input">Location</label>
         <input
-          required
           type="text"
           name="location"
           id="location-input"
@@ -49,7 +47,6 @@ const EditProfile = (props) => {
         />
         <label htmlFor="phone-number-input">Phone Number</label>
         <input
-          required
           type="tel"
           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           name="phoneNumber"
@@ -59,7 +56,6 @@ const EditProfile = (props) => {
         />        
         <label htmlFor="website-input">Website</label>
         <input
-          required
           type="text"
           name="website"
           id="website-input"

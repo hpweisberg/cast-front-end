@@ -28,7 +28,7 @@ const Profile = (props) => {
       <p>Pronouns: {profile.pronouns}</p>
       <p>Location: {profile.location}</p>
       <p>Phone Number: {profile.phoneNumber}</p>
-      <p>Email: {profile.email}</p>
+      <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
     </> 
   );
