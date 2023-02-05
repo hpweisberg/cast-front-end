@@ -1,6 +1,7 @@
 // npm modules
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 // page components
 import Signup from './pages/Signup/Signup'
@@ -42,8 +43,12 @@ const App = () => {
   }
 
   const handleEditProfile = async (profileData) => {
-    const profileUpdate = await profileService.update(profileData)
-    navigate('/profile')
+    try {
+      await profileService.update(profileData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -87,7 +92,8 @@ const App = () => {
           path="/profile"
           element={
             <ProtectedRoute user={user}>
-              <Profile />
+              {/* <Profile profile={profile}/> */}
+              <Profile user={user}/>
             </ProtectedRoute>
           }
         />
