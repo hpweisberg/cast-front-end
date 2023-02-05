@@ -51,7 +51,7 @@ import Website from '../../assets/icons/website.png'
 
 
 
-const Icon = ({ category }) => {
+const Icon = ({name}) => {
   const icons = {
     Add: Add,
     Age: Age,
@@ -102,7 +102,7 @@ const Icon = ({ category }) => {
     Website: Website,
   }
 
-  return <img className='icon' src={icons[category]} alt={`A ${category} icon`} />
+  return <img className='icon' src={icons.name} alt={`A ${Icon} icon`} />
 }
 
 export default Icon
