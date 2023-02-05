@@ -22,6 +22,7 @@ import ListDetails from './pages/ListDetails/ListDetails'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 // styles
 import './App.css'
@@ -38,6 +39,11 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleEditProfile = async (profileData) => {
+    const profileUpdate = await profileService.update(profileData)
+    navigate('/profile')
   }
 
   return (
@@ -89,7 +95,7 @@ const App = () => {
           path='/profile/edit'
           element={
             <ProtectedRoute user={user}>
-              <EditProfile />
+              <EditProfile handleEditProfile={handleEditProfile}/>
             </ProtectedRoute>
           }
         />
