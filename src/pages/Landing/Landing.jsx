@@ -27,19 +27,6 @@ const Landing = ({ user }) => {
 
       </div>
 
-      {user ?
-      //! user is signed in
-
-      'User is signed in' 
-      
-
-
-      :
-      //! No user is signed in
-      
-      
-      user.name}
-      <h1>hello, {user ? user.name : 'friend'}</h1>
       <SignupCTA />
     </main>
   )
