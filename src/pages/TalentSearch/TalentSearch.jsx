@@ -14,8 +14,21 @@ const TalentSearch = () => {
   }, [])
   
   return ( 
-    <h1>Talent Search Component</h1>
-  );
+    <>
+      <h1>Talent Search Component</h1>
+      {talentSearch.length ?
+        <>
+        {talentSearch.map(talent => 
+          <p key={talent._id}>
+            {talent.name}
+          </p>
+          )}
+          </>
+          :
+          <p>No talent accounts have been created yet</p>
+        }
+    </>
+  )
 }
 
 export default TalentSearch;
