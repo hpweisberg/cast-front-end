@@ -59,6 +59,15 @@ const App = () => {
       console.log(error)
     }
   }
+  
+  const handleAddCDProfile = async (cdData) => {
+    try {
+      await profileService.createCDProfile(cdData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
 
   return (
@@ -114,6 +123,7 @@ const App = () => {
               <EditProfile 
                 handleEditProfile={handleEditProfile}
                 handleAddTalentProfile={handleAddTalentProfile}
+                handleAddCDProfile={handleAddCDProfile}
               />
             </ProtectedRoute>
           }

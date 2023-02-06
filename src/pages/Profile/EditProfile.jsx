@@ -62,7 +62,7 @@ const EditProfile = (props) => {
 
   const handleCDSubmit = (e) => {
     e.preventDefault()
-    props.handleAddTalentProfile(CDForm)
+    props.handleAddCDProfile(CDForm)
   }
 
   //! handle add photo needs work

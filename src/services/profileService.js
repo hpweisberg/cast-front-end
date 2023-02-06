@@ -67,5 +67,21 @@ const createTalentProfile = async (talentData, profileId) => {
   }
 }
 
+const createCDProfile = async (cdData, profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/cdAccount`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cdData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-export { getAllProfiles, getProfile, addPhoto, update, createTalentProfile }
+
+export { getAllProfiles, getProfile, addPhoto, update, createTalentProfile, createCDProfile }
