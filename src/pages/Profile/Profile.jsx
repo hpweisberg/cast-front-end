@@ -40,7 +40,7 @@ const Profile = (props) => {
       <p>height: {profile.talentAccount.height}</p>
 
       <h1>CD Account Details</h1>
-      {/* <p>Company {profile.cdAccount.company}</p> */}
+      <p>Company {profile.cdAccount.company}</p>
 
     </> 
   );
