@@ -12,7 +12,7 @@ const TalentSearch = () => {
     }
     fetchTalent()
   }, [])
-  
+  console.log('talent search log:', talentSearch)
   return ( 
     <>
       <h1>Talent Search Component</h1>

@@ -67,6 +67,7 @@ const createEducation = async (talentData) => {
       },
       body: JSON.stringify(talentData)
     })
+    return res.json()
   } catch (error) {
     console.log(error)
   }
@@ -82,6 +83,7 @@ const createTraining = async (talentData) => {
       },
       body: JSON.stringify(talentData)
     })
+    return res.json()
   } catch (error) {
     console.log(error)
   }
