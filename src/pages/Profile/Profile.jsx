@@ -12,12 +12,13 @@ const Profile = (props) => {
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
+      console.log(profileData)
       setProfile(profileData)
     }
     fetchProfile()
   }, [props.user.profile])
   
-  if(!profile) return "loading"
+  if(!profile || !profile.talentAccount) return "loading"
 
   return ( 
     <>
@@ -30,6 +31,10 @@ const Profile = (props) => {
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
+      <h1>talent account details</h1>
+      <p>{profile.talentAccount.about}</p>
+      <p>{profile.talentAccount.unionStatus}</p>
+
     </> 
   );
 }

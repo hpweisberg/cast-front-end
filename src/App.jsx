@@ -51,6 +51,16 @@ const App = () => {
     }
   }
 
+  const handleAddTalentProfile = async (talentData) => {
+    try {
+      await profileService.createTalentProfile(talentData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -101,7 +111,10 @@ const App = () => {
           path='/profile/edit'
           element={
             <ProtectedRoute user={user}>
-              <EditProfile handleEditProfile={handleEditProfile}/>
+              <EditProfile 
+                handleEditProfile={handleEditProfile}
+                handleAddTalentProfile={handleAddTalentProfile}
+              />
             </ProtectedRoute>
           }
         />
