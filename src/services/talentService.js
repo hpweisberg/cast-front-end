@@ -55,10 +55,26 @@ const deleteTalentAttribute = async (id) => {
   }
 }
 
+const createExperience = async (talentData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 export {
   index,
   show,
   update,
-  deleteTalentAttribute
+  deleteTalentAttribute,
+  createExperience
 }
