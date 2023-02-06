@@ -23,8 +23,6 @@ const getProfile = async (profileId) => {
   }
 }
 
-
-
 async function addPhoto(photoData, profileId) {
   const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
     method: 'PUT',

@@ -12,7 +12,6 @@ const Profile = (props) => {
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
-      console.log(profileData)
       setProfile(profileData)
     }
     fetchProfile()
@@ -32,8 +31,11 @@ const Profile = (props) => {
       <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
       <h1>talent account details</h1>
-      <p>{profile.talentAccount.about}</p>
-      <p>{profile.talentAccount.unionStatus}</p>
+      <p>About: {profile.talentAccount.about}</p>
+      <p>Union Status: {profile.talentAccount.unionStatus}</p>
+      <p>Hair: {profile.talentAccount.hair}</p>
+      <p>eyes: {profile.talentAccount.eyes}</p>
+      <p>height: {profile.talentAccount.height}</p>
 
     </> 
   );

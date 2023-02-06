@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import styles from './EditProfile.css'
 
 const EditProfile = (props) => {
   
@@ -66,9 +67,10 @@ const EditProfile = (props) => {
 
   
   return (
-    <>
+    <div>
       <h1>Edit Profile Component</h1> 
 
+      <h2>Profile Details</h2>
       <form onSubmit={handleProfileSubmit}>
         <label htmlFor="pronouns-input">Pronouns</label>
         <select
@@ -108,8 +110,9 @@ const EditProfile = (props) => {
         <button type='submit'>Save</button> 
       </form>
 
-      {/* talent account creation  */}
 
+      {/* talent account creation  */}
+      <h2>Talent Account Details</h2>
       <form onSubmit={handleTalentSubmit}>
 
       <label htmlFor="photo-upload">
@@ -168,7 +171,7 @@ const EditProfile = (props) => {
           type="number" 
           value={form.feet}
           name="feet"
-          // onChange={handleTalentChange}
+          onChange={handleTalentChange}
         />
 
         <label htmlFor="height-inches-input">Inches</label>
@@ -196,7 +199,7 @@ const EditProfile = (props) => {
         <input 
           id='weight-input' 
           type="number" 
-          // value={form.eyes}
+          value={form.weight}
           // onChange={handleTalentChange}
         />
 
@@ -249,7 +252,7 @@ const EditProfile = (props) => {
       <Link to="">Edit Education</Link>
       <Link to="">Edit Training</Link>
 
-    </>
+    </div>
   );
 }
 
