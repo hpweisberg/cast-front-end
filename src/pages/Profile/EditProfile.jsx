@@ -6,6 +6,8 @@ const EditProfile = (props) => {
   
   const [photoData, setPhotoData] = useState({})
   
+  //* edit profile
+
   const [form, setForm] = useState({
     pronouns: '',
     location: '',
@@ -23,7 +25,9 @@ const EditProfile = (props) => {
     props.handleEditProfile(form)
   }
 
-  // handle add skills
+  //* edit talentAccount
+
+  // need to handle add skills
   const [talentForm, setTalentForm] = useState({
     unionStatus: 'Not Affiliated',
     hair: '',
@@ -46,6 +50,22 @@ const EditProfile = (props) => {
     props.handleAddTalentProfile(talentForm)
   }
 
+  //* edit CDAccount
+
+  const [CDForm, setCDForm] = useState({
+    company: '',
+  })
+
+  const handleCDChange = ({target}) => {
+    setCDForm({...CDForm, [target.name]: target.value})
+  }
+
+  const handleCDSubmit = (e) => {
+    e.preventDefault()
+    props.handleAddTalentProfile(CDForm)
+  }
+
+  //! handle add photo needs work
 
   const handleChangePhoto = (evt) => {
     setPhotoData({ photo: evt.target.files[0] })
@@ -69,6 +89,20 @@ const EditProfile = (props) => {
   return (
     <div>
       <h1>Edit Profile Component</h1> 
+
+      <h2>CD Account</h2>
+
+      <form onSubmit={handleCDSubmit}>
+        <label htmlFor="company-input">Company</label>
+        <input 
+          type="text"
+          name="company"
+          id="company-input"
+          value={CDForm.company} 
+          onChange={handleCDChange}
+        />
+        <button type="submit">Save</button>
+      </form>
 
       <h2>Profile Details</h2>
       <form onSubmit={handleProfileSubmit}>
