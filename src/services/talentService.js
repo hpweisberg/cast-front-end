@@ -1,4 +1,3 @@
-import Experience from '../components/Experience/Experience'
 import * as tokenService from './tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/talent`
@@ -52,6 +51,7 @@ const createExperience = async (talentData) => {
       },
       body: JSON.stringify(talentData)
     })
+    return res.json()
   } catch (error) {
     console.log(error)
   }
@@ -87,7 +87,7 @@ const createTraining = async (talentData) => {
   }
 }
 
-const updateExperince = async (talentData, experienceData) => {
+const updateExperience = async (talentData, experienceData) => {
   try {
     const res = await fetch(`${BASE_URL}/${talentData._id}/experience/${experienceData._id}`, {
       method: 'PATCH',
@@ -135,10 +135,38 @@ const updateTraining = async (talentData, trainingData) => {
   }
 }
 
-//? Double check this is correct. Should delete a specific talent's experince, education, etc.
-const deleteTalentAttribute = async (id) => {
+
+const deleteExperience = async (talentData, experienceData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/experience/${experienceData._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+  console.log(error)
+  }
+}
+
+const deleteEducation = async (talentData, educationData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/education/${educationData._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return res.json()
+  } catch (error) {
+  console.log(error)
+  }
+}
+
+const deleteTraining = async (talentData, trainingData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/training/${trainingData._id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -158,9 +186,10 @@ export {
   createExperience,
   createEducation,
   createTraining,
-  updateExperince,
+  updateExperience,
   updateEducation,
   updateTraining,
-  deleteTalentAttribute,
-
+  deleteExperience,
+  deleteEducation,
+  deleteTraining,
 }
