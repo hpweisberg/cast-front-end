@@ -1,3 +1,4 @@
+import Experience from '../components/Experience/Experience'
 import * as tokenService from './tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/talent`
@@ -40,6 +41,100 @@ const update = async (talentData) => {
   }
 }
 
+
+const createExperience = async (talentData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/experience`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const createEducation = async (talentData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/education`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const createTraining = async (talentData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/training`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateExperince = async (talentData, experienceData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/experience/${experienceData._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateEducation = async (talentData, educationData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/education/${educationData._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateTraining = async (talentData, trainingData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${talentData._id}/training/${trainingData._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 //? Double check this is correct. Should delete a specific talent's experince, education, etc.
 const deleteTalentAttribute = async (id) => {
   try {
@@ -55,26 +150,17 @@ const deleteTalentAttribute = async (id) => {
   }
 }
 
-const createExperience = async (talentData) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(talentData)
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 
 export {
   index,
   show,
   update,
+  createExperience,
+  createEducation,
+  createTraining,
+  updateExperince,
+  updateEducation,
+  updateTraining,
   deleteTalentAttribute,
-  createExperience
+
 }
