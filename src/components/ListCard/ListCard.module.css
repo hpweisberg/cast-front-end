@@ -43,7 +43,7 @@
 .glanceInfo {
   width: 170px;
   max-height: 165px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .glanceInfo > * {
