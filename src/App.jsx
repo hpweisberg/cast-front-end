@@ -1,6 +1,6 @@
 // npm modules
 import { useState } from 'react'
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 
 // page components
@@ -20,30 +20,32 @@ import EditProfile from './pages/Profile/EditProfile'
 import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
-import ListCard from './components/ListCard/ListCard'
+// import ListCard from './components/ListCard/ListCard'
 
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
-import * as cdService from './services/cdService'
+// import * as cdService from './services/cdService'
 
 // styles
 import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState('')
   const navigate = useNavigate()
 
+  
   const handleLogout = () => {
     authService.logout()
     setUser(null)
     navigate('/')
   }
-
+  
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-
+  
   const handleEditProfile = async (profileData) => {
     try {
       await profileService.update(profileData, user.profile)
@@ -52,7 +54,7 @@ const App = () => {
       console.log(error)
     }
   }
-
+  
   const handleAddTalentProfile = async (talentData) => {
     try {
       await profileService.createTalentProfile(talentData, user.profile)
@@ -70,12 +72,18 @@ const App = () => {
       console.log(error)
     }
   }
-
-
+  
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(user.profile)
+      setProfile(profile)
+    }
+    fetchProfile()
+  }, [user.profile])
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -140,15 +148,15 @@ const App = () => {
           }
         />
         <Route 
-          path='/lists'
+          path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex />
+              <ListIndex profile={profile} />
             </ProtectedRoute>
           }
         />
         <Route 
-          path='/list/:listId'
+          path='/cd/:id/lists/:listId'
           element={
             <ProtectedRoute user={user}>
               <ListDetails />
