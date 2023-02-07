@@ -23,8 +23,6 @@ const getProfile = async (profileId) => {
   }
 }
 
-
-
 async function addPhoto(photoData, profileId) {
   const res = await fetch(`${BASE_URL}/${profileId}/add-photo`, {
     method: 'PUT',
@@ -53,4 +51,37 @@ const update = async (profileData, profileId) => {
   }
 }
 
-export { getAllProfiles, getProfile, addPhoto, update }
+const createTalentProfile = async (talentData, profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/talentAccount`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(talentData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const createCDProfile = async (cdData, profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}/cdAccount`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cdData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+export { getAllProfiles, getProfile, addPhoto, update, createTalentProfile, createCDProfile }

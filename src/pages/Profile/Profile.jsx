@@ -17,7 +17,7 @@ const Profile = (props) => {
     fetchProfile()
   }, [props.user.profile])
   
-  if(!profile) return "loading"
+  if(!profile || !profile.talentAccount) return "loading"
 
   return ( 
     <>
@@ -30,6 +30,18 @@ const Profile = (props) => {
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
+
+      <h1>talent account details</h1>
+      
+      <p>About: {profile.talentAccount.about}</p>
+      <p>Union Status: {profile.talentAccount.unionStatus}</p>
+      <p>Hair: {profile.talentAccount.hair}</p>
+      <p>eyes: {profile.talentAccount.eyes}</p>
+      <p>height: {profile.talentAccount.height}</p>
+
+      <h1>CD Account Details</h1>
+      <p>Company {profile.cdAccount.company}</p>
+
     </> 
   );
 }
