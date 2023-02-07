@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import ListCard from "../../components/ListCard/ListCard";
 import * as cdService from '../../services/cdService'
+
 import { useParams } from 'react-router-dom';
 
 const ListIndex = () => {
   const [lists, setLists] = useState([])
-  const { id } = useParams()
+
+  const { id, talentId } = useParams()
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -14,6 +16,7 @@ const ListIndex = () => {
     }
     fetchLists()
   }, [id])
+
 
 
   console.log(lists);
