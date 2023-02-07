@@ -3,11 +3,13 @@ import { Link } from "react-router-dom"
 import styles from './EditProfile.css'
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Profile from "./Profile";
 
 const EditProfile = (props) => {
   
   const location = useLocation()
   const signupType = location.state?.signupType
+  const isCd = location.state?.isCd
 
   const [photoData, setPhotoData] = useState({})
 
@@ -79,7 +81,6 @@ const EditProfile = (props) => {
     setPhotoData({ photo: evt.target.files[0] })
   }
 
-
   // create useState for signup type
   // create useEffect to autoset useState
   // put useState variable in the isCD input as the value
@@ -96,6 +97,23 @@ const EditProfile = (props) => {
   //     props.updateMessage(err.message)
   //   }
   // }
+
+  const [render, setRender] = useState(false)
+
+
+  useEffect(() => {
+    const renderHelp = async () => {
+      if(signupType === false || isCd === false){
+        setRender(false)
+      } else {
+        setRender(true)
+      }
+    }
+    renderHelp()
+  },)
+
+  console.log("isCd ", isCd)
+
 
   return (
     <>
@@ -139,7 +157,7 @@ const EditProfile = (props) => {
             
         </form>
 
-        {signupType === false ?
+        {(render === false) ?
           <>
             <h2>Talent Account Details</h2>
             <form onSubmit={handleTalentSubmit}>
@@ -270,7 +288,6 @@ const EditProfile = (props) => {
                 value={form.reelLink}
                 onChange={handleTalentChange}
               />
-
 
               <button type="submit">Save</button>
             </form>

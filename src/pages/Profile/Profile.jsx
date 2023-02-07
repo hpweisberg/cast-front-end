@@ -19,12 +19,15 @@ const Profile = (props) => {
   
   if(!profile) return "loading"
 
+
+  console.log(profile.isCd)
+
   return ( 
     <>
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        profile={profile}
+        state={{isCd: profile.isCd}}
       >
           Edit Profile</Link>
       <p>Name: {profile.name}</p>
