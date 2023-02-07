@@ -1,32 +1,34 @@
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react";
 
-// import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
-// import TalentSearch from "../../pages/TalentSearch/TalentSearch";
+import TalentSearch from "../../pages/TalentSearch/TalentSearch"
+
 import styles from './TalentCard.module.css'
 import * as talentService from '../../services/talentService'
 
 
 
 const TalentCard = (props) => {
-  const [talent, setTalent] = useState({})
-  // console.log(props.talent);
+  // console.log(props)
+
+  const [routeType, setRouteType] = useState({id: 'test'})
+
+
 
   useEffect(() => {
-    const fetchTalent = async () => {
-      const talentAcct = await talentService.show(props.talent)
-      console.log('fetchTalent', talentAcct);
-      setTalent(talentAcct)
+    const handleRouteType = () => {
+      setRouteType('talent')
     }
-    fetchTalent()
-  }, [props.talent])
+    handleRouteType()
+  }, [])
 
-    console.log(props);
+  console.log("routeType from card", routeType)
 
   return (
     <div className={styles.center}>
-      <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
+      <Link to={`/talent/${props.profile.talentAccount._id}`} state={{routeType: routeType}} className={styles.link}>
         <section className={styles.talentCardContainer}>
           <img src={talent.headshot} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
