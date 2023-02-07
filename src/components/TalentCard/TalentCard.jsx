@@ -2,16 +2,16 @@ import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
 import TalentSearch from "../../pages/TalentSearch/TalentSearch";
-import styles from './ListCard.module.css'
+import styles from './TalentCard.module.css'
 
 
 
-const ListCard = (props) => {
+const TalentCard = (props) => {
   // console.log(props)
   return (
     <div className={styles.center}>
-      {/* <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
-        <section className={styles.listCardContainer}>
+      <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
+        <section className={styles.talentCardContainer}>
           <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
@@ -23,9 +23,9 @@ const ListCard = (props) => {
             <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {props.profile.talentAccount?.reel}</p>
           </div>
         </section>
-      </Link> */}
+      </Link>
     </div>
   )
 }
 
-export default ListCard;
+export default TalentCard;
