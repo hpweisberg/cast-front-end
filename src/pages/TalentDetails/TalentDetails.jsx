@@ -39,11 +39,31 @@ const TalentDetails = (props) => {
         <div className={styles.topRow}>
           <button className={styles.backBtn}><Icon name='Back' /></button>
           <div className={styles.nameGroup}>
-          <h1>NAME</h1>
-          <h6>PRONOUNS</h6>
+            <h1>NAME</h1>
+            <h6>PRONOUNS</h6>
           </div>
           <button className={styles.editBtn}><Icon name='Edit' /></button>
-
+        </div>
+        <div className={styles.headshotDeatils}>
+          <div className={styles.headshotImg}>IMG</div>
+          <div className={styles.actorDetails}>
+            <p>UNION</p>
+            <p>LOCATION</p>
+            <p>AGE</p>
+            <p>WEIGHT</p>
+            <p>HEIGHT</p>
+            <p>EYE</p>
+            <p>HAIR</p>
+            <p>ABOUT</p>
+            <p>UNION</p>
+            {/* <p>{talent.location}</p> */}
+            {/* <p>{talent.age}</p> */}
+            {/* <p>{talent.weight}lb</p> */}
+            {/* <p>{talent.height}</p> */}
+            {/* <p>{talent.eyes}</p> */}
+            {/* <p>{talent.hair}</p> */}
+            {/* <p>{talent.about}</p> */}
+          </div>
         </div>
         <h1>Talent Details Component</h1>
 

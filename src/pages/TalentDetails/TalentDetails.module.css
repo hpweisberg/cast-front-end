@@ -32,9 +32,30 @@
   margin: 0;
 }
 
-/* .nameGroup > :first-child {
+.nameGroup > :first-child {
   margin-bottom: 0;
 }
 .nameGroup > :last-child {
   margin-top: 0;
-} */
+  color: rgba(0, 0, 0, 0.7);
+  font-style: italic ;
+}
+
+.headshotDeatils {
+  display: flex;
+}
+
+.headshotDeatils > * {
+  width: 50%;
+}
+
+.headshotImg {
+  width: 218px;
+  height: auto;
+  padding: 20px;
+}
+
+.actorDetails > * {
+  margin: 0;
+  font-size: 1rem;
+}
