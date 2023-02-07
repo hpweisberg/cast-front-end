@@ -21,3 +21,13 @@
 .menu.open {
   transform: translateX(0);
 }
+
+.navRow {
+  display: flex;
+}
+
+.logo {
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+}
