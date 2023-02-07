@@ -1,0 +1,33 @@
+.center {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.listCardContainer {
+  /* background-color: red; */
+  text-decoration: none;
+  cursor: pointer;
+  
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: red solid 2px;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.photo {
+  width: 150px;
+  border-radius: 15px;
+}
+
+.glanceInfo {
+  max-width: 150px;
+}
