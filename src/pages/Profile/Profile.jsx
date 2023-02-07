@@ -35,11 +35,10 @@ const Profile = (props) => {
         :
         ""
       }
-
-      <h1>talent account details</h1>
       
       {profile.talentAccount ?
       <>
+      <h1>talent account details</h1>
       <p>About: {profile.talentAccount.about}</p>
       <p>Union Status: {profile.talentAccount.unionStatus}</p>
       <p>Hair: {profile.talentAccount.hair}</p>
