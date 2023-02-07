@@ -83,5 +83,4 @@ const createCDProfile = async (cdData, profileId) => {
   }
 }
 
-
 export { getAllProfiles, getProfile, addPhoto, update, createTalentProfile, createCDProfile }
