@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
+import { useEffect } from 'react'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -32,13 +33,26 @@ const SignupForm = props => {
       props.handleSignupOrLogin()
       navigate('/profile/edit',  {
         state: {
-          signupType: props.signupType
+          signupType: isCd
         }
       })
     } catch (err) {
       props.updateMessage(err.message)
     }
   }
+
+  const [isCd, setIsCd] = useState(null)
+
+  useEffect(() => {
+    const signupTypeToBoolean = async () => {
+      if(props.signupType === 'talent') {
+        setIsCd(false)
+      } else if(props.signupType === 'cd') {
+        setIsCd(true)
+      }
+    }
+    signupTypeToBoolean()
+  },[props.signupType])
 
   const { name, email, password, passwordConf } = formData
 

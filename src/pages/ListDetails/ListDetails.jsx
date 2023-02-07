@@ -1,8 +1,21 @@
+// import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom"
+import TalentCard from "../../components/TalentCard/TalentCard";
+
+
 const ListDetails = (props) => {
-  console.log('List Detials Props:', props)
+  const location = useLocation()
+  const {list, profile} = location.state
+
+  console.log('List Detials Props:', profile)
   return ( 
-    <h1>List Details Component</h1> 
-      
+    <>
+      <h1>List Details Component</h1> 
+      <h3>{list.titleOfList}</h3>
+      {list.talent.map(talent => (
+        <TalentCard key={talent} profile={profile} talent={talent}/>
+      ))}
+    </>
   );
 }
 

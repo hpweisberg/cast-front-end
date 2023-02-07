@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
+
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
 import TalentSearch from "../../pages/TalentSearch/TalentSearch"
+
 import styles from './TalentCard.module.css'
+import * as talentService from '../../services/talentService'
 
 
 
@@ -22,19 +25,19 @@ const TalentCard = (props) => {
   }, [])
 
   console.log("routeType from card", routeType)
+
   return (
     <div className={styles.center}>
       <Link to={`/talent/${props.profile.talentAccount._id}`} state={{routeType: routeType}} className={styles.link}>
         <section className={styles.talentCardContainer}>
-          <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
+          <img src={talent.headshot} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
-
-            <h3>{props.profile.name}</h3>
+            <h3>{talent.name}</h3>
             <p className={styles.pronouns}>{props.profile.pronouns}</p>
-            <p className={styles.union}>{props.profile.talentAccount.unionStatus}</p>
+            <p className={styles.union}>{talent.unionStatus}</p>
             <p className={styles.location}>{props.profile.location}</p>
-            <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {props.profile.talentAccount?.reel}</p>
+            <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {talent.reel}</p>
           </div>
         </section>
       </Link>
