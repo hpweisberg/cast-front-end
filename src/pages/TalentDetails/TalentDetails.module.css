@@ -59,3 +59,22 @@
   margin: 0;
   font-size: 1rem;
 }
+
+.line {
+  display: flex;
+  margin: 0;
+  justify-content: space-evenly;
+}
+
+.line > * {
+  text-align: left;
+  /* display: flex; */
+  margin: 0;
+  gap: 10px;
+  font-size: .7rem;
+}
+
+
+.line:first-child {
+  padding-right: 1rem;
+}

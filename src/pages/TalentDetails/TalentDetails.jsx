@@ -49,11 +49,15 @@ const TalentDetails = (props) => {
           <div className={styles.actorDetails}>
             <p>UNION</p>
             <p>LOCATION</p>
+            <div className={styles.line}>
             <p>AGE</p>
-            <p>WEIGHT</p>
-            <p>HEIGHT</p>
-            <p>EYE</p>
-            <p>HAIR</p>
+              <p>WEIGHT</p>
+              <p>HEIGHT</p>
+            </div>
+            <div className={styles.line}>
+              <p>EYE</p>
+              <p>HAIR</p>
+            </div>
             <p>ABOUT</p>
             <p>UNION</p>
             {/* <p>{talent.location}</p> */}
