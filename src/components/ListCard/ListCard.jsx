@@ -17,7 +17,6 @@ const ListCard = ({ list, profile }) => {
   //   fetchTalent()
   // }, [talentId])
 
-  console.log(list);
 return (
   <Link state={{ list: list}} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
