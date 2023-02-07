@@ -1,4 +1,4 @@
-.searchContainer {
+.searchContainer, .filterContainer {
   border: 1px solid red;
   height: 35px;
   display: flex;
@@ -7,11 +7,11 @@
   
 }
 
-.searchContainer > * {
+.searchContainer, .filterContainer > * {
   margin: 0 5px;
 }
 
-.searchBar {
+.searchBar, .filterBar {
   background-color: rgb(223, 220, 220);
   height: 25px;
   width: 80%;

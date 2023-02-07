@@ -29,6 +29,14 @@ const TalentSearch = (props) => {
         </input>
       <Icon name='Reset' />
       </div>
+
+      <div className={styles.filterContainer}>
+          <Icon name='Filter'/>
+        <select className={styles.filterBar} placeholder={'Filter'}>
+        </select>
+      <Icon name='Reset' />
+      </div>
+
       {talentSearch.map(profile => (
         <>
           <ListCard key={profile._id} profile={profile} />
