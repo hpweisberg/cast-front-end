@@ -1,5 +1,12 @@
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom"
+
+
 const ListDetails = (props) => {
-  console.log('List Detials Props:', props)
+  const location = useLocation()
+  const {list} = location.state
+
+  console.log('List Detials Props:', list)
   return ( 
     <h1>List Details Component</h1> 
       

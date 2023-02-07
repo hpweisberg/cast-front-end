@@ -16,13 +16,15 @@ const ListCard = ({ list, profile }) => {
   //   }
   //   fetchTalent()
   // }, [talentId])
-  console.log(profile);
+
+  console.log(list);
 return (
-  <Link to={`cd/${profile._id}/lists/${list._id}`}>
+  <Link state={{ list: list}} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>
-      <p>{list.talent.length}</p>
+    <p>{list.talent.length}</p>
+
   </Link>
 )
 
