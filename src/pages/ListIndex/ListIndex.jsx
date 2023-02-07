@@ -4,10 +4,10 @@ import * as cdService from '../../services/cdService'
 
 import { useParams } from 'react-router-dom';
 
-const ListIndex = () => {
+const ListIndex = ({profile}) => {
   const [lists, setLists] = useState([])
 
-  const { id, talentId } = useParams()
+  const { id } = useParams()
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -17,15 +17,11 @@ const ListIndex = () => {
     fetchLists()
   }, [id])
 
-
-
-  console.log(lists);
-
   return ( 
     <>
       <h1>List Index</h1> 
       {lists.map(list => (
-        <ListCard list={list} key={list._id}/>
+        <ListCard profile={profile} list={list} key={list._id}/>
       ))}
     </>
   );

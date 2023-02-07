@@ -6,7 +6,7 @@ import TalentSearch from "../../pages/TalentSearch/TalentSearch";
 import * as talentService from '../../services/talentService'
 import styles from './ListCard.module.css'
 
-const ListCard = ({list}) => {
+const ListCard = ({ list, profile }) => {
   // const [talentAccount, setTalentAccount] = useState('')
 
   // useEffect(() => {
@@ -16,16 +16,14 @@ const ListCard = ({list}) => {
   //   }
   //   fetchTalent()
   // }, [talentId])
-  
+  console.log(profile);
 return (
-  <div>
+  <Link to={`cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>
-      {list.talent.map(talentAccount => (
-        talentAccount
-      ))}
-  </div>
+      <p>{list.talent.length}</p>
+  </Link>
 )
 
   // return (

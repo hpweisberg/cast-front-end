@@ -152,12 +152,12 @@ const App = () => {
           path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex />
+              <ListIndex profile={profile} />
             </ProtectedRoute>
           }
         />
         <Route 
-          path='/list/:listId'
+          path='/cd/:id/lists/:listId'
           element={
             <ProtectedRoute user={user}>
               <ListDetails />
