@@ -1,16 +1,30 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
-import TalentSearch from "../../pages/TalentSearch/TalentSearch";
+import TalentSearch from "../../pages/TalentSearch/TalentSearch"
 import styles from './TalentCard.module.css'
 
 
 
 const TalentCard = (props) => {
   // console.log(props)
+
+  const [routeType, setRouteType] = useState({id: 'test'})
+
+
+
+  useEffect(() => {
+    const handleRouteType = () => {
+      setRouteType('talent')
+    }
+    handleRouteType()
+  }, [])
+
+  console.log("routeType from card", routeType)
   return (
     <div className={styles.center}>
-      <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
+      <Link to={`/talent/${props.profile.talentAccount._id}`} state={{routeType: routeType}} className={styles.link}>
         <section className={styles.talentCardContainer}>
           <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
