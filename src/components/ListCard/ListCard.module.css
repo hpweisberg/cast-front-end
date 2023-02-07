@@ -1,3 +1,9 @@
+:root {
+  --fs-500: 1rem;
+  --fs-600: 1.3rem;
+  --fs-700: 1.7rem;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -13,9 +19,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: red solid 2px;
+  border: black solid 1px;
   border-radius: 15px;
   margin: 5px;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .link {
@@ -24,10 +32,26 @@
 }
 
 .photo {
-  width: 150px;
+  width: 200px;
   border-radius: 15px;
+  padding-right: .5rem;
+  /* object-fit: cover; */
 }
 
 .glanceInfo {
-  max-width: 150px;
+  width: 170px;
+}
+
+.glanceInfo > h3 {
+  font-size: var(--fs-700);
+  margin: 0;
+}
+
+.pronouns {
+  color: rgba(0, 0, 0, 0.7);
+  margin-top: 0;
+}
+
+.union, .location {
+  font-size: var(--fs-600);
 }
