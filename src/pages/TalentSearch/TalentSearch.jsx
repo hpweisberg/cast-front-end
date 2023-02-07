@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import ListCard from "../../components/ListCard/ListCard";
 import * as talentService from '../../services/talentService'
 
 
-const TalentSearch = () => {
+const TalentSearch = (props) => {
   const [talentSearch, setTalentSearch] = useState([])
+
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -13,20 +15,28 @@ const TalentSearch = () => {
     fetchTalent()
   }, [])
   console.log('talent search log:', talentSearch)
+  // console.log('profiles log:', profiles)
+
+  if(!talentSearch) return "loading"
+
   return ( 
     <>
       <h1>Talent Search Component</h1>
-      {talentSearch.length ?
-        <>
-        {talentSearch.map(talent => 
-          <p key={talent._id}>
-            {talent.name}
-          </p>
-          )}
+        {talentSearch.map(profile => (
+          <>
+            <ListCard key={profile._id} profile={profile}/>
+
           </>
-          :
-          <p>No talent accounts have been created yet</p>
-        }
+          )
+          )}
+
+          {/* {profiles.map(profile => 
+            <p key={profile._id}>
+              {profile.talentAccount.unionStatus}
+            </p> */}
+            
+            {/* )} */}
+
     </>
   )
 }

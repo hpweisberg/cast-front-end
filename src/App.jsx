@@ -20,6 +20,7 @@ import EditProfile from './pages/Profile/EditProfile'
 import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
+import ListCard from './components/ListCard/ListCard'
 
 // services
 import * as authService from './services/authService'
@@ -85,7 +86,7 @@ const App = () => {
           path="/talent"
           element={
             <ProtectedRoute user={user}>
-              <TalentSearch />
+              <TalentSearch user={user}/>
             </ProtectedRoute>
           }
         />
@@ -110,7 +111,7 @@ const App = () => {
           path="/profiles/:profileId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails />
+              <TalentDetails user={user} />
             </ProtectedRoute>
           }
         />
