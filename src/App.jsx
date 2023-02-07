@@ -46,12 +46,32 @@ const App = () => {
 
   const handleEditProfile = async (profileData) => {
     try {
+      console.log("app.jsx profileData ", profileData)
       await profileService.update(profileData, user.profile)
       navigate('/profile')
     } catch(error) {
       console.log(error)
     }
   }
+
+  const handleAddTalentProfile = async (talentData) => {
+    try {
+      await profileService.createTalentProfile(talentData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  
+  const handleAddCDProfile = async (cdData) => {
+    try {
+      await profileService.createCDProfile(cdData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <>
@@ -103,7 +123,11 @@ const App = () => {
           path='/profile/edit'
           element={
             <ProtectedRoute user={user}>
-              <EditProfile handleEditProfile={handleEditProfile}/>
+              <EditProfile 
+                handleEditProfile={handleEditProfile}
+                handleAddTalentProfile={handleAddTalentProfile}
+                handleAddCDProfile={handleAddCDProfile}
+              />
             </ProtectedRoute>
           }
         />
