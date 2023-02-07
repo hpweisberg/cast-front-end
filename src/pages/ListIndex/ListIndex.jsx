@@ -12,15 +12,18 @@ const ListIndex = () => {
       const lists = await cdService.indexLists(id)
       setLists(lists)
     }
-    fetchLists(id)
-  })
+    fetchLists()
+  }, [id])
+
+
+  console.log(lists);
 
   return ( 
     <>
       <h1>List Index</h1> 
       {lists.map(list => 
         <p key={list._id}>{list.titleOfList}</p>
-        // <ListCard />
+
       )}
     </>
   );

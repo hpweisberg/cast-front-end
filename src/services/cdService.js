@@ -21,7 +21,7 @@ const indexLists = async (cdId) => {
     const res = await fetch(`${BASE_URL}/${cdId}/lists`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
     })
-    return res.json
+    return res.json()
   } catch (error) {
     console.log(error);
   }

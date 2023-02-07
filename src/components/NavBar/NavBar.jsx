@@ -1,10 +1,13 @@
 import styles from './NavBar.module.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from '../Icon/Icon'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ user, profile, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+
+
 
   const toggle = () => {
     setIsOpen(!isOpen)
@@ -27,7 +30,7 @@ const NavBar = ({ user, handleLogout }) => {
               <li>Welcome, {user.name}</li>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
-              <li><Link to='/profile/lists'>Lists</Link></li>
+              <li><Link to={`/cd/${profile.cdAccount}/lists`}>Lists</Link></li>
               <li><Link to='/profile'>Profile</Link></li>
               {/* Items below here will be removed in final app */}
               <li><Link to='/profiles'>Profiles</Link></li>

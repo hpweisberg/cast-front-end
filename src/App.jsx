@@ -26,15 +26,22 @@ import ListCard from './components/ListCard/ListCard'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as cdService from './services/cdService'
-import { useParams } from "react-router-dom"
 
 // styles
 import './App.css'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [profile, setProfile] = useState('')
   const navigate = useNavigate()
-  const { cdId } = useParams()
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(user.profile)
+      setProfile(profile)
+    }
+    fetchProfile()
+  }, [user.profile])
 
   const handleLogout = () => {
     authService.logout()
@@ -77,7 +84,7 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -142,7 +149,7 @@ const App = () => {
           }
         />
         <Route 
-          path='/profile/lists'
+          path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
               <ListIndex />
