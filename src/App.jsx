@@ -73,13 +73,13 @@ const App = () => {
     }
   }
   
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const profile = await profileService.getProfile(user.profile)
-      setProfile(profile)
-    }
-    fetchProfile()
-  }, [user.profile])
+  // useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     const profile = await profileService.getProfile(user.profile)
+  //     setProfile(profile)
+  //   }
+  //   fetchProfile()
+  // }, [user.profile])
 
   return (
     <>
