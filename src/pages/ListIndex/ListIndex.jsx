@@ -16,7 +16,7 @@ const ListIndex = ({profile}) => {
     }
     fetchLists()
   }, [id])
-
+  console.log(lists);
   return ( 
     <>
       <h1>List Index</h1> 

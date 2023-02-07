@@ -3,22 +3,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
 import TalentSearch from "../../pages/TalentSearch/TalentSearch";
-import * as talentService from '../../services/talentService'
+
 import styles from './ListCard.module.css'
 
 const ListCard = ({ list, profile }) => {
-  // const [talentAccount, setTalentAccount] = useState('')
 
-  // useEffect(() => {
-  //   const fetchTalent = async () => {
-  //     const talent = await talentService.show(talentId)
-  //     setTalentAccount(talent)
-  //   }
-  //   fetchTalent()
-  // }, [talentId])
-
+console.log(profile);
 return (
-  <Link state={{ list: list}} to={`/cd/${profile._id}/lists/${list._id}`}>
+  <Link state={{ list, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>

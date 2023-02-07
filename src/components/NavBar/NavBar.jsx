@@ -1,7 +1,8 @@
 import styles from './NavBar.module.css'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Icon from '../Icon/Icon'
+// import { login } from '../../services/authService'
 
 const NavBar = ({ user, profile, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +13,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
   const toggle = () => {
     setIsOpen(!isOpen)
   }
-
+  console.log('profile', profile);
   return (
     <>
       <div>

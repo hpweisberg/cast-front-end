@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom"
-
+// import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom"
+import TalentCard from "../../components/TalentCard/TalentCard";
 
 
 const ListDetails = (props) => {
   const location = useLocation()
-  const {list} = location.state
+  const {list, profile} = location.state
 
-  console.log('List Detials Props:', list)
+  console.log('List Detials Props:', profile)
   return ( 
     <>
       <h1>List Details Component</h1> 
       <h3>{list.titleOfList}</h3>
       {list.talent.map(talent => (
-        <p><TalentCard /></p>
+        <TalentCard key={talent} profile={profile} talent={talent}/>
       ))}
     </>
   );
