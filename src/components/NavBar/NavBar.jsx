@@ -19,8 +19,8 @@ const NavBar = ({ user, handleLogout }) => {
           <Icon name='Menu' />
         </div>
         {isOpen && (
-
-          <nav>
+          //? Turnery is stopping styles from working. animation is not working.
+          <nav className={`styles.menu ${isOpen ? 'open' : 'menu'}`}>
 
           {user ?
             <ul>
