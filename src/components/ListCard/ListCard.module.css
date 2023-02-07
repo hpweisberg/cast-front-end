@@ -57,4 +57,12 @@
 
 .union, .location {
   font-size: var(--fs-600);
+  font-style: italic;
+}
+
+.union {
+  margin-bottom: 0;
+}
+.location {
+  margin-top: 0;
 }
