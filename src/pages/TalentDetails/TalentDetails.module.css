@@ -78,3 +78,14 @@
 .line:first-child {
   padding-right: 1rem;
 }
+
+.buttonLinks{
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+.buttonLinks > * {
+  width: 35px;
+  
+}

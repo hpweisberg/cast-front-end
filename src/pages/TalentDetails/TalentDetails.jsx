@@ -59,7 +59,7 @@ const TalentDetails = (props) => {
               <p>HAIR</p>
             </div>
             <p>ABOUT</p>
-            <p>UNION</p>
+            {/* <p>UNION</p> */}
             {/* <p>{talent.location}</p> */}
             {/* <p>{talent.age}</p> */}
             {/* <p>{talent.weight}lb</p> */}
@@ -68,6 +68,11 @@ const TalentDetails = (props) => {
             {/* <p>{talent.hair}</p> */}
             {/* <p>{talent.about}</p> */}
           </div>
+        </div>
+        <div className={styles.buttonLinks}>
+          <Icon name='Reels' />
+          <Icon name='Calendar' />
+          <Icon name='Add' />
         </div>
         <h1>Talent Details Component</h1>
 
