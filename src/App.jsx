@@ -26,6 +26,7 @@ import ListCard from './components/ListCard/ListCard'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as cdService from './services/cdService'
+import { useParams } from "react-router-dom"
 
 // styles
 import './App.css'
@@ -33,6 +34,7 @@ import './App.css'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const navigate = useNavigate()
+  const { cdId } = useParams()
 
   const handleLogout = () => {
     authService.logout()
@@ -140,7 +142,7 @@ const App = () => {
           }
         />
         <Route 
-          path='/lists'
+          path='/profile/lists'
           element={
             <ProtectedRoute user={user}>
               <ListIndex />

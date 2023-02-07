@@ -15,9 +15,19 @@ const index = async () => {
   }
 }
 
-
+const indexLists = async (cdId) => {
+  try {
+    //GET http://localhost:3001/api/cd/:id/lists
+    const res = await fetch(`${BASE_URL}/${cdId}/lists`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
+    })
+    return res.json
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export {
   index,
-
+  indexLists
 }

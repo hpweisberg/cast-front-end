@@ -27,7 +27,7 @@ const NavBar = ({ user, handleLogout }) => {
               <li>Welcome, {user.name}</li>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
-              <li><Link to='lists'>Lists</Link></li>
+              <li><Link to='/profile/lists'>Lists</Link></li>
               <li><Link to='/profile'>Profile</Link></li>
               {/* Items below here will be removed in final app */}
               <li><Link to='/profiles'>Profiles</Link></li>
