@@ -21,10 +21,9 @@ const ListIndex = () => {
   return ( 
     <>
       <h1>List Index</h1> 
-      {lists.map(list => 
-        <p key={list._id}>{list.titleOfList}</p>
-
-      )}
+      {lists.map(list => (
+        <ListCard list={list} key={list._id}/>
+      ))}
     </>
   );
 }

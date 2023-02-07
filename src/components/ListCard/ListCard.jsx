@@ -4,16 +4,12 @@ import Icon from '../../components/Icon/Icon'
 import TalentSearch from "../../pages/TalentSearch/TalentSearch";
 import styles from './ListCard.module.css'
 
-
-
 const ListCard = (props) => {
   
-
   
-
   return (
     <div className={styles.center}>
-      <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
+      <Link to={`/profiles`} className={styles.link}>
         <section className={styles.listCardContainer}>
           <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
