@@ -19,8 +19,7 @@ const ListCard = (props) => {
           <p className={styles.pronouns}>{props.profile.pronouns}</p>
           <p className={styles.union}>{props.profile.talentAccount.unionStatus}</p>
           <p className={styles.location}>{props.profile.location}</p>
-          {/* <p><Icon name='reels'/> {props.profile.talentAccount?.reel}</p> */}
-          {/* <img src="../../assets/icons/reels.png" alt="" /> */}
+          <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon}/> {props.profile.talentAccount?.reel}</p>
         </div>
       </section>
     </Link>
