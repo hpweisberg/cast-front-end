@@ -22,7 +22,11 @@ const Profile = (props) => {
   return ( 
     <>
       <h1>Profile Component</h1>
-      <Link to="/profile/edit">Edit Profile</Link>
+      <Link 
+        to="/profile/edit"
+        profile={profile}
+      >
+          Edit Profile</Link>
       <p>Name: {profile.name}</p>
       <p>{profile.photo}</p>
       <p>Pronouns: {profile.pronouns}</p>
