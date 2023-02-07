@@ -9,17 +9,18 @@ import SignupCTA from '../../components/SignupCTA/SignupCTA'
 
 const Landing = ({ user }) => {
   
+  //! LOOK HERE
   const [signupType, setSignupType] = useState(null)
 
   const handleTalentSignup = (e) => {
     e.preventDefault()
-    setSignupType("talent")
+    // setSignupType("talent")
   }
 
-  const handleCDSignup = (e) => {
-    e.preventDefault()
-    setSignupType('CD')
-  }
+  // const handleCDSignup = (e) => {
+  //   e.preventDefault()
+  //   setSignupType('CD')
+  // }
   
   return (
     <main className={styles.container}>
@@ -52,14 +53,6 @@ const Landing = ({ user }) => {
               Casting Directors
             </Link>
         </div>
-
-        {/* <form onSubmit={handleTalentSignup}>
-          <button type="submit">Talent</button>
-        </form>
-        
-        <form onSubmit={handleCDSignup}>
-          <button type="submit">Casting Directors</button>
-        </form> */}
 
       </div>
 

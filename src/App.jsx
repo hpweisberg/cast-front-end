@@ -48,7 +48,6 @@ const App = () => {
   
   const handleEditProfile = async (profileData) => {
     try {
-      console.log("app.jsx profileData ", profileData)
       await profileService.update(profileData, user.profile)
       navigate('/profile')
     } catch(error) {
@@ -82,7 +81,6 @@ const App = () => {
     fetchProfile()
   }, [user.profile])
 
-  
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />
