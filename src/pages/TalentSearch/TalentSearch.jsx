@@ -16,7 +16,7 @@ const TalentSearch = (props) => {
     }
     fetchTalent()
   }, [])
-  console.log('talent search log:', talentSearch)
+  // console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
 
   if (!talentSearch) return "loading"

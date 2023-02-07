@@ -7,7 +7,7 @@ import styles from './ListCard.module.css'
 
 
 const ListCard = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className={styles.center}>
       <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
