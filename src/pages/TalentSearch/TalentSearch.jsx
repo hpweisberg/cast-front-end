@@ -18,7 +18,7 @@ const TalentSearch = (props) => {
   }, [])
   // console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
-  console.log(props);
+  console.log('all talent', talentSearch);
   if (!talentSearch) return "loading"
 
   return (
@@ -37,10 +37,9 @@ const TalentSearch = (props) => {
       <Icon name='Reset' />
       </div>
 
-      {talentSearch.map(talent => (
+      {talentSearch.map((talent, idx) => (
         <>
-          <TalentCard key={talent._id} talent={talent} />
-
+          <TalentCard key={idx} talent={talent._id} />
         </>
       )
       )}

@@ -81,7 +81,6 @@ const App = () => {
     }
     if (user) fetchProfile()
   }, [user])
-
   
   return (
     <>

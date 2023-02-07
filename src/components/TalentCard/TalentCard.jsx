@@ -32,7 +32,7 @@ const TalentCard = (props) => {
     }
     fetchProfile()
   }, [props.profile])
-
+  console.log(talent);
   return (
     <div className={styles.center}>
       <Link to={`/profiles/${profile._id}`} className={styles.link}>
