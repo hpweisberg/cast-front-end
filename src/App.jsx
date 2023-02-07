@@ -79,8 +79,8 @@ const App = () => {
       const profile = await profileService.getProfile(user.profile)
       setProfile(profile)
     }
-    fetchProfile()
-  }, [user.profile])
+    if (user) fetchProfile()
+  }, [user])
 
   
   return (

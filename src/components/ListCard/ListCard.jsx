@@ -8,9 +8,9 @@ import { Link } from "react-router-dom"
 
 const ListCard = ({ list, profile }) => {
 
-console.log(profile);
+
 return (
-  <Link state={{ list, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
+  <Link state={{ list }} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>

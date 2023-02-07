@@ -27,7 +27,10 @@ const indexLists = async (cdId) => {
   }
 }
 
+// const newList = async
+
 export {
   index,
-  indexLists
+  indexLists,
+  // newList,
 }

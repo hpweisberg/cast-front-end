@@ -11,15 +11,16 @@ import * as talentService from '../../services/talentService'
 
 const TalentCard = (props) => {
   const [talent, setTalent] = useState({})
+  const [profile, setProfile] = useState({})
   // console.log(props.talent);
 
   useEffect(() => {
-    const fetchTalent = async () => {
+    const fetchTalentAcct = async () => {
       const talentAcct = await talentService.show(props.talent)
       console.log('fetchTalent', talentAcct);
       setTalent(talentAcct)
     }
-    fetchTalent()
+    fetchTalentAcct()
   }, [props.talent])
 
     console.log(props);
