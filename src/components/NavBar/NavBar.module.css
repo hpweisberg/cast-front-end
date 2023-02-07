@@ -1,0 +1,23 @@
+.menuIcon > * {
+  width: 30px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px;
+
+}
+
+  .menu {
+    /* position: fixed; */
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background-color: slategray;
+    color: white;
+    transition: transform 0.3s ease-out;
+    transform: translateX(-100%);
+  }
+
+.menu.open {
+  transform: translateX(0);
+}
