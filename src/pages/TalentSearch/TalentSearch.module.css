@@ -1,5 +1,5 @@
 .searchContainer, .filterContainer {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 35px;
   display: flex;
   flex-direction: row;
