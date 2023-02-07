@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import ListCard from "../../components/ListCard/ListCard";
+import Icon from "../../components/Icon/Icon";
 import * as talentService from '../../services/talentService'
+import styles from './TalentSearch.module.css'
 
 
 const TalentSearch = (props) => {
@@ -17,25 +19,38 @@ const TalentSearch = (props) => {
   console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
 
-  if(!talentSearch) return "loading"
+  if (!talentSearch) return "loading"
 
-  return ( 
+  return (
     <>
-      <h1>Talent Search Component</h1>
-        {talentSearch.map(profile => (
-          <>
-            <ListCard key={profile._id} profile={profile}/>
+      <div className={styles.searchContainer}>
+          <Icon name='MagnifierGlass'/>
+        <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
+        </input>
+      <Icon name='Reset' />
+      </div>
 
-          </>
-          )
-          )}
+      <div className={styles.filterContainer}>
+          <Icon name='Filter'/>
+        <select className={styles.filterBar} placeholder={'Filter'}>
+        </select>
+      <Icon name='Reset' />
+      </div>
 
-          {/* {profiles.map(profile => 
+      {talentSearch.map(profile => (
+        <>
+          <ListCard key={profile._id} profile={profile} />
+
+        </>
+      )
+      )}
+
+      {/* {profiles.map(profile => 
             <p key={profile._id}>
               {profile.talentAccount.unionStatus}
             </p> */}
-            
-            {/* )} */}
+
+      {/* )} */}
 
     </>
   )

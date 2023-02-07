@@ -1,0 +1,29 @@
+.searchContainer, .filterContainer {
+  /* border: 1px solid red; */
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.searchContainer, .filterContainer > * {
+  margin: 0 5px;
+}
+
+.searchBar, .filterBar {
+  background-color: rgb(223, 220, 220);
+  height: 25px;
+  width: 80%;
+  border-radius: 15px;
+  display: relative;
+  padding-left: 20px;
+
+}
+
+.searchBar > * {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
