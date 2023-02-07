@@ -30,6 +30,7 @@ const TalentDetails = (props) => {
   console.log('Talent State:', talent)
   console.log('routeType:', routeType)
   console.log('props:', props)
+  console.log('profile:', )
 
 
   return (
