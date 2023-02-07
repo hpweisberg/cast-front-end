@@ -12,6 +12,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
 
 
   const toggle = () => {
+    console.log('toggle is working')
     setIsOpen(!isOpen)
   }
   console.log('profile', profile);
@@ -25,7 +26,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
         </div>
         {isOpen && (
           //? Turnery is stopping styles from working. animation is not working.
-          <nav className={`styles.menu ${isOpen ? 'open' : 'menu'}`}>
+          <nav className={`${styles.menu} ${isOpen ? styles.open : styles.menu}`}>
 
           {user ?
             <ul>
