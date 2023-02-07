@@ -22,6 +22,8 @@ const ListIndex = ({profile}) => {
     fetchLists()
   }, [id])
 
+  console.log('lists', lists);
+
   const handleChange = ({target}) => {
     // target is event.target
     // const { target } = event

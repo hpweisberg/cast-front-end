@@ -6,6 +6,7 @@ import Icon from '../../components/Icon/Icon'
 // import TalentSearch from "../../pages/TalentSearch/TalentSearch";
 import styles from './TalentCard.module.css'
 import * as talentService from '../../services/talentService'
+import * as profileService from '../../services/profileService'
 
 
 
@@ -23,19 +24,26 @@ const TalentCard = (props) => {
     fetchTalentAcct()
   }, [props.talent])
 
-    console.log(props);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(props.profile)
+      console.log('fetchTalent', profile);
+      setProfile(profile)
+    }
+    fetchProfile()
+  }, [props.profile])
 
   return (
     <div className={styles.center}>
-      <Link to={`/profiles/${props.profile._id}`} className={styles.link}>
+      <Link to={`/profiles/${profile._id}`} className={styles.link}>
         <section className={styles.talentCardContainer}>
           <img src={talent.headshot} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
             <h3>{talent.name}</h3>
-            <p className={styles.pronouns}>{props.profile.pronouns}</p>
+            <p className={styles.pronouns}>{profile.pronouns}</p>
             <p className={styles.union}>{talent.unionStatus}</p>
-            <p className={styles.location}>{props.profile.location}</p>
+            <p className={styles.location}>{profile.location}</p>
             <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {talent.reel}</p>
           </div>
         </section>
