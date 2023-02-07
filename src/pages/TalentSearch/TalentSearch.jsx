@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ListCard from "../../components/ListCard/ListCard";
+import TalentCard from "../../components/TalentCard/TalentCard";
 import Icon from "../../components/Icon/Icon";
 import * as talentService from '../../services/talentService'
 import styles from './TalentSearch.module.css'
@@ -16,7 +16,7 @@ const TalentSearch = (props) => {
     }
     fetchTalent()
   }, [])
-  console.log('talent search log:', talentSearch)
+  // console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
 
   if (!talentSearch) return "loading"
@@ -39,7 +39,7 @@ const TalentSearch = (props) => {
 
       {talentSearch.map(profile => (
         <>
-          <ListCard key={profile._id} profile={profile} />
+          <TalentCard key={profile._id} profile={profile} />
 
         </>
       )
