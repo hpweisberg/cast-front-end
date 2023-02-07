@@ -11,6 +11,7 @@ import * as talentService from "../../services/talentService"
 import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education";
 import Training from "../../components/Training/Training";
+import Icon from "../../components/Icon/Icon"
 
 const TalentDetails = (props) => {
   const { talentId } = useParams()
@@ -20,28 +21,37 @@ const TalentDetails = (props) => {
 
   useEffect(() => {
     console.log('id:', talentId)
-      const fetchTalent = async () => {
-        const data = await talentService.show(talentId)
-        setTalent(data)
-      }
-      fetchTalent()
+    const fetchTalent = async () => {
+      const data = await talentService.show(talentId)
+      setTalent(data)
+    }
+    fetchTalent()
   }, [talentId])
 
   console.log('Talent State:', talent)
   console.log('routeType:', routeType)
   console.log('props:', props)
-  console.log('profile:', )
 
 
   return (
     <>
-      <h1>Talent Details Component</h1>
-      {/* <p>{props.profile.name}</p> */}
-      {/* {props.talent.name} */}
-      <p>{talent.about}</p>
-      <Experience />
-      <Education />
-      <Training />
+      <div className={styles.talentDetailsContainer}>
+        <div className={styles.topRow}>
+          <button className={styles.backBtn}><Icon name='Back' /></button>
+          <div className={styles.nameGroup}>
+          <h1>NAME</h1>
+          <h6>PRONOUNS</h6>
+          </div>
+          <button className={styles.editBtn}><Icon name='Edit' /></button>
+
+        </div>
+        <h1>Talent Details Component</h1>
+
+        {/* <p>{talent.about}</p> */}
+        <Experience />
+        <Education />
+        <Training />
+      </div>
     </>
   );
 }
