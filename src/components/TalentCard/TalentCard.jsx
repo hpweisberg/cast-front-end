@@ -11,7 +11,7 @@ import * as talentService from '../../services/talentService'
 
 const TalentCard = (props) => {
   const [talent, setTalent] = useState({})
-  console.log(props.talent);
+  // console.log(props.talent);
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -31,8 +31,7 @@ const TalentCard = (props) => {
           <img src={talent.headshot} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
-
-            <h3>{props.profile.name}</h3>
+            <h3>{talent.name}</h3>
             <p className={styles.pronouns}>{props.profile.pronouns}</p>
             <p className={styles.union}>{talent.unionStatus}</p>
             <p className={styles.location}>{props.profile.location}</p>
