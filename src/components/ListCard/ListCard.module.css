@@ -43,6 +43,11 @@
 .glanceInfo {
   width: 170px;
   max-height: 165px;
+  overflow: hidden;
+}
+
+.glanceInfo > * {
+  margin: 0;
 }
 
 .glanceInfo > h3 {
@@ -52,7 +57,7 @@
 
 .pronouns {
   color: rgba(0, 0, 0, 0.7);
-  margin-top: 0;
+  margin: 0;
 }
 
 .union, .location {
@@ -60,14 +65,27 @@
   font-style: italic;
 }
 
+
 .union {
   margin-bottom: 0;
 }
-.location {
+.location, .location {
   margin-top: 0;
 }
 
 .reelsIcon > * {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 0;
+}
+
+.reelsIcon {
+  position: relative;
+  margin: 0;
+  
+}
+
+.overflow {
+  text-overflow: ellipsis;
 }
