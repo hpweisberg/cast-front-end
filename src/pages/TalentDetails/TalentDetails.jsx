@@ -22,7 +22,7 @@ const TalentDetails = (props) => {
     fetchTalent()
   }, [id])
 
-console.log('Talent State:', talent)
+console.log('Talent State:', props)
 
   return ( 
     <>
