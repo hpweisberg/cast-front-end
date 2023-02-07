@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
-import Icon from "../Icon/Icon"
+import Icon from '../../components/Icon/Icon'
 import TalentSearch from "../../pages/TalentSearch/TalentSearch";
 import styles from './ListCard.module.css'
 
@@ -18,8 +18,9 @@ const ListCard = (props) => {
           <h3>{props.profile.name}</h3>
           <p>{props.profile.pronouns}</p>
           <p>{props.profile.location}</p>
-          <p>{props.profile.talentAccount?.reel}</p>
           <p>{props.profile.talentAccount.unionStatus}</p>
+          {/* <p><Icon name='reels'/> {props.profile.talentAccount?.reel}</p> */}
+          <img src="../../assets/icons/reels.png" alt="" />
         </div>
       </section>
     </Link>

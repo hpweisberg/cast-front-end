@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import SignupCTA from '../../components/SignupCTA/SignupCTA'
 
 const Landing = ({ user }) => {
+  
   return (
     <main className={styles.container}>
       
