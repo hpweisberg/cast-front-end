@@ -35,24 +35,12 @@ const TalentDetails = (props) => {
   // console.log('TALENT',talent._id);
   return (
     <>
-    {/* <h1>{props.talent.about}</h1> */}
-    <h1>test</h1>
-    <h1>{talent.about}</h1>
-    <h1>{talent.name}</h1>
-    <h1>{talent.profile.email}</h1>
-        <Experience />
-        <Education />
-        <Training />
-
-
-
-        <>
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
           <button className={styles.backBtn}><Icon name='Back' /></button>
           <div className={styles.nameGroup}>
             <h1>{talent.name}</h1>
-            <h6>{talent.profile.pronouns}</h6>
+            <h6>{talent.profile?.pronouns}</h6>
           </div>
           <button className={styles.editBtn}><Icon name='Edit' /></button>
         </div>
@@ -60,7 +48,7 @@ const TalentDetails = (props) => {
           <img className={styles.headshotImg} src={talent.headshot} alt="headshot" />
           <div className={styles.actorDetails}>
             <p>{talent.unionStatus}</p>
-            <p>{talent.profile.location}</p>
+            <p>{talent.profile?.location}</p>
             <div className={styles.line}>
               <p>{talent.weight}</p>
               <p>{talent.height}</p>
@@ -77,10 +65,9 @@ const TalentDetails = (props) => {
           <Icon name='Calendar' />
           <Icon name='Add' />
         </div>
-        <h1>Talent Details Component</h1>
 
-        {/* <p>{talent.about}</p> */}
-        <Experience />
+
+        <Experience talent={talent}/>
         <Education />
         <Training />
       </div>
@@ -99,7 +86,6 @@ const TalentDetails = (props) => {
           </select>
           <button type='submit'>Add to List!</button>
         </form>
-    </>
     </>
   )
 }
