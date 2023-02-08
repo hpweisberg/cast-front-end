@@ -11,9 +11,6 @@ const EditProfile = (props) => {
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
   const signupComplete = location.state?.signupComplete
-  const talentId = location.state?.talentId
-
-  console.log("talentId", talentId)
 
   const [photoData, setPhotoData] = useState({})
 
@@ -50,8 +47,7 @@ const EditProfile = (props) => {
     weight: '',
     about: '',
     skills: '',
-    trades: '',
-    talentId: talentId
+    trades: ''
   })
 
   const handleTalentChange = ({target}) => {
@@ -60,7 +56,7 @@ const EditProfile = (props) => {
   
   const handleTalentSubmit = (e) => {
     e.preventDefault()
-    props.handleEditTalentProfile(talentForm)
+    props.handleAddTalentProfile(talentForm)
     props.handleEditProfile(form)
   }
 
@@ -130,6 +126,7 @@ const EditProfile = (props) => {
     }
   }
 
+  console.log("signup complete", signupComplete)
 
   return (
     <>

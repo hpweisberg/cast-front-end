@@ -8,11 +8,16 @@ import * as profileService from '../../services/profileService'
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
+  const [signupComplete, setSignupComplete] = useState(true)
+  const [talentId, setTalentId] = useState('')
+
 
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
+      console.log("profileData ", profileData)
+      setTalentId(profileData.talentAccount._id)
     }
     fetchProfile()
   }, [props.user.profile])
@@ -20,14 +25,13 @@ const Profile = (props) => {
   if(!profile) return "loading"
 
 
-  console.log(profile.isCd)
 
   return ( 
     <>
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        state={{isCd: profile.isCd}}
+        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId}}
       >
           Edit Profile</Link>
       <p>Name: {profile.name}</p>
