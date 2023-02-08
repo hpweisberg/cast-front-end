@@ -20,11 +20,14 @@ import EditProfile from './pages/Profile/EditProfile'
 import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
+import CreateProfile from './pages/Profile/CreateProfile'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as talentService from './services/talentService'
+import * as cdService from './services/cdService'
 // import * as cdService from './services/cdService'
 
 // styles
@@ -63,6 +66,23 @@ const App = () => {
       console.log(error)
     }
   }
+  const handleEditTalentProfile = async (talentData) => {
+    try {
+      await talentService.update(talentData)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  
+  const handleEditCDProfile = async (cdData) => {
+    try {
+      await cdService.update(cdData)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
   
   const handleAddCDProfile = async (cdData) => {
     try {
@@ -72,7 +92,7 @@ const App = () => {
       console.log(error)
     }
   }
-  
+ 
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
@@ -132,6 +152,18 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <EditProfile 
+                handleEditProfile={handleEditProfile}
+                handleEditTalentProfile={handleEditTalentProfile}
+                handleEditCDProfile={handleEditCDProfile}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/create'
+          element={
+            <ProtectedRoute user={user}>
+              <CreateProfile 
                 handleEditProfile={handleEditProfile}
                 handleAddTalentProfile={handleAddTalentProfile}
                 handleAddCDProfile={handleAddCDProfile}

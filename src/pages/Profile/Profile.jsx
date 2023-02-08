@@ -8,11 +8,20 @@ import * as profileService from '../../services/profileService'
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
+  const [signupComplete, setSignupComplete] = useState(true)
+  const [talentId, setTalentId] = useState('')
+  const [cdId, setCdId] = useState('')
 
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
+      // i need to be able to have both of these set but things break if both are present
+      if(profileData.isCd) {
+        setCdId(profileData.cdAccount._id)
+      } else {
+        setTalentId(profileData.talentAccount._id)
+      }
     }
     fetchProfile()
   }, [props.user.profile])
@@ -24,7 +33,7 @@ const Profile = (props) => {
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        profile={profile}
+        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId, cdId: cdId}}
       >
           Edit Profile</Link>
       <p>Name: {profile.name}</p>
@@ -48,6 +57,10 @@ const Profile = (props) => {
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
+
+      <Link to="">Add Experience</Link>
+      <Link to="">Edit Education</Link>
+      <Link to="">Edit Training</Link>
       </>
       :
       ""
