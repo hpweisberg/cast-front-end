@@ -59,7 +59,7 @@ const Profile = (props) => {
 
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
       <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
-      <Link to="">Add Training</Link>
+      <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       </>
       :
       ""
