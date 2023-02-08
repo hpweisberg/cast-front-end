@@ -15,6 +15,8 @@ const Profile = (props) => {
   const [talentId, setTalentId] = useState('')
   const [cdId, setCdId] = useState('')
 
+  console.log('profile:', profile)
+
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)

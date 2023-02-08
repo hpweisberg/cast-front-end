@@ -69,8 +69,9 @@ const TalentSearch = (props) => {
       </div>
 
       {talentSearch.map((talent, idx) => (
-        <TalentCard key={idx} profile={talent}/>
+        <TalentCard key={idx} talent={talent}/>
       ))}
+      
     </>
   )
 }

@@ -164,7 +164,7 @@ const App = () => {
       const lists = await cdService.indexLists(profile.cdAccount)
       setLists(lists)
     }
-    if (profile) fetchLists()
+    if (profile?.cdAccount) fetchLists()
   }, [profile])
 
   const handleCreateList = async (listData) => {

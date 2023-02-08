@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import Profile from "./Profile";
 
 const EditProfile = (props) => {
-  
   const location = useLocation()
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
@@ -15,6 +14,7 @@ const EditProfile = (props) => {
   const profile = location.state?.profile
 
   console.log("profile.talentAccount", profile.talentAccount)
+
   const [photoData, setPhotoData] = useState({})
 
   //* edit profile
@@ -167,9 +167,9 @@ const EditProfile = (props) => {
                 value={talentForm.unionStatus}
                 onChange={handleTalentChange}
               >
+                <option value="Not Affiliated">Not Affiliated</option>
                 <option value="SAG">SAG</option>
                 <option value="AEA">AEA</option>
-                <option value="Not Affiliated">Not Affiliated</option>
               </select>
 
               <label htmlFor="hair-input">Hair</label>
