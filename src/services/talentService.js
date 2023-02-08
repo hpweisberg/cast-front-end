@@ -75,7 +75,7 @@ const createEducation = async (talentData) => {
 
 const createTraining = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/training`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentProfileId}/training`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,

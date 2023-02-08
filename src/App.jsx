@@ -23,6 +23,7 @@ import ListDetails from './pages/ListDetails/ListDetails'
 import CreateProfile from './pages/Profile/CreateProfile'
 import AddExperience from './pages/AddExperience/AddExperience'
 import AddEducation from './pages/AddEducation/AddEducation'
+import AddTraining from './pages/AddTraining/AddTraining'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
@@ -92,6 +93,32 @@ const App = () => {
       await profileService.createCDProfile(cdData, user.profile)
       navigate('/profile')
     } catch(error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddExperience = async (experienceData) => {
+    try {
+      await talentService.createExperience(experienceData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddEducation = async (educationData) => {
+    try {
+      await talentService.createEducation(educationData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleAddTraining = async (trainingData) => {
+    try {
+      await talentService.createTraining(trainingData)
+      navigate('/profile')
+    } catch (error) {
       console.log(error)
     }
   }
@@ -214,6 +241,14 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-training'
+          element={
+            <ProtectedRoute user={user}>
+              <AddTraining handleAddTraining={handleAddTraining}/>
             </ProtectedRoute>
           }
         />
