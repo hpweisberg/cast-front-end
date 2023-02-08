@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react";
 
-// import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import Icon from '../../components/Icon/Icon'
-// import TalentSearch from "../../pages/TalentSearch/TalentSearch";
+import TalentSearch from "../../pages/TalentSearch/TalentSearch"
+
 import styles from './TalentCard.module.css'
 import * as talentService from '../../services/talentService'
 import * as profileService from '../../services/profileService'
+
 
 
 
@@ -40,7 +42,7 @@ const TalentCard = (props) => {
     <div className={styles.center}>
       <Link to={`/profiles/${profile._id}`} className={styles.link}>
         <section className={styles.talentCardContainer}>
-          <img src={talent.headshot} alt="user profile pic" className={styles.photo}></img>
+          <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
             <h3>{talent.name}</h3>
@@ -48,6 +50,7 @@ const TalentCard = (props) => {
             <p className={styles.union}>{talent.unionStatus}</p>
             <p className={styles.location}>{profile.location}</p>
             <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {talent.reel}</p>
+
           </div>
         </section>
       </Link>

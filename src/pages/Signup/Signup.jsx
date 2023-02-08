@@ -15,8 +15,6 @@ const Signup = props => {
   const location = useLocation()
   const signupType = location.state?.signupType
 
-  console.log(signupType)
-
   return (
 
 

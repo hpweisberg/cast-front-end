@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from './EditProfile.css'
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const EditProfile = (props) => {
   
@@ -9,17 +10,18 @@ const EditProfile = (props) => {
   const signupType = location.state?.signupType
 
   const [photoData, setPhotoData] = useState({})
-  
+
   //* edit profile
 
   const [form, setForm] = useState({
     pronouns: 'He/Him/His',
     location: '',
     phoneNumber: '',
-    email: '',
-    website: ''
+    website: '',
+    isCd: signupType
   })
   
+
   const handleProfileChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
   }
@@ -77,6 +79,12 @@ const EditProfile = (props) => {
     setPhotoData({ photo: evt.target.files[0] })
   }
 
+
+  // create useState for signup type
+  // create useEffect to autoset useState
+  // put useState variable in the isCD input as the value
+
+
   // handle submit function from SignupForm.jsx
   // const handleSubmit = async e => {
   //   e.preventDefault()
@@ -131,7 +139,7 @@ const EditProfile = (props) => {
           <button type='submit' >Save</button>
         </form>
 
-        {signupType === 'talent' ?
+        {signupType === false ?
           <>
             <h2>Talent Account Details</h2>
             <form onSubmit={handleTalentSubmit}>
@@ -262,6 +270,7 @@ const EditProfile = (props) => {
                 value={form.reelLink}
                 onChange={handleTalentChange}
               />
+
 
               <button type="submit">Save</button>
             </form>

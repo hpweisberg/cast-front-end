@@ -48,7 +48,6 @@ const App = () => {
   
   const handleEditProfile = async (profileData) => {
     try {
-      console.log("app.jsx profileData ", profileData)
       await profileService.update(profileData, user.profile)
       navigate('/profile')
     } catch(error) {
@@ -141,7 +140,7 @@ const App = () => {
           }
         />
         <Route 
-          path="/profiles/:profileId"
+          path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
               <TalentDetails user={user} />
