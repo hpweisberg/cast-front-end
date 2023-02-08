@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react'
 import ListCard from "../../components/ListCard/ListCard";
 import * as cdService from '../../services/cdService'
+import styles from './ListIndex.module.css'
+import * as React from 'react';
+import Button from '@mui/material/Button';
+
 
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -51,7 +55,7 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
           />
       ))}
       <h1>New List</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.newListGroup}>
         <input
           required
           type="text"
@@ -59,10 +63,11 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
           id="title-input"
           placeholder="Title of List"
           onChange={handleChange}
+          className={styles.listInput}
         />
-        <button type='submit'>
+        <Button variant="contained" type='submit'>
           Create New List
-        </button>
+        </Button>
       </form>
     </>
   );

@@ -2,18 +2,20 @@ import styles from './NavBar.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Icon from '../Icon/Icon'
+import logo from '../../assets/logo.png'
 // import { login } from '../../services/authService'
 
 const NavBar = ({ user, profile, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
+    console.log('toggle is working')
     setIsOpen(!isOpen)
   }
 
   return (
     <>
-      <div>
+      <div className={styles.navRow}>
 
 
         <div className={styles.menuIcon} onClick={toggle}>
@@ -21,7 +23,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
         </div>
         {isOpen && (
           //? Turnery is stopping styles from working. animation is not working.
-          <nav className={`styles.menu ${isOpen ? 'open' : 'menu'}`}>
+          <nav className={`${styles.menu} ${isOpen ? styles.open : styles.menu}`}>
 
           {user ?
             <ul>
@@ -45,8 +47,11 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to='/signup'>Sign Up</Link></li>
             </ul>
           }
+
+
         </nav>
               )}
+              <img className={styles.logo} src={logo} alt="cast logo" />
       </div>
     </>
   )
