@@ -257,7 +257,7 @@ const App = () => {
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} profile={profile}/>
             </ProtectedRoute>
           }
         />

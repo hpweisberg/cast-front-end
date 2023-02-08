@@ -7,13 +7,15 @@ import Icon from '../../components/Icon/Icon'
 
 import styles from './TalentCard.module.css'
 
-const TalentCard = (props) => {
+const TalentCard = (props, {talent} ) => {
   // const {profile} = props.talent
   console.log('Hunter test:',props)
+  console.log('talent test:', talent)
+
 
   return (
     <div className={styles.center}>
-      <Link to={`/talent/${props.talent._id}`} className={styles.link}>
+      <Link to={`/talent/${props.talent._id}`} state={{talent: props.talent}} className={styles.link}>
         <section className={styles.talentCardContainer}>
           <img src={props.talent.headshot} alt="user talent pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
