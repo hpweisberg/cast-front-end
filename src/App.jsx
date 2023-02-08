@@ -21,6 +21,8 @@ import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
 import CreateProfile from './pages/Profile/CreateProfile'
+import AddExperience from './pages/AddExperience/AddExperience'
+import AddEducation from './pages/AddEducation/AddEducation'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
@@ -28,7 +30,6 @@ import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as talentService from './services/talentService'
 import * as cdService from './services/cdService'
-// import * as cdService from './services/cdService'
 
 // styles
 import './App.css'
@@ -94,7 +95,12 @@ const App = () => {
       console.log(error)
     }
   }
+<<<<<<<<< Temporary merge branch 1
+ 
+=========
+
   
+>>>>>>>>> Temporary merge branch 2
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
@@ -189,6 +195,22 @@ const App = () => {
                 handleAddTalentProfile={handleAddTalentProfile}
                 handleAddCDProfile={handleAddCDProfile}
               />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-experience'
+          element={
+            <ProtectedRoute user={user}>
+              <AddExperience handleAddExperience={handleAddExperience}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-education'
+          element={
+            <ProtectedRoute user={user}>
+              <AddEducation handleAddEducation={handleAddEducation}/>
             </ProtectedRoute>
           }
         />
