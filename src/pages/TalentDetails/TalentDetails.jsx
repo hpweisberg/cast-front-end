@@ -21,20 +21,7 @@ const TalentDetails = (props) => {
   const location = useLocation()
   const talent = location.state?.talent
   console.log('talent log:::', talent)
-  // useEffect(() => {
-    // console.log('id:', talentId)
-  //   const fetchTalent = async () => {
-  //     const data = await talentService.show(talentId)
-  //     setTalent(data)
-  //   }
-  //   fetchTalent()
-  // }, [talentId])
 
-  // console.log('Talent State:', talent)
-  // console.log('routeType:', routeType)
-  console.log('props:', props)
-  console.log('talent:', talent)
-  console.log('talentId:', talentId)
   
   const handleChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
@@ -57,6 +44,62 @@ const TalentDetails = (props) => {
         <Education />
         <Training />
 
+
+
+        <>
+      <div className={styles.talentDetailsContainer}>
+        <div className={styles.topRow}>
+          <button className={styles.backBtn}><Icon name='Back' /></button>
+          <div className={styles.nameGroup}>
+            <h1>{talent.name}</h1>
+            <h6>{talent.profile.pronouns}</h6>
+          </div>
+          <button className={styles.editBtn}><Icon name='Edit' /></button>
+        </div>
+        <div className={styles.headshotDeatils}>
+          <img className={styles.headshotImg} src={talent.headshot} alt="headshot" />
+          <div className={styles.actorDetails}>
+            <p>{talent.unionStatus}</p>
+            <p>{talent.profile.location}</p>
+            <div className={styles.line}>
+              <p>{talent.weight}</p>
+              <p>{talent.height}</p>
+            </div>
+            <div className={styles.line}>
+              <p>{talent.eyes}</p>
+              <p>{talent.hair}</p>
+            </div>
+            <p>{talent.about}</p>
+          </div>
+        </div>
+        <div className={styles.buttonLinks}>
+          <Icon name='Reels' />
+          <Icon name='Calendar' />
+          <Icon name='Add' />
+        </div>
+        <h1>Talent Details Component</h1>
+
+        {/* <p>{talent.about}</p> */}
+        <Experience />
+        <Education />
+        <Training />
+      </div>
+      <form onSubmit={handleSubmit}>
+          <select
+              required
+              name='_id'
+              value={form._id}
+              onChange={handleChange}
+              placeholder={`select a list`}
+          >
+            <option>Select a List</option>
+            {props.lists.map(list => (
+              <option key={list._id} value={list._id}>{list.titleOfList}</option>
+            ))}
+          </select>
+          <button type='submit'>Add to List!</button>
+        </form>
+    </>
     </>
   )
 }
