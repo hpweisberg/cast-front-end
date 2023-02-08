@@ -38,7 +38,7 @@ const TalentCard = (props) => {
 
   return (
     <div className={styles.center}>
-      <Link to={`/profiles/${profile._id}`} className={styles.link}>
+      <Link to={`/talent/${props.talent}`} className={styles.link}>
         <section className={styles.talentCardContainer}>
           <img src={profile.photo} alt="user profile pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>

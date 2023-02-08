@@ -5,6 +5,10 @@ import { useState } from "react";
 
 import * as profileService from '../../services/profileService'
 
+import Experience from "../../components/Experience/Experience";
+import Education from "../../components/Education/Education"
+import Training from "../../components/Training/Training";
+
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
@@ -57,9 +61,17 @@ const Profile = (props) => {
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
 
+      {/* //! MAP THROUGH EACH OF THE BELOW ARRAYS AND RENDER THE COMPONENT AS A RESULT AND PASS THE DATA DOWN */}
+      {profile.talentAccount.experience.map(experience => 
+        <p>{experience.productionTitle}</p>  
+      )}
+      <Experience />
+      <Education />
+      <Training />
+
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
       <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
-      <Link to="">Add Training</Link>
+      <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       </>
       :
       ""

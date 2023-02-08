@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import * as cdService from '../../services/cdService'
 // import { useParams } from "react-router-dom"
 // import Icon from '../../components/Icon/Icon'
 // import TalentSearch from "../../pages/TalentSearch/TalentSearch";
@@ -7,9 +8,20 @@ import { Link } from "react-router-dom"
 // import styles from './ListCard.module.css'
 
 const ListCard = ({ list, profile }) => {
+console.log('PROFILE', profile);
+const [shownList, setShownList] = useState({})
 
+useEffect(() => {
+  const fetchList = async () => {
+    const target = await cdService.showList(profile.cdAccount, list._id)
+    setShownList(target)
+  }
+  fetchList()
+}, [profile.cdAccount, list._id])
+
+console.log('SHOWNLIST', shownList);
 return (
-  <Link state={{ list, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
+  <Link state={{ shownList, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>

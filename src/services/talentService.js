@@ -75,7 +75,7 @@ const createEducation = async (talentData) => {
 
 const createTraining = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/training`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentProfileId}/training`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -180,6 +180,17 @@ const deleteTraining = async (talentData, trainingData) => {
   }
 }
 
+const searchTalent = async (formData) => {
+  try {
+    debugger
+    const res = await fetch(`${BASE_URL}/${formData.query}`)
+    return res.json()
+  } catch (error) {
+  console.log(error)
+  }
+}
+
+
 
 export {
   index,
@@ -194,4 +205,5 @@ export {
   deleteExperience,
   deleteEducation,
   deleteTraining,
+  searchTalent
 }

@@ -9,6 +9,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import SearchBar from './components/SearchBar/SearchBar'
 
 
 // components
@@ -23,6 +24,7 @@ import ListDetails from './pages/ListDetails/ListDetails'
 import CreateProfile from './pages/Profile/CreateProfile'
 import AddExperience from './pages/AddExperience/AddExperience'
 import AddEducation from './pages/AddEducation/AddEducation'
+import AddTraining from './pages/AddTraining/AddTraining'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
@@ -87,14 +89,40 @@ const App = () => {
   //   }
   // }
   
-  // const handleAddCDProfile = async (cdData) => {
-  //   try {
-  //     await profileService.createCDProfile(cdData, user.profile)
-  //     navigate('/profile')
-  //   } catch(error) {
-  //     console.log(error)
-  //   }
-  // }
+  const handleAddCDProfile = async (cdData) => {
+    try {
+      await profileService.createCDProfile(cdData, user.profile)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddExperience = async (experienceData) => {
+    try {
+      await talentService.createExperience(experienceData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddEducation = async (educationData) => {
+    try {
+      await talentService.createEducation(educationData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleAddTraining = async (trainingData) => {
+    try {
+      await talentService.createTraining(trainingData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -109,11 +137,11 @@ const App = () => {
       const lists = await cdService.indexLists(profile.cdAccount)
       setLists(lists)
     }
-    fetchLists()
-  }, [profile.cdAccount])
+    if (profile) fetchLists()
+  }, [profile])
 
   const handleCreateList = async (listData) => {
-    const newList = await cdService.newList(profile.cdAccount, listData)
+    const newList = await cdService.newList(profile?.cdAccount, listData)
     setLists([newList, ...lists])
     const fetchLists = async () => {
       const lists = await cdService.indexLists(profile.cdAccount)
@@ -122,10 +150,18 @@ const App = () => {
     fetchLists()
   }
   
+  const handleAddToList = async (listId, talent) => {
+    try {
+      await cdService.addToList(profile.cdAccount, listId, talent)
+      console.log('HANDLEADDTOLIST', profile.cdAccount, listId, talent);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <>
-      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
+      {(profile) && <NavBar user={user} profile={profile} handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -206,6 +242,16 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
+
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-training'
+          element={
+            <ProtectedRoute user={user}>
+              <AddTraining handleAddTraining={handleAddTraining}/>
+
             </ProtectedRoute>
           }
         />
@@ -213,7 +259,7 @@ const App = () => {
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
             </ProtectedRoute>
           }
         />
@@ -232,7 +278,10 @@ const App = () => {
               <ListDetails />
             </ProtectedRoute>
           }
-        />   
+        /> 
+        <Route
+        path='/SearchBar' element={<SearchBar/>}
+        />  
       </Routes>
     </>
   )
