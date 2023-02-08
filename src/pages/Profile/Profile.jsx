@@ -38,7 +38,8 @@ const Profile = (props) => {
         to="/profile/edit"
         state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId, cdId: cdId}}
       >
-          Edit Profile</Link>
+        Edit Profile
+      </Link>
       <p>Name: {profile.name}</p>
       <p>{profile.photo}</p>
       <p>Pronouns: {profile.pronouns}</p>
@@ -61,13 +62,15 @@ const Profile = (props) => {
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
 
-      {/* //! MAP THROUGH EACH OF THE BELOW ARRAYS AND RENDER THE COMPONENT AS A RESULT AND PASS THE DATA DOWN */}
       {profile.talentAccount.experience.map(experience => 
-        <p>{experience.productionTitle}</p>  
+        <Experience experience={experience}/>  
       )}
-      <Experience />
-      <Education />
-      <Training />
+      {profile.talentAccount.education.map(education => 
+        <Education education={education}/>  
+      )}
+      {profile.talentAccount.training.map(training => 
+        <Training training={training}/>  
+      )}
 
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
       <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
