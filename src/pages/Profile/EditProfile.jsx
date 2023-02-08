@@ -14,7 +14,6 @@ const EditProfile = (props) => {
   const talentId = location.state?.talentId
   const cdId = location.state?.cdId
 
-  console.log("cdId", cdId)
 
   const [photoData, setPhotoData] = useState({})
 

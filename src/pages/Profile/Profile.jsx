@@ -28,12 +28,6 @@ const Profile = (props) => {
   
   if(!profile) return "loading"
 
-  console.log("cdId", cdId)
-  console.log("talentId", talentId)
-
-
-
-
   return ( 
     <>
       <h1>Profile Component</h1>
