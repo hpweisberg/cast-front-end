@@ -7,6 +7,9 @@ const Training = (props) => {
       <p>Instituion: {training.institution}</p>
       <p>Focus: {training.focus}</p>
       <p>Teacher{training.Teacher}</p>
+      <form onSubmit={()=> props.handleDeleteTraining(props.talentId, training._id)}>
+        <button type='submit'>Delete</button>
+      </form>
     </>
   );
 }

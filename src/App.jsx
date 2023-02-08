@@ -124,9 +124,27 @@ const App = () => {
       console.log(error)
     }
   }
+
+  const handleDeleteEducation = async (talentId, educationId) => {
+    try {
+      await talentService.deleteEducation(talentId, educationId)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleAddTraining = async (trainingData) => {
     try {
       await talentService.createTraining(trainingData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteTraining = async (talentId, trainingId) => {
+    try {
+      await talentService.deleteTraining(talentId, trainingId)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -209,7 +227,12 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <Profile profile={profile}/> */}
-              <Profile handleDeleteExperience={handleDeleteExperience} user={user}/>
+              <Profile 
+                handleDeleteExperience={handleDeleteExperience} 
+                user={user}
+                handleDeleteEducation={handleDeleteEducation}
+                handleDeleteTraining={handleDeleteTraining}  
+              />
             </ProtectedRoute>
           }
         />
