@@ -16,7 +16,6 @@ const Profile = (props) => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
-      // i need to be able to have both of these set but things break if both are present
       if(profileData.isCd) {
         setCdId(profileData.cdAccount._id)
       } else {
@@ -58,9 +57,9 @@ const Profile = (props) => {
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
 
-      <Link to="">Add Experience</Link>
-      <Link to="">Edit Education</Link>
-      <Link to="">Edit Training</Link>
+      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
+      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
+      <Link to="">Add Training</Link>
       </>
       :
       ""
