@@ -10,21 +10,22 @@ const EditProfile = (props) => {
   const location = useLocation()
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
-  const signupComplete = location.state?.signupComplete
   const talentId = location.state?.talentId
   const cdId = location.state?.cdId
+  const profile = location.state?.profile
 
-
+  console.log("profile.talentAccount.name", profile.talentAccount.name)
   const [photoData, setPhotoData] = useState({})
 
   //* edit profile
 
+
   const [form, setForm] = useState({
-    pronouns: 'He/Him/His',
-    location: '',
-    phoneNumber: '',
-    website: '',
-    isCd: signupType
+    pronouns: profile.pronouns,
+    location: profile.location,
+    phoneNumber: profile.location,
+    website: profile.website,
+    isCd: profile.isCd
   })
   
 
@@ -41,16 +42,16 @@ const EditProfile = (props) => {
 
   // need to handle add skills
   const [talentForm, setTalentForm] = useState({
-    unionStatus: 'Not Affiliated',
-    hair: '',
-    eyes: '',
-    feet: '',
-    inches: '',
-    height: '',
-    weight: '',
-    about: '',
-    skills: '',
-    trades: '',
+    unionStatus: profile.talentAccount?.unionStatus,
+    hair: profile.talentAccount?.hair,
+    eyes: profile.talentAccount?.eyes,
+    feet: profile.talentAccount?.feet,
+    inches: profile.talentAccount?.inches,
+    height: profile.talentAccount?.height,
+    weight: profile.talentAccount?.weight,
+    about: profile.talentAccount?.about,
+    skills: profile.talentAccount?.skills,
+    trades: profile.talentAccount?.trades,
     talentId: talentId
   })
 
@@ -67,7 +68,7 @@ const EditProfile = (props) => {
   //* edit CDAccount
 
   const [CDForm, setCDForm] = useState({
-    company: '',
+    company: profile.cdAccount?.company,
     cdId: cdId
   })
 
@@ -87,26 +88,9 @@ const EditProfile = (props) => {
     setPhotoData({ photo: evt.target.files[0] })
   }
 
-  // create useState for signup type
-  // create useEffect to autoset useState
-  // put useState variable in the isCD input as the value
-
-
-  // handle submit function from SignupForm.jsx
-  // const handleSubmit = async e => {
-  //   e.preventDefault()
-  //   try {
-  //     await authService.signup(formData, photoData.photo)
-  //     props.handleSignupOrLogin()
-  //     navigate('/')
-  //   } catch (err) {
-  //     props.updateMessage(err.message)
-  //   }
-  // }
-
   const [render, setRender] = useState(false)
 
-
+  
   useEffect(() => {
     const renderHelp = async () => {
       if(signupType === false || isCd === false){
@@ -117,9 +101,6 @@ const EditProfile = (props) => {
     }
     renderHelp()
   },)
-
-
-
 
   return (
     <>
@@ -160,7 +141,6 @@ const EditProfile = (props) => {
             onChange={handleProfileChange}
             value={form.website}
           /> 
-          <button type='submit' >Save</button>
         </form>
 
         {(render === false) ?

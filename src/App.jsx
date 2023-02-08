@@ -176,7 +176,6 @@ const App = () => {
     await cdService.deleteList(listId, profile.cdAccount)
     setLists(lists.filter(list => list._id !== listId))
   }
-  console.log(lists);
   const handleAddToList = async (listId, talent) => {
     try {
       await cdService.addToList(profile.cdAccount, listId, talent)

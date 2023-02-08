@@ -12,7 +12,6 @@ import Training from "../../components/Training/Training";
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
-  const [signupComplete, setSignupComplete] = useState(true)
   const [talentId, setTalentId] = useState('')
   const [cdId, setCdId] = useState('')
 
@@ -29,6 +28,8 @@ const Profile = (props) => {
     fetchProfile()
   }, [props.user.profile])
   
+
+  
   if(!profile) return "loading"
 
   return ( 
@@ -36,7 +37,7 @@ const Profile = (props) => {
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId, cdId: cdId}}
+        state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
       >
         Edit Profile
       </Link>
