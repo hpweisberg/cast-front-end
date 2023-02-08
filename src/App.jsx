@@ -95,12 +95,7 @@ const App = () => {
       console.log(error)
     }
   }
-<<<<<<<<< Temporary merge branch 1
- 
-=========
 
-  
->>>>>>>>> Temporary merge branch 2
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
@@ -118,7 +113,7 @@ const App = () => {
   }, [profile.cdAccount])
 
   const handleCreateList = async (listData) => {
-    const newList = await cdService.newList(profile.cdAccount, listData)
+    const newList = await cdService.newList(profile?.cdAccount, listData)
     setLists([newList, ...lists])
     const fetchLists = async () => {
       const lists = await cdService.indexLists(profile.cdAccount)
@@ -127,6 +122,14 @@ const App = () => {
     fetchLists()
   }
   
+  const handleAddToList = async (listId, talentId) => {
+    try {
+      await cdService.addToList(profile.cdAccount, listId, talentId)
+      console.log(lists.id(listId));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <>
@@ -202,7 +205,7 @@ const App = () => {
           path='/profile/add-experience'
           element={
             <ProtectedRoute user={user}>
-              <AddExperience handleAddExperience={handleAddExperience}/>
+              {/* <AddExperience handleAddExperience={handleAddExperience}/> */}
             </ProtectedRoute>
           }
         />
@@ -210,7 +213,7 @@ const App = () => {
           path='/profile/add-education'
           element={
             <ProtectedRoute user={user}>
-              <AddEducation handleAddEducation={handleAddEducation}/>
+              {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
             </ProtectedRoute>
           }
         />
@@ -218,7 +221,7 @@ const App = () => {
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
             </ProtectedRoute>
           }
         />

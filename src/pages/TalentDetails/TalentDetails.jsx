@@ -16,11 +16,14 @@ import Icon from "../../components/Icon/Icon"
 const TalentDetails = (props) => {
   const { talentId } = useParams()
   const [talent, setTalent] = useState(null)
+  const [form, setForm] = useState({
+    _id: ''
+  })
   const location = useLocation()
   const routeType = location.state?.routeType
 
   useEffect(() => {
-    console.log('id:', talentId)
+    // console.log('id:', talentId)
     const fetchTalent = async () => {
       const data = await talentService.show(talentId)
       setTalent(data)
@@ -28,10 +31,19 @@ const TalentDetails = (props) => {
     fetchTalent()
   }, [talentId])
 
-  console.log('Talent State:', talent)
-  console.log('routeType:', routeType)
-  console.log('props:', props)
+  // console.log('Talent State:', talent)
+  // console.log('routeType:', routeType)
+  // console.log('props:', props)
+  
+  const handleChange = ({target}) => {
+    setForm({...form, [target.name]: target.value})
+  }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.handleAddToList(form._id, talent._id)
+  }
+console.log(form);
 
   return (
     <>
@@ -81,6 +93,21 @@ const TalentDetails = (props) => {
         <Education />
         <Training />
       </div>
+      <form onSubmit={handleSubmit}>
+          <select
+              required
+              name='_id'
+              value={form._id}
+              onChange={handleChange}
+              placeholder={`select a list`}
+          >
+            <option>Select a List</option>
+            {props.lists.map(list => (
+              <option key={list._id} value={list._id}>{list.titleOfList}</option>
+            ))}
+          </select>
+          <button type='submit'>Add to List!</button>
+        </form>
     </>
   );
 }
