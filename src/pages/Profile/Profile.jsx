@@ -62,7 +62,9 @@ const Profile = (props) => {
       <p>height: {profile.talentAccount.height}</p>
 
       {/* //! MAP THROUGH EACH OF THE BELOW ARRAYS AND RENDER THE COMPONENT AS A RESULT AND PASS THE DATA DOWN */}
-
+      {profile.talentAccount.experience.map(experience => 
+        <p>{experience.productionTitle}</p>  
+      )}
       <Experience />
       <Education />
       <Training />
