@@ -136,19 +136,31 @@ const App = () => {
       const lists = await cdService.indexLists(profile.cdAccount)
       setLists(lists)
     }
-    fetchLists()
-  }, [profile.cdAccount])
+    if (profile) fetchLists()
+  }, [profile])
 
   const handleCreateList = async (listData) => {
-    const newList = await cdService.newList(profile.cdAccount, listData)
-    setLists([...lists, newList])
-    navigate(`/cd/${profile.cdAccount}/lists`)
+    const newList = await cdService.newList(profile?.cdAccount, listData)
+    setLists([newList, ...lists])
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    fetchLists()
   }
   
+  const handleAddToList = async (listId, talent) => {
+    try {
+      await cdService.addToList(profile.cdAccount, listId, talent)
+      console.log('HANDLEADDTOLIST', profile.cdAccount, listId, talent);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <>
-      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
+      {(profile) && <NavBar user={user} profile={profile} handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -220,7 +232,7 @@ const App = () => {
           path='/profile/add-experience'
           element={
             <ProtectedRoute user={user}>
-              <AddExperience handleAddExperience={handleAddExperience}/>
+              {/* <AddExperience handleAddExperience={handleAddExperience}/> */}
             </ProtectedRoute>
           }
         />
@@ -228,7 +240,7 @@ const App = () => {
           path='/profile/add-education'
           element={
             <ProtectedRoute user={user}>
-              <AddEducation handleAddEducation={handleAddEducation}/>
+              {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
             </ProtectedRoute>
           }
         />
@@ -244,7 +256,7 @@ const App = () => {
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
             </ProtectedRoute>
           }
         />

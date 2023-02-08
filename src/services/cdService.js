@@ -71,10 +71,26 @@ const newList = async (cdId, newListForm) => {
   }
 }
 
+const addToList = async (cdId, listId, talent) => {
+  console.log(cdId, listId, talent);
+  try {
+    const res = await fetch(`${BASE_URL}/${cdId}/lists/${listId}/${talent}`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export {
   index,
   indexLists,
   showList,
   newList,
   update,
+  addToList,
 }
