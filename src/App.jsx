@@ -109,8 +109,8 @@ const App = () => {
       const lists = await cdService.indexLists(profile.cdAccount)
       setLists(lists)
     }
-    fetchLists()
-  }, [profile.cdAccount])
+    if (profile) fetchLists()
+  }, [profile])
 
   const handleCreateList = async (listData) => {
     const newList = await cdService.newList(profile?.cdAccount, listData)
@@ -122,10 +122,10 @@ const App = () => {
     fetchLists()
   }
   
-  const handleAddToList = async (listId, talentId) => {
+  const handleAddToList = async (listId, talent) => {
     try {
-      await cdService.addToList(profile.cdAccount, listId, talentId)
-      console.log(lists.id(listId));
+      await cdService.addToList(profile.cdAccount, listId, talent)
+      console.log('HANDLEADDTOLIST', profile.cdAccount, listId, talent);
     } catch (error) {
       console.log(error);
     }
@@ -133,7 +133,7 @@ const App = () => {
   
   return (
     <>
-      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
+      {(profile) && <NavBar user={user} profile={profile} handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route

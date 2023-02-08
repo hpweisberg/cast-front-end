@@ -43,8 +43,9 @@ const TalentDetails = (props) => {
     e.preventDefault()
     props.handleAddToList(form._id, talent._id)
   }
-console.log(form);
-
+  // console.log('FORM', form._id);
+  console.log('LIST', props.lists[1]);
+  // console.log('TALENT',talent._id);
   return (
     <>
       <div className={styles.talentDetailsContainer}>

@@ -25,7 +25,7 @@ const ListDetails = (props) => {
       <h1>List Details Component</h1> 
       <h3>{list.titleOfList}</h3>
       {list.talent.map(talent => (
-        <TalentCard key={talent._id} profile={talent.profile} talent={talent._id}/>
+        <TalentCard key={talent} profile={talent.profile} talent={talent._id}/>
       ))}
     </>
   );
