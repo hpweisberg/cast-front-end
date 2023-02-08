@@ -12,7 +12,6 @@ import Training from "../../components/Training/Training";
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
-  const [signupComplete, setSignupComplete] = useState(true)
   const [talentId, setTalentId] = useState('')
   const [cdId, setCdId] = useState('')
 
@@ -31,6 +30,8 @@ const Profile = (props) => {
     fetchProfile()
   }, [props.user.profile])
   
+
+  
   if(!profile) return "loading"
 
   return ( 
@@ -38,9 +39,10 @@ const Profile = (props) => {
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId, cdId: cdId}}
+        state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
       >
-          Edit Profile</Link>
+        Edit Profile
+      </Link>
       <p>Name: {profile.name}</p>
       <p>{profile.photo}</p>
       <p>Pronouns: {profile.pronouns}</p>
@@ -62,14 +64,34 @@ const Profile = (props) => {
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
+      <p>Weight: {profile.talentAccount.weight}</p>
+      <p>skills: {profile.talentAccount.skills}</p>
+      <p>trades: {profile.talentAccount.trades}</p>
 
-      {/* //! MAP THROUGH EACH OF THE BELOW ARRAYS AND RENDER THE COMPONENT AS A RESULT AND PASS THE DATA DOWN */}
       {profile.talentAccount.experience.map(experience => 
-        <p>{experience.productionTitle}</p>  
+        <Experience 
+          handleDeleteExperience={props.handleDeleteExperience} 
+          key={experience._id} 
+          experience={experience}
+          talentId={talentId}  
+        />  
       )}
-      <Experience />
-      <Education />
-      <Training />
+      {profile.talentAccount.education.map(education => 
+        <Education 
+          key={education._id} 
+          education={education}
+          talentId={talentId}
+          handleDeleteEducation={props.handleDeleteEducation}
+          />  
+      )}
+      {profile.talentAccount.training.map(training => 
+        <Training 
+          key={training._id} 
+          training={training}
+          talentId={talentId}
+          handleDeleteTraining={props.handleDeleteTraining}
+          />  
+      )}
 
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
       <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
