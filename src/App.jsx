@@ -28,7 +28,6 @@ import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as talentService from './services/talentService'
 import * as cdService from './services/cdService'
-// import * as cdService from './services/cdService'
 
 // styles
 import './App.css'
@@ -36,6 +35,8 @@ import './App.css'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState('')
+  const [lists, setLists] = useState([])
+  
   const navigate = useNavigate()
 
   
@@ -92,7 +93,7 @@ const App = () => {
       console.log(error)
     }
   }
- 
+
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
@@ -100,6 +101,21 @@ const App = () => {
     }
     if (user) fetchProfile()
   }, [user])
+  
+  useEffect(() => {
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    fetchLists()
+  }, [profile.cdAccount])
+
+  const handleCreateList = async (listData) => {
+    const newList = await cdService.newList(profile.cdAccount, listData)
+    setLists([...lists, newList])
+    navigate(`/cd/${profile.cdAccount}/lists`)
+  }
+  
   
   return (
     <>
@@ -183,7 +199,7 @@ const App = () => {
           path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex profile={profile} />
+              <ListIndex handleCreateList={handleCreateList} lists={lists} profile={profile} />
             </ProtectedRoute>
           }
         />

@@ -38,9 +38,16 @@ const TalentSearch = (props) => {
       </div>
 
       {talentSearch.map((talent, idx) => (
-        <>
+        <form>
           <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
-        </>
+          <select
+            required
+            
+          >
+
+          </select>
+          <button type='submit'>Add to List!</button>
+        </form>
       )
       )}
 
