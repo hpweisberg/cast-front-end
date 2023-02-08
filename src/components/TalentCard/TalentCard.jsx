@@ -57,4 +57,4 @@ const TalentCard = (props) => {
 }
 
 
-// export default TalentCard;
+export default TalentCard;

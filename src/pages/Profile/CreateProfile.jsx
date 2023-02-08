@@ -10,7 +10,6 @@ const EditProfile = (props) => {
   const location = useLocation()
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
-  const signupComplete = location.state?.signupComplete
 
   const [photoData, setPhotoData] = useState({})
 
@@ -118,15 +117,6 @@ const EditProfile = (props) => {
     renderHelp()
   },)
 
-  function createOrUpdate() {
-    if(signupComplete) {
-      return handleCDUpdate
-    } else {
-      return handleCDSubmit()
-    }
-  }
-
-  console.log("signup complete", signupComplete)
 
   return (
     <>
