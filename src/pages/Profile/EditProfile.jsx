@@ -298,11 +298,6 @@ const EditProfile = (props) => {
 
               <button type="submit">Save</button>
             </form>
-
-
-            <Link to="">Add Experience</Link>
-            <Link to="">Edit Education</Link>
-            <Link to="">Edit Training</Link>
           </>
           :
           <>

@@ -63,6 +63,10 @@ const Profile = (props) => {
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
+
+      <Link to="">Add Experience</Link>
+      <Link to="">Edit Education</Link>
+      <Link to="">Edit Training</Link>
       </>
       :
       ""
