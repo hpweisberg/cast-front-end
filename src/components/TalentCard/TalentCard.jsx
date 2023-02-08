@@ -8,19 +8,21 @@ import Icon from '../../components/Icon/Icon'
 import styles from './TalentCard.module.css'
 
 const TalentCard = (props) => {
+  // const {profile} = props.talent
+  console.log('Hunter test:',props)
 
   return (
     <div className={styles.center}>
-      <Link to={`/talent/${props.talent}`} className={styles.link}>
+      <Link to={`/talent/${props.talent._id}`} className={styles.link}>
         <section className={styles.talentCardContainer}>
-          <img src={props.profile.photo} alt="user profile pic" className={styles.photo}></img>
+          <img src={props.talent.headshot} alt="user talent pic" className={styles.photo}></img>
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
-            <h3>{props.profile.name}</h3>
-            <p className={styles.pronouns}>{props.profile.pronouns}</p>
-            <p className={styles.union}>{props.profile.unionStatus}</p>
-            <p className={styles.location}>{props.profile.location}</p>
-            <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {props.profile.reel}</p>
+            <h3>{props.talent.name}</h3>
+            <p className={styles.pronouns}>{props.talent.profile?.pronouns}</p>
+            <p className={styles.union}>{props.talent.unionStatus}</p>
+            <p className={styles.location}>{props.talent.profile?.location}</p>
+            <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {props.talent.reel}</p>
           </div>
         </section>
       </Link>
