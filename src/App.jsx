@@ -142,18 +142,17 @@ const App = () => {
 
   const handleCreateList = async (listData) => {
     const newList = await cdService.newList(profile?.cdAccount, listData)
-    setLists([newList, ...lists])
-    const fetchLists = async () => {
-      const lists = await cdService.indexLists(profile.cdAccount)
-      setLists(lists)
-    }
-    fetchLists()
+    setLists([...lists, newList])
   }
-  
+
+  const handleDeleteList = async (listId) => {
+    await cdService.deleteList(listId, profile.cdAccount)
+    setLists(lists.filter(list => list._id !== listId))
+  }
+  console.log(lists);
   const handleAddToList = async (listId, talent) => {
     try {
       await cdService.addToList(profile.cdAccount, listId, talent)
-      console.log('HANDLEADDTOLIST', profile.cdAccount, listId, talent);
     } catch (error) {
       console.log(error);
     }
@@ -266,7 +265,12 @@ const App = () => {
           path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex handleCreateList={handleCreateList} lists={lists} profile={profile} />
+              <ListIndex 
+                handleDeleteList={handleDeleteList}
+                handleCreateList={handleCreateList} 
+                lists={lists} 
+                profile={profile} 
+              />
             </ProtectedRoute>
           }
         />

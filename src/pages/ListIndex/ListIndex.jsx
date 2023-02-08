@@ -8,12 +8,10 @@ import * as React from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-const ListIndex = ({profile, lists, handleCreateList}) => {
+const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
   // const [lists, setLists] = useState([])
   const [newListForm, setNewListForm] = useState({
-    titleOfList: '',
-    talent: [],
-    notes: ''
+    titleOfList: ''
   })
 
   const { id } = useParams()
@@ -48,8 +46,13 @@ const ListIndex = ({profile, lists, handleCreateList}) => {
   return ( 
     <>
       <h1>List Index</h1> 
-      {lists.map(list => (
-        <ListCard profile={profile} list={list} key={list._id}/>
+      {lists.map((list, idx) => (
+          <ListCard 
+            profile={profile} 
+            list={list} 
+            key={idx}
+            handleDeleteList={handleDeleteList}
+          />
       ))}
       <h1>New List</h1>
       <form onSubmit={handleSubmit} className={styles.newListGroup}>
