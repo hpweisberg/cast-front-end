@@ -62,6 +62,9 @@ const Profile = (props) => {
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
       <p>height: {profile.talentAccount.height}</p>
+      <p>Weight: {profile.talentAccount.weight}</p>
+      <p>skills: {profile.talentAccount.skills}</p>
+      <p>trades: {profile.talentAccount.trades}</p>
 
       {profile.talentAccount.experience.map(experience => 
         <Experience 
