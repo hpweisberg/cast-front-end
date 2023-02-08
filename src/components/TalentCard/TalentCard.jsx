@@ -17,13 +17,13 @@ const TalentCard = (props) => {
 
   useEffect(() => {
     const fetchTalentAcct = async () => {
-      const talentAcct = await talentService.show(props.talent)
+      const talentAcct = await talentService.show(props.profile)
       console.log('fetchTalent', talentAcct);
       setTalent(talentAcct)
     }
     fetchTalentAcct()
-  }, [props.talent])
-  console.log('props.profile', talent.name, props.profle);
+  }, [props.profile])
+  console.log('props.profile', profile.name, props, talent);
 
   useEffect(() => {
     const fetchProfile = async () => {
