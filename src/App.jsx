@@ -74,6 +74,7 @@ const App = () => {
     }
   }
   
+  
   // useEffect(() => {
   //   const fetchProfile = async () => {
   //     const profile = await profileService.getProfile(user.profile)
