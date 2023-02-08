@@ -21,14 +21,8 @@ const TalentSearch = (props) => {
     })
     setTalentSearch(filteredList)
   }
-  // const handleTalentSearch = async formData => {
-  //   const searchResults = await talentService.searchTalent(formData)
-  //   setTalentSearch(searchResults.results)
-  // }
+
   const handleClearSearch = () => setTalentSearch(talentData)
-
-
-  console.log('data avial for me:', props)
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -38,8 +32,7 @@ const TalentSearch = (props) => {
     }
     fetchTalent()
   }, [])
-  // console.log('talent search log:', talentSearch)
-  // console.log('profiles log:', profiles)
+
 
   if (!talentSearch) return "loading"
 
