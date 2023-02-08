@@ -3,7 +3,7 @@ import ListCard from "../../components/ListCard/ListCard";
 import * as cdService from '../../services/cdService'
 import styles from './ListIndex.module.css'
 import * as React from 'react';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 
 
 import { useNavigate, useParams } from 'react-router-dom';
@@ -62,9 +62,9 @@ const ListIndex = ({profile, lists, handleCreateList}) => {
           onChange={handleChange}
           className={styles.listInput}
         />
-        <Button variant="contained" type='submit'>
+        {/* <Button variant="contained" type='submit'>
           Create New List
-        </Button>
+        </Button> */}
       </form>
     </>
   );
