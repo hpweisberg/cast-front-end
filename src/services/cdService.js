@@ -27,6 +27,22 @@ const indexLists = async (cdId) => {
   }
 }
 
+const update = async (cdData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${cdData.cdId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cdData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const showList = async (cdId, listId) => {
   try {
     //GET http://localhost:3001/api/cd/:id/lists
@@ -59,5 +75,6 @@ export {
   index,
   indexLists,
   showList,
-  newList,
+  update,
+  // newList,
 }

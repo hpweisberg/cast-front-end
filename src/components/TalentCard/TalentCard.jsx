@@ -10,8 +10,6 @@ import * as talentService from '../../services/talentService'
 import * as profileService from '../../services/profileService'
 
 
-
-
 const TalentCard = (props) => {
   const [talent, setTalent] = useState({})
   const [profile, setProfile] = useState({})
@@ -57,5 +55,6 @@ const TalentCard = (props) => {
     </div>
   )
 }
+
 
 export default TalentCard;

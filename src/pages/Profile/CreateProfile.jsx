@@ -10,17 +10,13 @@ const EditProfile = (props) => {
   const location = useLocation()
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
-  const signupComplete = location.state?.signupComplete
-  const talentId = location.state?.talentId
-  const cdId = location.state?.cdId
-
 
   const [photoData, setPhotoData] = useState({})
 
   //* edit profile
 
   const [form, setForm] = useState({
-    pronouns: 'He/Him/His',
+    pronouns: '',
     location: '',
     phoneNumber: '',
     website: '',
@@ -50,8 +46,7 @@ const EditProfile = (props) => {
     weight: '',
     about: '',
     skills: '',
-    trades: '',
-    talentId: talentId
+    trades: ''
   })
 
   const handleTalentChange = ({target}) => {
@@ -60,7 +55,7 @@ const EditProfile = (props) => {
   
   const handleTalentSubmit = (e) => {
     e.preventDefault()
-    props.handleEditTalentProfile(talentForm)
+    props.handleAddTalentProfile(talentForm)
     props.handleEditProfile(form)
   }
 
@@ -68,7 +63,6 @@ const EditProfile = (props) => {
 
   const [CDForm, setCDForm] = useState({
     company: '',
-    cdId: cdId
   })
 
   const handleCDChange = ({target}) => {
@@ -77,7 +71,12 @@ const EditProfile = (props) => {
 
   const handleCDSubmit = (e) => {
     e.preventDefault()
-    props.handleEditCDProfile(CDForm)
+    props.handleAddCDProfile(CDForm)
+    props.handleEditProfile(form)
+  }
+  const handleCDUpdate = (e) => {
+    e.preventDefault()
+    props.handleAddCDProfile(CDForm)
     props.handleEditProfile(form)
   }
 
@@ -119,18 +118,16 @@ const EditProfile = (props) => {
   },)
 
 
-
-
   return (
     <>
       <h2>Edit Profile Details</h2>
-        <form onSubmit={handleProfileSubmit}>
+        <form>
           <label htmlFor="pronouns-input">Pronouns</label>
           <select
             name="pronouns"
             id="pronouns-input"
-            value={form.pronouns}
             onChange={handleProfileChange}
+            value={form.pronouns}
           >
             <option value="He/Him/His">He/Him/His</option>
             <option value="She/Her/Hers">She/Her/Hers</option>
@@ -160,7 +157,7 @@ const EditProfile = (props) => {
             onChange={handleProfileChange}
             value={form.website}
           /> 
-          <button type='submit' >Save</button>
+            
         </form>
 
         {(render === false) ?
@@ -297,6 +294,11 @@ const EditProfile = (props) => {
 
               <button type="submit">Save</button>
             </form>
+
+
+            <Link to="">Add Experience</Link>
+            <Link to="">Edit Education</Link>
+            <Link to="">Edit Training</Link>
           </>
           :
           <>
