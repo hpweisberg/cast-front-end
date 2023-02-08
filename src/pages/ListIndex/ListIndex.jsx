@@ -32,7 +32,7 @@ const ListIndex = ({profile, lists, handleCreateList}) => {
     e.preventDefault()
     handleCreateList(newListForm)
   }
-  console.log(lists);
+  console.log('LIST INDEX', lists);
   // const handleCreateList = async (e) => {
   //   e.preventDefault()
   //   const newList = await cdService.newList(profile.cdAccount, newListForm)

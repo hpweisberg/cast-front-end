@@ -16,6 +16,9 @@ const TalentSearch = (props) => {
     }
     fetchTalent()
   }, [])
+
+
+
   // console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
 
@@ -38,18 +41,8 @@ const TalentSearch = (props) => {
       </div>
 
       {talentSearch.map((talent, idx) => (
-        <form>
-          <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
-          <select
-            required
-            
-          >
-
-          </select>
-          <button type='submit'>Add to List!</button>
-        </form>
-      )
-      )}
+        <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
+      ))}
 
       {/* {profiles.map(profile => 
             <p key={profile._id}>
