@@ -27,6 +27,7 @@ import CreateProfile from './pages/Profile/CreateProfile'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import * as talentService from './services/talentService'
+import * as cdService from './services/cdService'
 // import * as cdService from './services/cdService'
 
 // styles
@@ -68,6 +69,15 @@ const App = () => {
   const handleEditTalentProfile = async (talentData) => {
     try {
       await talentService.update(talentData)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  
+  const handleEditCDProfile = async (cdData) => {
+    try {
+      await cdService.update(cdData)
       navigate('/profile')
     } catch(error) {
       console.log(error)
@@ -144,7 +154,7 @@ const App = () => {
               <EditProfile 
                 handleEditProfile={handleEditProfile}
                 handleEditTalentProfile={handleEditTalentProfile}
-                handleAddCDProfile={handleAddCDProfile}
+                handleEditCDProfile={handleEditCDProfile}
               />
             </ProtectedRoute>
           }

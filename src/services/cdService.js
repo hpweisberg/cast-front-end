@@ -27,7 +27,24 @@ const indexLists = async (cdId) => {
   }
 }
 
+const update = async (cdData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${cdData.cdId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cdData)
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   index,
-  indexLists
+  indexLists,
+  update
 }

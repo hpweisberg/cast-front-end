@@ -12,8 +12,9 @@ const EditProfile = (props) => {
   const isCd = location.state?.isCd
   const signupComplete = location.state?.signupComplete
   const talentId = location.state?.talentId
+  const cdId = location.state?.cdId
 
-  console.log("talentId", talentId)
+  console.log("cdId", cdId)
 
   const [photoData, setPhotoData] = useState({})
 
@@ -68,6 +69,7 @@ const EditProfile = (props) => {
 
   const [CDForm, setCDForm] = useState({
     company: '',
+    cdId: cdId
   })
 
   const handleCDChange = ({target}) => {
@@ -76,12 +78,7 @@ const EditProfile = (props) => {
 
   const handleCDSubmit = (e) => {
     e.preventDefault()
-    props.handleAddCDProfile(CDForm)
-    props.handleEditProfile(form)
-  }
-  const handleCDUpdate = (e) => {
-    e.preventDefault()
-    props.handleAddCDProfile(CDForm)
+    props.handleEditCDProfile(CDForm)
     props.handleEditProfile(form)
   }
 
@@ -122,13 +119,7 @@ const EditProfile = (props) => {
     renderHelp()
   },)
 
-  function createOrUpdate() {
-    if(signupComplete) {
-      return handleCDUpdate
-    } else {
-      return handleCDSubmit()
-    }
-  }
+
 
 
   return (

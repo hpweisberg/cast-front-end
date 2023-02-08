@@ -10,6 +10,7 @@ const Profile = (props) => {
   const [profile, setProfile] = useState({})
   const [signupComplete, setSignupComplete] = useState(true)
   const [talentId, setTalentId] = useState('')
+  const [cdId, setCdId] = useState('')
 
 
   useEffect(() => {
@@ -17,11 +18,13 @@ const Profile = (props) => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
       console.log("profileData ", profileData)
-      setTalentId(profileData.talentAccount._id)
+      // setTalentId(profileData.talentAccount._id)
+      setCdId(profileData.cdAccount._id)
     }
     fetchProfile()
   }, [props.user.profile])
   
+  console.log("Profile.jsx", cdId)
   if(!profile) return "loading"
 
 
@@ -31,7 +34,7 @@ const Profile = (props) => {
       <h1>Profile Component</h1>
       <Link 
         to="/profile/edit"
-        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId}}
+        state={{isCd: profile.isCd, signupComplete: signupComplete, talentId: talentId, cdId: cdId}}
       >
           Edit Profile</Link>
       <p>Name: {profile.name}</p>
