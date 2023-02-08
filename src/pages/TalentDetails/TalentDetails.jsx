@@ -44,7 +44,6 @@ const TalentDetails = (props) => {
     props.handleAddToList(form._id, talent._id)
   }
   // console.log('FORM', form._id);
-  console.log('LIST', props.lists[1]);
   // console.log('TALENT',talent._id);
   return (
     <>

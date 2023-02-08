@@ -86,6 +86,16 @@ const addToList = async (cdId, listId, talent) => {
   }
 }
 
+const deleteList = async (listId, cdId) => {
+  const res = await fetch(`${BASE_URL}/${cdId}/lists/${listId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+  })
+  return res.json()
+}
+
 export {
   index,
   indexLists,
@@ -93,4 +103,5 @@ export {
   newList,
   update,
   addToList,
+  deleteList,
 }
