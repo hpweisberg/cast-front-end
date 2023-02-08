@@ -95,25 +95,12 @@ const App = () => {
       console.log(error)
     }
   }
+<<<<<<<<< Temporary merge branch 1
+ 
+=========
 
-  const handleAddExperience = async (experienceData) => {
-    try {
-      await talentService.createExperience(experienceData)
-      navigate('/profile')
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const handleAddEducation = async (educationData) => {
-    try {
-      await talentService.createEducation(educationData)
-      navigate('/profile')
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+  
+>>>>>>>>> Temporary merge branch 2
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
@@ -132,8 +119,12 @@ const App = () => {
 
   const handleCreateList = async (listData) => {
     const newList = await cdService.newList(profile.cdAccount, listData)
-    setLists([...lists, newList])
-    navigate(`/cd/${profile.cdAccount}/lists`)
+    setLists([newList, ...lists])
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    fetchLists()
   }
   
   
