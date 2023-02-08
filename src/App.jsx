@@ -113,8 +113,12 @@ const App = () => {
 
   const handleCreateList = async (listData) => {
     const newList = await cdService.newList(profile.cdAccount, listData)
-    setLists([...lists, newList])
-    navigate(`/cd/${profile.cdAccount}/lists`)
+    setLists([newList, ...lists])
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    fetchLists()
   }
   
   

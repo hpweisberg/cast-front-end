@@ -76,5 +76,5 @@ export {
   indexLists,
   showList,
   update,
-  // newList,
+  newList,
 }
