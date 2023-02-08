@@ -1,6 +1,8 @@
 import styles from './Landing.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import logo from '../../assets/logo.png'
+
 
 // components
 import SignupCTA from '../../components/SignupCTA/SignupCTA'
@@ -24,15 +26,15 @@ const Landing = ({ user }) => {
   return (
     <main className={styles.container}>
       
-      <img src='Logo' alt='CAST logo' />
+      <img src={logo} alt='CAST logo' />
       
       <h3>Casting made simple</h3>
 
       <div className={styles.accountContainer}>
         
-        <div className='logInCTA'>
+        <div className={styles.logInCTA}>
           <p>Already have an account?</p>
-          <Link to='/login' className='logInBtn'>Log In</Link>
+          <Link to='/login' className={styles.logInBtn}>Log In</Link>
         </div>
 
         <div className='createAccountCTA'>

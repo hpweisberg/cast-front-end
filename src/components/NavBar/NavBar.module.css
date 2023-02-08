@@ -18,6 +18,20 @@
     transform: translateX(-100%);
   }
 
-.menu.open {
+.menu, .open {
   transform: translateX(0);
+}
+
+.navRow {
+  display: flex;
+}
+
+.logo {
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.open {
+  /* background-color: red; */
 }
