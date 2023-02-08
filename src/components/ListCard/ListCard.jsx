@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"
-import Icon from '../../components/Icon/Icon'
-import TalentSearch from "../../pages/TalentSearch/TalentSearch";
+// import { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom"
+// import Icon from '../../components/Icon/Icon'
+// import TalentSearch from "../../pages/TalentSearch/TalentSearch";
 
-import styles from './ListCard.module.css'
+// import styles from './ListCard.module.css'
 
 const ListCard = ({ list, profile }) => {
 
-console.log(profile);
+console.log(list);
 return (
   <Link state={{ list, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>

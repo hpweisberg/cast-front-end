@@ -26,7 +26,7 @@ const TalentSearch = (props) => {
       <div className={styles.searchContainer}>
           <Icon name='MagnifierGlass'/>
         <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
-        </input>
+        </input>  
       <Icon name='Reset' />
       </div>
 
@@ -37,10 +37,9 @@ const TalentSearch = (props) => {
       <Icon name='Reset' />
       </div>
 
-      {talentSearch.map(profile => (
+      {talentSearch.map((talent, idx) => (
         <>
-          <TalentCard key={profile._id} profile={profile} />
-
+          <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
         </>
       )
       )}
