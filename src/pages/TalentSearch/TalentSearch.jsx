@@ -10,6 +10,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 const TalentSearch = (props) => {
   const [talentSearch, setTalentSearch] = useState([])
   const [talentData, setTalentData] = useState([])
+  const [inputValue, setInputValue] = useState('')
 
   const handleTalentSearch = ({ query }) => {
     // debugger
@@ -22,7 +23,16 @@ const TalentSearch = (props) => {
     setTalentSearch(filteredList)
   }
 
-  const handleClearSearch = () => setTalentSearch(talentData)
+  const handleUserInput = (e) => {
+    setInputValue(e.target.value)
+  }
+
+
+  const handleClearSearch = () => {
+    setTalentSearch(talentData)
+    setInputValue('')
+  }
+
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -36,18 +46,19 @@ const TalentSearch = (props) => {
 
   if (!talentSearch) return "loading"
 
+  console.log('this is the inputValue:',inputValue)
   return (
     <>
       <div className={styles.searchContainer}>
         <Icon name='MagnifierGlass' />
         <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
         </input>
+        <Icon name='Reset' />
+      </div>
+      <SearchBar className={styles.searchBar} value={inputValue} handleTalentSearch={handleTalentSearch} handleUserInput={handleUserInput} />
         <button onClick={handleClearSearch}>
           clear
         </button>
-        <Icon name='Reset' />
-      </div>
-      <SearchBar handleTalentSearch={handleTalentSearch} />
 
       <div className={styles.filterContainer}>
         <Icon name='Filter' />

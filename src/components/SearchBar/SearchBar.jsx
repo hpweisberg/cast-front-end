@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 const SearchBar = (props) => {
   const [formData, setFormData] = useState({query: ''})
 
