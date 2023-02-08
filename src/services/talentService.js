@@ -138,9 +138,9 @@ const updateTraining = async (talentData, trainingData) => {
 }
 
 
-const deleteExperience = async (talentData, experienceData) => {
+const deleteExperience = async (talentId, experienceId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/experience/${experienceData._id}`, {
+    const res = await fetch(`${BASE_URL}/${talentId}/experience/${experienceId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`

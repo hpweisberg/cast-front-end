@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 
 const Experience = (props) => {
   const experience = props.experience
-  
+
   return ( 
     <>
       <h1>Experience Component</h1>
@@ -12,6 +12,9 @@ const Experience = (props) => {
       <p>{experience.producingEntity}</p>
       <p>{experience.director}</p>
       <p>{experience.year}</p>
+      <form onSubmit={()=> props.handleDeleteExperience(props.talentId, experience._id)}>
+        <button type='submit'>Delete</button>
+      </form>
     </>
   );
 }

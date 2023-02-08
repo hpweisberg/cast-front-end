@@ -63,13 +63,18 @@ const Profile = (props) => {
       <p>height: {profile.talentAccount.height}</p>
 
       {profile.talentAccount.experience.map(experience => 
-        <Experience experience={experience}/>  
+        <Experience 
+          handleDeleteExperience={props.handleDeleteExperience} 
+          key={experience._id} 
+          experience={experience}
+          talentId={talentId}  
+        />  
       )}
       {profile.talentAccount.education.map(education => 
-        <Education education={education}/>  
+        <Education key={education._id} education={education}/>  
       )}
       {profile.talentAccount.training.map(training => 
-        <Training training={training}/>  
+        <Training key={training._id} training={training}/>  
       )}
 
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>

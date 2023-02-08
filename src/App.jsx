@@ -107,6 +107,15 @@ const App = () => {
     }
   }
 
+  const handleDeleteExperience = async (talentId, experienceId) => {
+    try {
+      await talentService.deleteExperience(talentId, experienceId)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleAddEducation = async (educationData) => {
     try {
       await talentService.createEducation(educationData)
@@ -200,7 +209,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <Profile profile={profile}/> */}
-              <Profile user={user}/>
+              <Profile handleDeleteExperience={handleDeleteExperience} user={user}/>
             </ProtectedRoute>
           }
         />
