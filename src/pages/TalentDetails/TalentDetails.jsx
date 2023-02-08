@@ -67,9 +67,9 @@ const TalentDetails = (props) => {
         </div>
 
 
-        <Experience talent={talent}/>
-        <Education />
-        <Training />
+        <Experience experience={talent.experience}/>
+        <Education education={talent.education}/>
+        <Training training={talent.training}/>
       </div>
       <form onSubmit={handleSubmit}>
           <select
