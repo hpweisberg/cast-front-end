@@ -12,20 +12,25 @@ const Profile = (props) => {
   const [talentId, setTalentId] = useState('')
   const [cdId, setCdId] = useState('')
 
-
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
-      console.log("profileData ", profileData)
-      // setTalentId(profileData.talentAccount._id)
-      setCdId(profileData.cdAccount._id)
+      // i need to be able to have both of these set but things break if both are present
+      if(profileData.isCd) {
+        setCdId(profileData.cdAccount._id)
+      } else {
+        setTalentId(profileData.talentAccount._id)
+      }
     }
     fetchProfile()
   }, [props.user.profile])
   
-  console.log("Profile.jsx", cdId)
   if(!profile) return "loading"
+
+  console.log("cdId", cdId)
+  console.log("talentId", talentId)
+
 
 
 
