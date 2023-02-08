@@ -21,12 +21,17 @@ import EditProfile from './pages/Profile/EditProfile'
 import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
+import CreateProfile from './pages/Profile/CreateProfile'
+import AddExperience from './pages/AddExperience/AddExperience'
+import AddEducation from './pages/AddEducation/AddEducation'
+import AddTraining from './pages/AddTraining/AddTraining'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
-// import * as cdService from './services/cdService'
+import * as talentService from './services/talentService'
+import * as cdService from './services/cdService'
 
 // styles
 import './App.css'
@@ -34,6 +39,8 @@ import './App.css'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState('')
+  const [lists, setLists] = useState([])
+  
   const navigate = useNavigate()
 
   
@@ -64,6 +71,23 @@ const App = () => {
       console.log(error)
     }
   }
+  const handleEditTalentProfile = async (talentData) => {
+    try {
+      await talentService.update(talentData)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
+  
+  const handleEditCDProfile = async (cdData) => {
+    try {
+      await cdService.update(cdData)
+      navigate('/profile')
+    } catch(error) {
+      console.log(error)
+    }
+  }
   
   const handleAddCDProfile = async (cdData) => {
     try {
@@ -73,19 +97,71 @@ const App = () => {
       console.log(error)
     }
   }
-  
-  
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     const profile = await profileService.getProfile(user.profile)
-  //     setProfile(profile)
-  //   }
-  //   fetchProfile()
-  // }, [user.profile])
 
+  const handleAddExperience = async (experienceData) => {
+    try {
+      await talentService.createExperience(experienceData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddEducation = async (educationData) => {
+    try {
+      await talentService.createEducation(educationData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleAddTraining = async (trainingData) => {
+    try {
+      await talentService.createTraining(trainingData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(user.profile)
+      setProfile(profile)
+    }
+    if (user) fetchProfile()
+  }, [user])
+  
+  useEffect(() => {
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    if (profile) fetchLists()
+  }, [profile])
+
+  const handleCreateList = async (listData) => {
+    const newList = await cdService.newList(profile?.cdAccount, listData)
+    setLists([newList, ...lists])
+    const fetchLists = async () => {
+      const lists = await cdService.indexLists(profile.cdAccount)
+      setLists(lists)
+    }
+    fetchLists()
+  }
+  
+  const handleAddToList = async (listId, talent) => {
+    try {
+      await cdService.addToList(profile.cdAccount, listId, talent)
+      console.log('HANDLEADDTOLIST', profile.cdAccount, listId, talent);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   return (
     <>
-      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
+      {(profile) && <NavBar user={user} profile={profile} handleLogout={handleLogout} />}
       <Routes>
         <Route path="/" element={<Landing user={user} />} />
         <Route
@@ -135,6 +211,18 @@ const App = () => {
             <ProtectedRoute user={user}>
               <EditProfile 
                 handleEditProfile={handleEditProfile}
+                handleEditTalentProfile={handleEditTalentProfile}
+                handleEditCDProfile={handleEditCDProfile}
+              />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/create'
+          element={
+            <ProtectedRoute user={user}>
+              <CreateProfile 
+                handleEditProfile={handleEditProfile}
                 handleAddTalentProfile={handleAddTalentProfile}
                 handleAddCDProfile={handleAddCDProfile}
               />
@@ -142,10 +230,34 @@ const App = () => {
           }
         />
         <Route 
+          path='/profile/add-experience'
+          element={
+            <ProtectedRoute user={user}>
+              {/* <AddExperience handleAddExperience={handleAddExperience}/> */}
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-education'
+          element={
+            <ProtectedRoute user={user}>
+              {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-training'
+          element={
+            <ProtectedRoute user={user}>
+              <AddTraining handleAddTraining={handleAddTraining}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
             </ProtectedRoute>
           }
         />
@@ -153,7 +265,7 @@ const App = () => {
           path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex profile={profile} />
+              <ListIndex handleCreateList={handleCreateList} lists={lists} profile={profile} />
             </ProtectedRoute>
           }
         />

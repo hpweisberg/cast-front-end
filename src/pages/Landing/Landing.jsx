@@ -11,7 +11,6 @@ import SignupCTA from '../../components/SignupCTA/SignupCTA'
 
 const Landing = ({ user }) => {
   
-  //! LOOK HERE
   const [signupType, setSignupType] = useState(null)
 
   const handleTalentSignup = (e) => {

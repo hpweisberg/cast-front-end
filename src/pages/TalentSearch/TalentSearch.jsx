@@ -44,6 +44,9 @@ const TalentSearch = (props) => {
   }, [])
 
 
+  // console.log('talent search log:', talentSearch)
+  // console.log('profiles log:', profiles)
+
   if (!talentSearch) return "loading"
 
   console.log('this is the inputValue:',inputValue)
@@ -52,8 +55,10 @@ const TalentSearch = (props) => {
       <div className={styles.searchContainer}>
         <Icon name='MagnifierGlass' />
         <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
-        </input>
-        <Icon name='Reset' />
+
+        </input>  
+      <Icon name='Reset' />
+
       </div>
       <SearchBar className={styles.searchBar} value={inputValue} handleTalentSearch={handleTalentSearch} handleUserInput={handleUserInput} />
         <button onClick={handleClearSearch}>
@@ -67,13 +72,9 @@ const TalentSearch = (props) => {
         <Icon name='Reset' />
       </div>
 
-      {talentSearch.map(profile => (
-        <>
-          <TalentCard key={profile._id} profile={profile} />
-
-        </>
-      )
-      )}
+      {talentSearch.map((talent, idx) => (
+        <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
+      ))}
 
       {/* {profiles.map(profile => 
             <p key={profile._id}>

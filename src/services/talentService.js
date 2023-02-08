@@ -26,7 +26,7 @@ const show = async(id) => {
 
 const update = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentId}`, {
       method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -43,7 +43,7 @@ const update = async (talentData) => {
 
 const createExperience = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/experience`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentProfileId}/experience`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -59,7 +59,7 @@ const createExperience = async (talentData) => {
 
 const createEducation = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/education`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentProfileId}/education`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -75,7 +75,7 @@ const createEducation = async (talentData) => {
 
 const createTraining = async (talentData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/training`, {
+    const res = await fetch(`${BASE_URL}/${talentData.talentProfileId}/training`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
