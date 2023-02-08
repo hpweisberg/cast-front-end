@@ -18,7 +18,7 @@ const TalentSearch = (props) => {
   }, [])
   // console.log('talent search log:', talentSearch)
   // console.log('profiles log:', profiles)
-  console.log('all talent', talentSearch);
+
   if (!talentSearch) return "loading"
 
   return (
@@ -26,7 +26,7 @@ const TalentSearch = (props) => {
       <div className={styles.searchContainer}>
           <Icon name='MagnifierGlass'/>
         <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
-        </input>
+        </input>  
       <Icon name='Reset' />
       </div>
 
@@ -39,7 +39,7 @@ const TalentSearch = (props) => {
 
       {talentSearch.map((talent, idx) => (
         <>
-          <TalentCard key={idx} talent={talent._id} />
+          <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
         </>
       )
       )}

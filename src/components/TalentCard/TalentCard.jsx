@@ -23,16 +23,19 @@ const TalentCard = (props) => {
     }
     fetchTalentAcct()
   }, [props.talent])
+  console.log('props.profile', talent.name, props.profle);
 
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(props.profile)
-      console.log('fetchTalent', profile);
+      console.log('fetchProfile', profile);
       setProfile(profile)
     }
     fetchProfile()
   }, [props.profile])
-  console.log(talent);
+
+
+
   return (
     <div className={styles.center}>
       <Link to={`/profiles/${profile._id}`} className={styles.link}>
