@@ -8,13 +8,12 @@ import { Link } from "react-router-dom"
 
 const ListCard = ({ list, profile }) => {
 
-console.log(list);
 return (
   <Link state={{ list, profile }} to={`/cd/${profile._id}/lists/${list._id}`}>
     <h4>
       {list.titleOfList}
     </h4>
-    <p>{list.talent.length}</p>
+    <p>{list.talent?.length}</p>
 
   </Link>
 )
