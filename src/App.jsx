@@ -80,14 +80,14 @@ const App = () => {
     }
   }
   
-  const handleEditCDProfile = async (cdData) => {
-    try {
-      await cdService.update(cdData)
-      navigate('/profile')
-    } catch(error) {
-      console.log(error)
-    }
-  }
+  // const handleEditCDProfile = async (cdData) => {
+  //   try {
+  //     await cdService.update(cdData)
+  //     navigate('/profile')
+  //   } catch(error) {
+  //     console.log(error)
+  //   }
+  // }
   
   const handleAddCDProfile = async (cdData) => {
     try {
@@ -212,7 +212,7 @@ const App = () => {
               <EditProfile 
                 handleEditProfile={handleEditProfile}
                 handleEditTalentProfile={handleEditTalentProfile}
-                handleEditCDProfile={handleEditCDProfile}
+                // handleEditCDProfile={handleEditCDProfile}
               />
             </ProtectedRoute>
           }
@@ -224,7 +224,7 @@ const App = () => {
               <CreateProfile 
                 handleEditProfile={handleEditProfile}
                 handleAddTalentProfile={handleAddTalentProfile}
-                handleAddCDProfile={handleAddCDProfile}
+                // handleAddCDProfile={handleAddCDProfile}
               />
             </ProtectedRoute>
           }
@@ -242,6 +242,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <AddEducation handleAddEducation={handleAddEducation}/> */}
+
             </ProtectedRoute>
           }
         />
@@ -250,6 +251,7 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               <AddTraining handleAddTraining={handleAddTraining}/>
+
             </ProtectedRoute>
           }
         />
