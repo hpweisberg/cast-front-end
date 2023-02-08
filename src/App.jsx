@@ -92,15 +92,15 @@ const App = () => {
       console.log(error)
     }
   }
+ 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profile = await profileService.getProfile(user.profile)
+      setProfile(profile)
+    }
+    if (user) fetchProfile()
+  }, [user])
   
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     const profile = await profileService.getProfile(user.profile)
-  //     setProfile(profile)
-  //   }
-  //   fetchProfile()
-  // }, [user.profile])
-
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />

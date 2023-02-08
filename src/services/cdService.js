@@ -43,8 +43,24 @@ const update = async (cdData) => {
   }
 }
 
+const showList = async (cdId, listId) => {
+  try {
+    //GET http://localhost:3001/api/cd/:id/lists
+    const res = await fetch(`${BASE_URL}/${cdId}/lists/${listId}`, {
+      headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// const newList = async
+
 export {
   index,
   indexLists,
-  update
+  showList,
+  update,
+  // newList,
 }

@@ -20,7 +20,7 @@ const EditProfile = (props) => {
   //* edit profile
 
   const [form, setForm] = useState({
-    pronouns: '',
+    pronouns: 'He/Him/His',
     location: '',
     phoneNumber: '',
     website: '',
@@ -124,13 +124,13 @@ const EditProfile = (props) => {
   return (
     <>
       <h2>Edit Profile Details</h2>
-        <form>
+        <form onSubmit={handleProfileSubmit}>
           <label htmlFor="pronouns-input">Pronouns</label>
           <select
             name="pronouns"
             id="pronouns-input"
-            onChange={handleProfileChange}
             value={form.pronouns}
+            onChange={handleProfileChange}
           >
             <option value="He/Him/His">He/Him/His</option>
             <option value="She/Her/Hers">She/Her/Hers</option>
@@ -160,7 +160,7 @@ const EditProfile = (props) => {
             onChange={handleProfileChange}
             value={form.website}
           /> 
-            
+          <button type='submit' >Save</button>
         </form>
 
         {(render === false) ?
