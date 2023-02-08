@@ -180,6 +180,17 @@ const deleteTraining = async (talentData, trainingData) => {
   }
 }
 
+const searchTalent = async (formData) => {
+  try {
+    debugger
+    const res = await fetch(`${BASE_URL}/${formData.query}`)
+    return res.json()
+  } catch (error) {
+  console.log(error)
+  }
+}
+
+
 
 export {
   index,
@@ -194,4 +205,5 @@ export {
   deleteExperience,
   deleteEducation,
   deleteTraining,
+  searchTalent
 }

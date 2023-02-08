@@ -9,6 +9,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import SearchBar from './components/SearchBar/SearchBar'
 
 
 // components
@@ -162,7 +163,10 @@ const App = () => {
               <ListDetails />
             </ProtectedRoute>
           }
-        />   
+        /> 
+        <Route
+        path='/SearchBar' element={<SearchBar/>}
+        />  
       </Routes>
     </>
   )
