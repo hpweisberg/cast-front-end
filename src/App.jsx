@@ -21,6 +21,8 @@ import TalentDetails from './pages/TalentDetails/TalentDetails'
 import ListIndex from './pages/ListIndex/ListIndex'
 import ListDetails from './pages/ListDetails/ListDetails'
 import CreateProfile from './pages/Profile/CreateProfile'
+import AddExperience from './pages/AddExperience/AddExperience'
+import AddEducation from './pages/AddEducation/AddEducation'
 // import ListCard from './components/ListCard/ListCard'
 
 // services
@@ -90,6 +92,24 @@ const App = () => {
       await profileService.createCDProfile(cdData, user.profile)
       navigate('/profile')
     } catch(error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddExperience = async (experienceData) => {
+    try {
+      await talentService.createExperience(experienceData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleAddEducation = async (educationData) => {
+    try {
+      await talentService.createEducation(educationData)
+      navigate('/profile')
+    } catch (error) {
       console.log(error)
     }
   }
@@ -184,6 +204,22 @@ const App = () => {
                 handleAddTalentProfile={handleAddTalentProfile}
                 handleAddCDProfile={handleAddCDProfile}
               />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-experience'
+          element={
+            <ProtectedRoute user={user}>
+              <AddExperience handleAddExperience={handleAddExperience}/>
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/profile/add-education'
+          element={
+            <ProtectedRoute user={user}>
+              <AddEducation handleAddEducation={handleAddEducation}/>
             </ProtectedRoute>
           }
         />
