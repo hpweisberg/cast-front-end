@@ -44,9 +44,6 @@ const TalentSearch = (props) => {
   }, [])
 
 
-  // console.log('talent search log:', talentSearch)
-  // console.log('profiles log:', profiles)
-
   if (!talentSearch) return "loading"
 
   console.log('this is the inputValue:',inputValue)
@@ -73,16 +70,8 @@ const TalentSearch = (props) => {
       </div>
 
       {talentSearch.map((talent, idx) => (
-        <TalentCard key={idx} talent={talent._id} profile={talent.profile}/>
+        <TalentCard key={idx} profile={talent}/>
       ))}
-
-      {/* {profiles.map(profile => 
-            <p key={profile._id}>
-              {profile.talentAccount.unionStatus}
-            </p> */}
-
-      {/* )} */}
-
     </>
   )
 }
