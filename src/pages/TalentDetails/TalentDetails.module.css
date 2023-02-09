@@ -17,6 +17,8 @@
   border: none;
 }
 
+
+
 .backBtn > *, .editBtn > * {
   width: 35px;
   height: 35px;
@@ -86,7 +88,12 @@
   margin: 1rem;
 }
 
-.buttonLinks > * {
-  width: 35px;
-  
+
+.buttonLinks > * > * {
+  width: 45px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;  
 }

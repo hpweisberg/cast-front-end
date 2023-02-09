@@ -71,7 +71,11 @@ const TalentDetails = (props) => {
         </div>
 
         <div className={styles.buttonLinks}>
-          <Icon name='Reels' />
+          <Link to={talent.reelLink}>
+          <button>
+            <Icon name='Reels' />
+            </button>
+          </Link>
           <Icon name='Calendar' />
           <Icon name='Add' />
         </div>
