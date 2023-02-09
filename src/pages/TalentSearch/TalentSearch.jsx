@@ -6,7 +6,6 @@ import styles from './TalentSearch.module.css'
 
 import SearchBar from "../../components/SearchBar/SearchBar";
 
-
 const TalentSearch = (props) => {
   const [talentSearch, setTalentSearch] = useState([])
   const [talentData, setTalentData] = useState([])
