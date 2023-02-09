@@ -9,9 +9,6 @@ const Education = (props) => {
       <p>Major: {education.major}</p>
       <p>Graduated: {education.graduated ? "Yes" : "No"}</p>
       <p>Year: {education.year}</p>
-      <form onSubmit={()=> props.handleDeleteEducation(props.talentId, education._id)}>
-        <button type='submit'>Delete</button>
-      </form>
     </>
   );
 }
