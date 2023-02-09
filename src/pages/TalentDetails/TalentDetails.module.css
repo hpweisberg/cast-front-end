@@ -46,6 +46,7 @@
 
 .headshotDeatils {
   display: flex;
+  justify-content: center;
 }
 
 .headshotDeatils > * {
@@ -56,11 +57,26 @@
   width: 218px;
   height: 218px;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .actorDetails > * {
   margin: 0;
   font-size: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.actorDetails {
+  padding-bottom: .5em;
+}
+
+.aboutMe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: .5em;
 }
 
 .line {

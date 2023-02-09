@@ -66,7 +66,7 @@ const TalentDetails = (props) => {
             <p>Eyes: {talent.eyes}</p>
             <p>Hair: {talent.hair}</p>
           </div>
-            <p>About: {talent.about}</p>
+            <p className={styles.aboutMe}>About: {talent.about}</p>
           {/* </div> */}
         </div>
 
