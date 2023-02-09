@@ -6,7 +6,6 @@ import styles from './TalentSearch.module.css'
 
 import SearchBar from "../../components/SearchBar/SearchBar";
 
-
 const TalentSearch = (props) => {
   const [talentSearch, setTalentSearch] = useState([])
   const [talentData, setTalentData] = useState([])
@@ -46,7 +45,6 @@ const TalentSearch = (props) => {
 
   if (!talentSearch) return "loading"
 
-  console.log('this is the inputValue:',inputValue)
   return (
     <>
       <div className={styles.searchContainer}>

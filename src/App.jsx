@@ -107,6 +107,15 @@ const App = () => {
     }
   }
 
+  const handleDeleteExperience = async (talentId, experienceId) => {
+    try {
+      await talentService.deleteExperience(talentId, experienceId)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleAddEducation = async (educationData) => {
     try {
       await talentService.createEducation(educationData)
@@ -115,9 +124,27 @@ const App = () => {
       console.log(error)
     }
   }
+
+  const handleDeleteEducation = async (talentId, educationId) => {
+    try {
+      await talentService.deleteEducation(talentId, educationId)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const handleAddTraining = async (trainingData) => {
     try {
       await talentService.createTraining(trainingData)
+      navigate('/profile')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteTraining = async (talentId, trainingId) => {
+    try {
+      await talentService.deleteTraining(talentId, trainingId)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -207,7 +234,12 @@ const App = () => {
           element={
             <ProtectedRoute user={user}>
               {/* <Profile profile={profile}/> */}
-              <Profile user={user}/>
+              <Profile 
+                handleDeleteExperience={handleDeleteExperience} 
+                user={user}
+                handleDeleteEducation={handleDeleteEducation}
+                handleDeleteTraining={handleDeleteTraining}  
+              />
             </ProtectedRoute>
           }
         />
@@ -264,7 +296,7 @@ const App = () => {
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} />
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} profile={profile}/>
             </ProtectedRoute>
           }
         />

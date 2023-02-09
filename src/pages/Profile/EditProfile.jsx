@@ -9,22 +9,23 @@ const EditProfile = (props) => {
   const location = useLocation()
   const signupType = location.state?.signupType
   const isCd = location.state?.isCd
-  const signupComplete = location.state?.signupComplete
   const talentId = location.state?.talentId
   const cdId = location.state?.cdId
+  const profile = location.state?.profile
 
-  console.log('location:', location)
+  console.log("profile.talentAccount", profile.talentAccount)
 
   const [photoData, setPhotoData] = useState({})
 
   //* edit profile
 
+
   const [form, setForm] = useState({
-    pronouns: 'He/Him/His',
-    location: '',
-    phoneNumber: '',
-    website: '',
-    isCd: signupType
+    pronouns: profile.pronouns,
+    location: profile.location,
+    phoneNumber: profile.location,
+    website: profile.website,
+    isCd: profile.isCd
   })
   
 
@@ -39,18 +40,18 @@ const EditProfile = (props) => {
 
   //* edit talentAccount
 
+
   // need to handle add skills
   const [talentForm, setTalentForm] = useState({
-    unionStatus: 'Not Affiliated',
-    hair: '',
-    eyes: '',
-    feet: '',
-    inches: '',
-    height: '',
-    weight: '',
-    about: '',
-    skills: '',
-    trades: '',
+    unionStatus: profile.talentAccount?.unionStatus,
+    hair: profile.talentAccount?.hair,
+    eyes: profile.talentAccount?.eyes,
+    height: profile.talentAccount?.height,
+    weight: profile.talentAccount?.weight,
+    about: profile.talentAccount?.about,
+    skills: profile.talentAccount?.skills,
+    trades: profile.talentAccount?.trades,
+    reelLink: profile.talentAccount?.reelLink,
     talentId: talentId
   })
 
@@ -67,7 +68,7 @@ const EditProfile = (props) => {
   //* edit CDAccount
 
   const [CDForm, setCDForm] = useState({
-    company: '',
+    company: profile.cdAccount?.company,
     cdId: cdId
   })
 
@@ -81,32 +82,9 @@ const EditProfile = (props) => {
     props.handleEditProfile(form)
   }
 
-  //! handle add photo needs work
-
-  const handleChangePhoto = (evt) => {
-    setPhotoData({ photo: evt.target.files[0] })
-  }
-
-  // create useState for signup type
-  // create useEffect to autoset useState
-  // put useState variable in the isCD input as the value
-
-
-  // handle submit function from SignupForm.jsx
-  // const handleSubmit = async e => {
-  //   e.preventDefault()
-  //   try {
-  //     await authService.signup(formData, photoData.photo)
-  //     props.handleSignupOrLogin()
-  //     navigate('/')
-  //   } catch (err) {
-  //     props.updateMessage(err.message)
-  //   }
-  // }
-
   const [render, setRender] = useState(false)
 
-
+  
   useEffect(() => {
     const renderHelp = async () => {
       if(signupType === false || isCd === false){
@@ -118,8 +96,24 @@ const EditProfile = (props) => {
     renderHelp()
   },)
 
-
-
+  // useEffect(() => {
+  //   if(profile.talentAccount){
+  //     setTalentForm(
+  //       {
+  //         unionStatus: profile.talentAccount.unionStatus,
+  //         hair: profile.talentAccount.hair,
+  //         eyes: profile.talentAccount.eyes,
+  //         height: profile.talentAccount.height,
+  //         weight: profile.talentAccount.weight,
+  //         about: profile.talentAccount.about,
+  //         skills: profile.talentAccount.skills,
+  //         trades: profile.talentAccount.trades,
+  //         reelLink: profile.talentAccount.reelLink,
+  //         talentId: talentId
+  //       }
+  //     )
+  //   }
+  // },[profile])
 
   return (
     <>
@@ -160,28 +154,17 @@ const EditProfile = (props) => {
             onChange={handleProfileChange}
             value={form.website}
           /> 
-          <button type='submit' >Save</button>
         </form>
 
         {(render === false) ?
           <>
             <h2>Talent Account Details</h2>
             <form onSubmit={handleTalentSubmit}>
-              <label htmlFor="photo-upload">
-                Upload Photo
-              </label>
-              <input
-                type="file"
-                id="photo-upload"
-                name="photo"
-                onChange={handleChangePhoto}
-              />
-
               <label htmlFor="union-status-input">Union Status</label>
               <select
                 name="unionStatus"
                 id="union-status-input"
-                value={form.unionStatus}
+                value={talentForm.unionStatus}
                 onChange={handleTalentChange}
               >
                 <option value="Not Affiliated">Not Affiliated</option>
@@ -193,7 +176,7 @@ const EditProfile = (props) => {
               <select
                 name="hair"
                 id="hair-input"
-                value={form.hair}
+                value={talentForm.hair}
                 onChange={handleTalentChange}
               >
                 <option value="Black">Black</option>
@@ -208,7 +191,7 @@ const EditProfile = (props) => {
               <select
                 name="eyes"
                 id="eyes-input"
-                value={form.eyes}
+                value={talentForm.eyes}
                 onChange={handleTalentChange}
               >
                 <option value="Brown">Brown</option>
@@ -216,34 +199,14 @@ const EditProfile = (props) => {
                 <option value="Blue">Blue</option>
                 <option value="Other">Other</option>
               </select>
-
-              <label htmlFor="height-feet-input">Feet</label>
-              <input 
-                id='height-feet-input' 
-                type="number" 
-                value={form.feet}
-                name="feet"
-                onChange={handleTalentChange}
-              />
-
-              <label htmlFor="height-inches-input">Inches</label>
-              <input 
-                id='height-inches-input' 
-                type="number" 
-                name='inches'
-                value={form.inches}
-                onChange={handleTalentChange}
-              />
               
               <label htmlFor="height">Height</label>
-
-              {/* add class="hidden" */}
 
               <input 
                 id='height' 
                 type="number"
                 name="height"
-                value={form.height}
+                value={talentForm.height}
                 onChange={handleTalentChange}
               />
               
@@ -251,8 +214,9 @@ const EditProfile = (props) => {
               <input 
                 id='weight-input' 
                 type="number" 
-                value={form.weight}
-                // onChange={handleTalentChange}
+                value={talentForm.weight}
+                onChange={handleTalentChange}
+                name="weight"
               />
 
               <label htmlFor="about-input">About</label>
@@ -261,7 +225,7 @@ const EditProfile = (props) => {
                 id="about-input" 
                 cols="30" 
                 rows="10"
-                value={form.about}
+                value={talentForm.about}
                 onChange={handleTalentChange}
               >
               </textarea>
@@ -270,9 +234,10 @@ const EditProfile = (props) => {
               <select
                 name="skills"
                 id="skills-input"
-                // value={form.category}
-                // onChange={handleChange}
+                value={talentForm.category}
+                onChange={handleTalentChange}
               >
+                <option value="Please Select">Please Select</option>
                 <option value="Brown">Brown</option>
               </select>
               
@@ -280,9 +245,10 @@ const EditProfile = (props) => {
               <select
                 name="trades"
                 id="trades-input"
-                // value={form.category}
-                // onChange={handleChange}
+                value={talentForm.category}
+                onChange={handleTalentChange}
               >
+                <option value="Please Select">Please Select</option>
                 <option value="Brown">Brown</option>
               </select>
 
@@ -291,7 +257,7 @@ const EditProfile = (props) => {
                 type="text" 
                 id="reel-input" 
                 name="reelLink"
-                value={form.reelLink}
+                value={talentForm.reelLink}
                 onChange={handleTalentChange}
               />
 
@@ -311,10 +277,8 @@ const EditProfile = (props) => {
                 value={CDForm.company} 
                 onChange={handleCDChange}
               />
-              
 
               <button type="submit">Save</button>
-
 
             </form> 
           </>  
