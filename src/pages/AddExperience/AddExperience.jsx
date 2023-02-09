@@ -6,7 +6,7 @@ const AddExperience = (props) => {
   const location = useLocation()
   const talentId = location.state?.talentId
 
-  console.log(talentId)
+  console.log('TALENT ID', talentId)
 
   const [form, setForm] = useState({
     productionTitle: '',
@@ -15,7 +15,7 @@ const AddExperience = (props) => {
     producingEntity: '',
     director: '',
     year: '',
-    talentProfileId: talentId
+    talentProfileId: talentId._id
   })
   
   const handleChange = ({target}) => {

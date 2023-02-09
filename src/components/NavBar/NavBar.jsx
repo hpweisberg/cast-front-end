@@ -31,7 +31,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
               {
-                (user.profile)
+                (user.profile.cdAccount)
                 &&
                 <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
               }

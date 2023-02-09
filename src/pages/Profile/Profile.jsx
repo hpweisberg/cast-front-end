@@ -16,7 +16,7 @@ const Profile = (props) => {
   const [profile, setProfile] = useState({})
   const [talentId, setTalentId] = useState(null)
   const [cdId, setCdId] = useState(null)
-
+  console.log(profile);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -41,16 +41,6 @@ const Profile = (props) => {
 
   return ( 
     <section className="profileDetails">
-      {
-        (profile.talentAccount === talentId)
-      &&
-        <Link 
-          to="/profile/edit"
-          state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
-        >
-          Edit Profile
-        </Link>
-      }
       <h1>{profile.name}</h1>
       {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
       <p>Pronouns: {profile.pronouns}</p>
@@ -83,7 +73,7 @@ const Profile = (props) => {
             experience={experience}
             talentId={talentId}  
           />
-          <form onSubmit={()=> props.handleDeleteExperience(talentId, experience._id)}>
+          <form onSubmit={()=> props.handleDeleteExperience(talentId._id, experience._id)}>
             <button type='submit'>Delete</button>
           </form>  
         </>
@@ -98,7 +88,7 @@ const Profile = (props) => {
             talentId={talentId}
             handleDeleteEducation={props.handleDeleteEducation}
             />
-            <form onSubmit={()=> props.handleDeleteEducation(talentId, education._id)}>
+            <form onSubmit={()=> props.handleDeleteEducation(talentId._id, education._id)}>
               <button type='submit'>Delete</button>
             </form>  
         </>
@@ -113,13 +103,23 @@ const Profile = (props) => {
             talentId={talentId}
             handleDeleteTraining={props.handleDeleteTraining}
           />
-          <form onSubmit={()=> props.handleDeleteTraining(talentId, training._id)}>
+          <form onSubmit={()=> props.handleDeleteTraining(talentId._id, training._id)}>
             <button type='submit'>Delete</button>
           </form>  
         </>
       )}
       <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       </>
+      }
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link 
+          to="/profile/edit"
+          state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
+        >
+          Edit Profile
+        </Link>
       }
     </section> 
   );

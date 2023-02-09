@@ -68,7 +68,7 @@ const Landing = ({ user }) => {
           :
           <>
             <Link to='/profile' className={styles.logInBtn}>View Your Profile</Link>
-            <Link to='/talent' className={styles.logInBtn}>Check out other talent</Link>
+            <Link to='/talent' className={styles.logInBtn}>Check Out Talent</Link>
           </>
 
         }
