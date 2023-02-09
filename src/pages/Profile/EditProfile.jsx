@@ -96,24 +96,6 @@ const EditProfile = (props) => {
     renderHelp()
   },)
 
-  // useEffect(() => {
-  //   if(profile.talentAccount){
-  //     setTalentForm(
-  //       {
-  //         unionStatus: profile.talentAccount.unionStatus,
-  //         hair: profile.talentAccount.hair,
-  //         eyes: profile.talentAccount.eyes,
-  //         height: profile.talentAccount.height,
-  //         weight: profile.talentAccount.weight,
-  //         about: profile.talentAccount.about,
-  //         skills: profile.talentAccount.skills,
-  //         trades: profile.talentAccount.trades,
-  //         reelLink: profile.talentAccount.reelLink,
-  //         talentId: talentId
-  //       }
-  //     )
-  //   }
-  // },[profile])
 
   return (
     <>
@@ -241,6 +223,8 @@ const EditProfile = (props) => {
                 <option value="Brown">Brown</option>
               </select>
               
+
+
               <label htmlFor="trades-input">Trades</label>
               <select
                 name="trades"

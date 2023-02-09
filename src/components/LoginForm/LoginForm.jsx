@@ -37,7 +37,7 @@ const LoginForm = props => {
         <input
           type="text"
           autoComplete="off"
-          id="email"
+          id={styles.email}
           value={formData.email}
           name="email"
           onChange={handleChange}
@@ -48,16 +48,16 @@ const LoginForm = props => {
         <input
           type="password"
           autoComplete="off"
-          id="password"
+          id={styles.password}
           value={formData.pw}
           name="pw"
           onChange={handleChange}
         />
       </div>
       <div>
-        <button className={styles.button}>Log In</button>
+        <button className={styles.button}>LOG IN</button>
         <Link to="/">
-          <button>Cancel</button>
+          <button>CANCEL</button>
         </Link>
       </div>
     </form>
