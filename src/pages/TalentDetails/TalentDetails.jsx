@@ -20,8 +20,6 @@ const TalentDetails = (props) => {
   })
   const location = useLocation()
   const talent = location.state?.talent
-  console.log('talent log:::', talent)
-
   
   const handleChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
@@ -32,7 +30,6 @@ const TalentDetails = (props) => {
     props.handleAddToList(form._id, talent._id)
   }
 
-  
   return (
     <>
       <div className={styles.talentDetailsContainer}>
@@ -44,47 +41,58 @@ const TalentDetails = (props) => {
           </div>
           <button className={styles.editBtn}><Icon name='Edit' /></button>
         </div>
-        <div className={styles.headshotDeatils}>
-          <img className={styles.headshotImg} src={talent.headshot} alt="headshot" />
+        {/* this commented out div seems to be making things act wonky. */}
+        {/* <div className={styles.headshotDeatils}></div> */}
+          <img className={styles.headshotImg} src={talent.photo} alt="headshot" />
+
           <div className={styles.actorDetails}>
-            <p>{talent.unionStatus}</p>
-            <p>{talent.profile?.location}</p>
-            <div className={styles.line}>
-              <p>{talent.weight}</p>
-              <p>{talent.height}</p>
-            </div>
-            <div className={styles.line}>
-              <p>{talent.eyes}</p>
-              <p>{talent.hair}</p>
-            </div>
-            <p>{talent.about}</p>
+            <p>Union Status: {talent.talentAccount?.unionStatus}</p>
+            <p>Location: {talent.location}</p>
           </div>
+
+          <div className={styles.line}>
+            <p>Weight: {talent.talentAccount.weight}</p>
+            <p>Height: {talent.talentAccount.height}</p>
+          </div>
+
+          <div className={styles.line}>
+            <p>Eyes: {talent.talentAccount.eyes}</p>
+            <p>Hair: {talent.talentAccount.hair}</p>
+          </div>
+            <p>About: {talent.talentAccount.about}</p>
+          {/* </div> */}
         </div>
+
         <div className={styles.buttonLinks}>
           <Icon name='Reels' />
           <Icon name='Calendar' />
           <Icon name='Add' />
         </div>
 
-
-        <Experience experience={talent.experience}/>
-        <Education education={talent.education}/>
-        <Training training={talent.training}/>
-      </div>
-      <form onSubmit={handleSubmit}>
-          <select
-              required
-              name='_id'
-              value={form._id}
-              onChange={handleChange}
-              placeholder={`select a list`}
-          >
-            <option>Select a List</option>
-            {props.lists.map(list => (
-              <option key={list._id} value={list._id}>{list.titleOfList}</option>
-            ))}
-          </select>
-          <button type='submit'>Add to List!</button>
+        {talent.talentAccount.experience.map((experience, idx) => 
+          <Experience key={idx} experience={experience}/>  
+        )}
+        {talent.talentAccount.education.map((education, idx) => 
+          <Education key={idx} education={education}/>  
+        )}
+        {talent.talentAccount.training.map((training, idx) => 
+          <Training key={idx} training={training}/>  
+        )}
+      
+        <form onSubmit={handleSubmit}>
+            <select
+                required
+                name='_id'
+                value={form._id}
+                onChange={handleChange}
+                placeholder={`select a list`}
+            >
+              <option>Select a List</option>
+              {props.lists.map(list => (
+                <option key={list._id} value={list._id}>{list.titleOfList}</option>
+              ))}
+            </select>
+            <button type='submit'>Add to List!</button>
         </form>
     </>
   )

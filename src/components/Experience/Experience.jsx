@@ -6,12 +6,12 @@ const Experience = (props) => {
   return ( 
     <>
       <h1>Experience Component</h1>
-      <p>{experience.productionTitle}</p>
-      <p>{experience.role}</p>
-      <p>{experience.type}</p>
-      <p>{experience.producingEntity}</p>
-      <p>{experience.director}</p>
-      <p>{experience.year}</p>
+      <p>Production Title: {experience.productionTitle}</p>
+      <p>Role: {experience.role}</p>
+      <p>Type: {experience.type}</p>
+      <p>Producing Entity: {experience.producingEntity}</p>
+      <p>Director: {experience.director}</p>
+      <p>Year: {experience.year}</p>
       <form onSubmit={()=> props.handleDeleteExperience(props.talentId, experience._id)}>
         <button type='submit'>Delete</button>
       </form>
