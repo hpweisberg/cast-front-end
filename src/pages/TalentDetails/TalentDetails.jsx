@@ -31,7 +31,7 @@ const TalentDetails = (props) => {
     props.handleAddToList(form._id, talent._id, props.profile.cdAccount._id)
   }
 
-  console.log("profile test ", props.profile.cdAccount._id)
+  // console.log("profile test ", props.profile.cdAccount._id)
 
   return (
     <>
@@ -76,8 +76,22 @@ const TalentDetails = (props) => {
             <Icon name='Reels' />
             </button>
           </Link>
-          <Icon name='Calendar' />
-          <Icon name='Add' />
+          <form className={styles.addTalentToList} onSubmit={handleSubmit}>
+          <select
+              required
+              name='_id'
+              value={form._id}
+              onChange={handleChange}
+              placeholder={`select a list`}
+              className={styles.listMenu}
+          >
+            <option>Select a List</option>
+              {props.lists.map(list => (
+                <option key={list._id} value={list._id}>{list.titleOfList}</option>
+              ))}
+          </select>
+            <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
+        </form>
         </div>
 
         {talent.experience.map((experience, idx) => 
@@ -90,21 +104,22 @@ const TalentDetails = (props) => {
           <Training key={idx} training={training}/>  
         )}
       
-        <form onSubmit={handleSubmit}>
+        {/* <form className={styles.addTalentToList} onSubmit={handleSubmit}>
           <select
               required
               name='_id'
               value={form._id}
               onChange={handleChange}
               placeholder={`select a list`}
+              className={styles.listMenu}
           >
             <option>Select a List</option>
               {props.lists.map(list => (
                 <option key={list._id} value={list._id}>{list.titleOfList}</option>
               ))}
           </select>
-            <button type='submit'>Add to List!</button>
-        </form>
+            <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
+        </form> */}
     </>
   )
 }
