@@ -1,4 +1,4 @@
-import '../Experience/Experience.css'
+
 
 const Training = (props) => {
   const training = props.training
@@ -12,5 +12,5 @@ const Training = (props) => {
     </div>
   );
 }
-
+ 
 export default Training;

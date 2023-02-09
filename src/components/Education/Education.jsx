@@ -4,13 +4,15 @@ const Education = (props) => {
   const education = props.education
 
   return ( 
-    <div id="edu" className='recordCard'>
-
-      <h3>{education.institution}</h3> 
-      <p>{education.degree} {education.major} {education.graduated && education.year}</p>
-
-    </div>
+    <>
+      <h1>Education Component</h1> 
+      <p>Institution: {education.institution}</p>
+      <p>Degree: {education.degree}</p>
+      <p>Major: {education.major}</p>
+      <p>Graduated: {education.graduated ? "Yes" : "No"}</p>
+      <p>Year: {education.year}</p>
+    </>
   );
 }
-
+ 
 export default Education;

@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import './Experience.css'
 
 const Experience = (props) => {
   const experience = props.experience
