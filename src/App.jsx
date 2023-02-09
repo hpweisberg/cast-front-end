@@ -177,7 +177,7 @@ const App = () => {
     setLists(lists.filter(list => list._id !== listId))
   }
 
-  const handleAddToList = async (listId, talent) => {
+  const handleAddToList = async (listId, talent, cdAccountId) => {
     try {
       const updatedList = await cdService.addToList(profile.cdAccount._id, listId, talent)
       setLists(lists.map((l) => { 
@@ -185,12 +185,11 @@ const App = () => {
           ? updatedList
           : l
       }))
+      navigate(`/cd/${cdAccountId}/lists/${listId}`)
     } catch (error) {
       console.log(error);
     }
   }
-
-
   
   return (
     <>
