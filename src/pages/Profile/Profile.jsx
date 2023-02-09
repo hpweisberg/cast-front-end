@@ -41,8 +41,8 @@ const Profile = (props) => {
 
   return ( 
     <section className="profileDetails">
-      <h1 id="name">{profile.name}</h1>
-      <p>Pronouns: {profile.pronouns}</p>
+      <h1 id="talentName">{profile.name}</h1>
+      <p>{profile.pronouns}</p>
       {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
       <p>Location: {profile.location}</p>
       <p>Phone Number: {profile.phoneNumber}</p>
