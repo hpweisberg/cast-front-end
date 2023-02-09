@@ -27,7 +27,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
 
           {user ?
             <ul>
-              <h4>Welcome, {user.name}</h4>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
               <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
