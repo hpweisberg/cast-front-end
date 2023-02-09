@@ -1,0 +1,42 @@
+
+#listIndex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+
+}
+
+
+.listInput {
+  background-color: rgb(226, 226, 226);
+  border-radius: 15px;
+}
+
+.newListGroup {
+  margin: 0 16px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: center;
+}
+
+.listInput {
+  max-width: 200px;
+  align-self: center;
+  text-align: center;
+}
+
+#submit {
+  border: none;
+  background-color: rgb(167, 168, 158);
+  width: 25%;
+  min-width: 110px;
+  align-self: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
