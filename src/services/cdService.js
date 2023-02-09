@@ -72,7 +72,6 @@ const newList = async (cdId, newListForm) => {
 }
 
 const addToList = async (cdId, listId, talent) => {
-  console.log(cdId, listId, talent);
   try {
     const res = await fetch(`${BASE_URL}/${cdId}/lists/${listId}/${talent}`, {
       method: 'POST',
@@ -96,6 +95,16 @@ const deleteList = async (listId, cdId) => {
   return res.json()
 }
 
+const removeFromList = async (cdId, listId, talentId) => {
+  const res = await fetch(`${BASE_URL}/${cdId}/lists/${listId}/${talentId}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    },
+  })
+  return res.json()
+}
+
 export {
   index,
   indexLists,
@@ -104,4 +113,5 @@ export {
   update,
   addToList,
   deleteList,
+  removeFromList,
 }

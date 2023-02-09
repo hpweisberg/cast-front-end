@@ -11,6 +11,8 @@ const TalentCard = (props) => {
   // const {profile} = props.talent
   console.log('Hunter test:',props)
 
+
+
   return (
     <div className={styles.center}>
       <Link to={`/talent/${props.talent._id}`} className={styles.link}>
