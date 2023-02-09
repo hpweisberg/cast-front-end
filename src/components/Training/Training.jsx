@@ -12,5 +12,5 @@ const Training = (props) => {
     </div>
   );
 }
- 
+
 export default Training;

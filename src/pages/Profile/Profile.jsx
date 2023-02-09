@@ -11,12 +11,14 @@ import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education"
 import Training from "../../components/Training/Training";
 
+
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
   const [talentId, setTalentId] = useState(null)
   const [cdId, setCdId] = useState(null)
   console.log(profile);
+  console.log();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -66,11 +68,7 @@ const Profile = (props) => {
       <p>Trades: {profile.talentAccount.trades}</p>
 
       <h2>Experience</h2>
-      {
-        (profile.talentAccount === talentId)
-      &&
-        <Link className="add" to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
-      }
+      <Link className="add" to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
       {profile.talentAccount.experience.map(experience => 
         <>
           <Experience 
@@ -86,11 +84,7 @@ const Profile = (props) => {
       )}
 
       <h2>Education</h2> 
-      {
-        (profile.talentAccount === talentId)
-      &&
-        <Link className="add" to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
-      }
+      <Link className="add" to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
       {profile.talentAccount.education.map(education => 
         <>
           <Education 
@@ -106,11 +100,7 @@ const Profile = (props) => {
       )}
 
       <h2>Training</h2> 
-      {
-        (profile.talentAccount === talentId)
-      &&
-        <Link className="add" to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
-      }
+      <Link className="add" to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       {profile.talentAccount.training.map(training => 
         <>
           <Training 
