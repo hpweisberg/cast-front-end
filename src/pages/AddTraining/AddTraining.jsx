@@ -24,8 +24,6 @@ const AddTraining = (props) => {
     props.handleAddTraining(form)
   }
 
-
-
   return ( 
     <>
       <h1>Add Training Component</h1> 
