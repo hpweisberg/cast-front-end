@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
-import { useLocation } from "react-router-dom"
 
 // Services
 import * as talentService from "../../services/talentService"
@@ -15,25 +14,14 @@ import Icon from "../../components/Icon/Icon"
 
 const TalentDetails = (props) => {
   const { talentId } = useParams()
-  const [talent, setTalent] = useState(null)
+
   const [form, setForm] = useState({
     _id: ''
   })
   const location = useLocation()
-  const routeType = location.state?.routeType
+  const talent = location.state?.talent
+  console.log('talent log:::', talent)
 
-  useEffect(() => {
-    // console.log('id:', talentId)
-    const fetchTalent = async () => {
-      const data = await talentService.show(talentId)
-      setTalent(data)
-    }
-    fetchTalent()
-  }, [talentId])
-
-  // console.log('Talent State:', talent)
-  // console.log('routeType:', routeType)
-  // console.log('props:', props)
   
   const handleChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
@@ -43,42 +31,33 @@ const TalentDetails = (props) => {
     e.preventDefault()
     props.handleAddToList(form._id, talent._id)
   }
-  // console.log('FORM', form._id);
-  // console.log('TALENT',talent._id);
+
+  
   return (
     <>
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
           <button className={styles.backBtn}><Icon name='Back' /></button>
           <div className={styles.nameGroup}>
-            <h1>NAME</h1>
-            <h6>PRONOUNS</h6>
+            <h1>{talent.name}</h1>
+            <h6>{talent.profile?.pronouns}</h6>
           </div>
           <button className={styles.editBtn}><Icon name='Edit' /></button>
         </div>
         <div className={styles.headshotDeatils}>
-          <div className={styles.headshotImg}>IMG</div>
+          <img className={styles.headshotImg} src={talent.headshot} alt="headshot" />
           <div className={styles.actorDetails}>
-            <p>UNION</p>
-            <p>LOCATION</p>
+            <p>{talent.unionStatus}</p>
+            <p>{talent.profile?.location}</p>
             <div className={styles.line}>
-            <p>AGE</p>
-              <p>WEIGHT</p>
-              <p>HEIGHT</p>
+              <p>{talent.weight}</p>
+              <p>{talent.height}</p>
             </div>
             <div className={styles.line}>
-              <p>EYE</p>
-              <p>HAIR</p>
+              <p>{talent.eyes}</p>
+              <p>{talent.hair}</p>
             </div>
-            <p>ABOUT</p>
-            {/* <p>UNION</p> */}
-            {/* <p>{talent.location}</p> */}
-            {/* <p>{talent.age}</p> */}
-            {/* <p>{talent.weight}lb</p> */}
-            {/* <p>{talent.height}</p> */}
-            {/* <p>{talent.eyes}</p> */}
-            {/* <p>{talent.hair}</p> */}
-            {/* <p>{talent.about}</p> */}
+            <p>{talent.about}</p>
           </div>
         </div>
         <div className={styles.buttonLinks}>
@@ -86,12 +65,11 @@ const TalentDetails = (props) => {
           <Icon name='Calendar' />
           <Icon name='Add' />
         </div>
-        <h1>Talent Details Component</h1>
 
-        {/* <p>{talent.about}</p> */}
-        <Experience />
-        <Education />
-        <Training />
+
+        <Experience experience={talent.experience}/>
+        <Education education={talent.education}/>
+        <Training training={talent.training}/>
       </div>
       <form onSubmit={handleSubmit}>
           <select
@@ -109,7 +87,7 @@ const TalentDetails = (props) => {
           <button type='submit'>Add to List!</button>
         </form>
     </>
-  );
+  )
 }
 
 export default TalentDetails;

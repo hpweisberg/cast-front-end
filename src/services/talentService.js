@@ -138,9 +138,9 @@ const updateTraining = async (talentData, trainingData) => {
 }
 
 
-const deleteExperience = async (talentData, experienceData) => {
+const deleteExperience = async (talentId, experienceId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/experience/${experienceData._id}`, {
+    const res = await fetch(`${BASE_URL}/${talentId}/experience/${experienceId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -152,9 +152,9 @@ const deleteExperience = async (talentData, experienceData) => {
   }
 }
 
-const deleteEducation = async (talentData, educationData) => {
+const deleteEducation = async (talentId, educationId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/education/${educationData._id}`, {
+    const res = await fetch(`${BASE_URL}/${talentId}/education/${educationId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -166,9 +166,9 @@ const deleteEducation = async (talentData, educationData) => {
   }
 }
 
-const deleteTraining = async (talentData, trainingData) => {
+const deleteTraining = async (talentId, trainingId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${talentData._id}/training/${trainingData._id}`, {
+    const res = await fetch(`${BASE_URL}/${talentId}/training/${trainingId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
