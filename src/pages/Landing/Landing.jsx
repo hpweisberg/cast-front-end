@@ -22,7 +22,7 @@ const Landing = ({ user }) => {
   //   e.preventDefault()
   //   setSignupType('CD')
   // }
-  
+  console.log(user);
   return (
     <main className={styles.container}>
       
@@ -30,36 +30,48 @@ const Landing = ({ user }) => {
       
       <h3>Casting made simple</h3>
 
-      <div className={styles.accountContainer}>
-        
-        <div className={styles.logInCTA}>
-          <p>Already have an account?</p>
-          <Link to='/login' className={styles.logInBtn}>Log In</Link>
-        </div>
+        { (!user)
 
-        <div className={styles.createAccountCTA}>
-          <p>Create your account today</p>
-          <div className="ctaButtons">
+          ?
 
-            <Link 
-              to='/signup'
-              className={styles.actorsBtn}
-              state={{signupType: "talent"}}
-              >
-              Actors
-            </Link>
-            <Link 
-              to='/signup' 
-              className={styles.cdBtn}
-              state={{signupType: "cd"}}
-              >
-                Casting Directors
-            </Link>
+          <div className={styles.accountContainer}>
+            
+            <div className={styles.logInCTA}>
+              <p>Already have an account?</p>
+              <Link to='/login' className={styles.logInBtn}>Log In</Link>
+            </div>
+
+            <div className={styles.createAccountCTA}>
+              <p>Create your account today</p>
+              <div>
+
+                <Link 
+                  to='/signup'
+                  className={styles.actorsBtn}
+                  state={{signupType: "talent"}}
+                  >
+                  Actors
+                </Link>
+                <Link 
+                  to='/signup' 
+                  className={styles.cdBtn}
+                  state={{signupType: "cd"}}
+                  >
+                    Casting Directors
+                </Link>
+              </div>
+
+            </div>
+
           </div>
 
-        </div>
+          :
+          <>
+            <Link to='/profile' className={styles.logInBtn}>View Your Profile</Link>
+            <Link to='/talent' className={styles.logInBtn}>Check out other talent</Link>
+          </>
 
-      </div>
+        }
 
       {/* <SignupCTA /> */}
     </main>
