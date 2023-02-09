@@ -42,8 +42,21 @@ img {
 #remove {
   text-align: right;
   padding: 0;
+  max-width: fit-content;
+  align-self: flex-end;
 }
 
 #name {
   font-size: 32px;
+}
+
+.add {
+  text-align: left;
+  margin: 0;
+  text-decoration: none;
+}
+
+#editLink{
+  text-align: left;
+  text-decoration: none;
 }

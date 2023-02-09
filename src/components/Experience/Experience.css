@@ -1,10 +1,9 @@
 .recordCard {
   margin-top: 8px;
-  border-top: 1px solid black;
 }
 
 .recordCard h3 {
-  font-size: 18px;
+  font-size: 22px;
   margin: 4px;
 }
 
@@ -12,6 +11,8 @@
   margin: 2px 0;
 }
 
-.recordCard > h3 > p {
-  font-weight: lighter;
+#edu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
