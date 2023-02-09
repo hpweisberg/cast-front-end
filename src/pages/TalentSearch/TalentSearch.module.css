@@ -41,3 +41,8 @@
   cursor:pointer;
   overflow: hidden;        
 }
+
+.searchBarLine {
+  display: flex;
+  flex-direction: column;
+}
