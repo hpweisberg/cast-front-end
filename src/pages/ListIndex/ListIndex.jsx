@@ -1,30 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ListCard from "../../components/ListCard/ListCard";
-import * as cdService from '../../services/cdService'
-import styles from './ListIndex.module.css'
 import * as React from 'react';
-// import Button from '@mui/material/Button';
 
 
-import { useNavigate, useParams } from 'react-router-dom';
+import './ListIndex.css'
+
 
 const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
-  // const [lists, setLists] = useState([])
+
   const [newListForm, setNewListForm] = useState({
     titleOfList: ''
   })
 
-  // useEffect(() => {
-  //   const fetchLists = async () => {
-  //     const lists = await cdService.indexLists(id)
-  //     setLists(lists)
-  //   }
-  //   fetchLists()
-  // }, [id])
   
   const handleChange = ({target}) => {
-    // target is event.target
-    // const { target } = event
     setNewListForm({ ...newListForm, [target.name]: target.value })
   }
 
@@ -32,19 +21,11 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
     e.preventDefault()
     handleCreateList(newListForm)
   }
-  console.log('NEW LIST FORM', newListForm);
-  console.log(profile);
-  // const handleCreateList = async (e) => {
-  //   e.preventDefault()
-  //   const newList = await cdService.newList(profile.cdAccount, newListForm)
-  //   setLists([...lists, newList])
-  //   navigate(`/cd/${profile.cdAccount}/lists`)
-  // }
-  // console.log('form', newListForm);
+
   
   return ( 
-    <>
-      <h1>List Index</h1> 
+    <div id='listIndex'>
+      <h1>Your Lists</h1> 
       {
         (lists.length)
 
@@ -65,7 +46,7 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
 
         }
       <h1>New List</h1>
-      <form onSubmit={handleSubmit} className={styles.newListGroup}>
+      <form onSubmit={handleSubmit} className="newListGroup">
         <input
           required
           type="text"
@@ -73,13 +54,13 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
           id="title-input"
           placeholder="Title of List"
           onChange={handleChange}
-          className={styles.listInput}
+          className="listInput"
         />
-        <button variant="contained" type='submit'>
+        <button variant="contained" id="submit" type="submit">
           Create New List
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
