@@ -189,8 +189,6 @@ const App = () => {
       console.log(error);
     }
   }
-
-
   
   return (
     <>

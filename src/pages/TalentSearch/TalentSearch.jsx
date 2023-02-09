@@ -31,11 +31,11 @@ const TalentSearch = (props) => {
     setInputValue('')
   }
 
-  const handleClearSearch = () => {
+  const handleClearSearch = (e) => {
+    // until form is removed, all this does is refresh the page. Remove e parameter if form is removed
     setTalentSearch(talentData)
     setInputValue('')
   }
-
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -45,8 +45,6 @@ const TalentSearch = (props) => {
     }
     fetchTalent()
   }, [])
-
-
 
   if (!talentSearch) return "loading"
   
@@ -71,9 +69,12 @@ const TalentSearch = (props) => {
         handleUserInput={handleUserInput}
         handleClearSearch={handleClearSearch}
       />
-        <button className={styles.btnBackground} onClick={handleClearSearch}>
-          <Icon className={styles.btnBackground} name='Reset' />
-        </button>
+        {/* remove form and put onClick back on button for handleClear search if we dont want page to refersh */}
+        <form onSubmit={handleClearSearch}>
+          <button className={styles.btnBackground} type="submit">
+            <Icon className={styles.btnBackground} name='Reset' />
+          </button>
+        </form>
 
       {/* <div className={styles.filterContainer}>
         <Icon name='Filter' />
