@@ -86,6 +86,8 @@
   display: flex;
   justify-content: space-around;
   margin: 1rem;
+  align-items: center;
+  border: 2px red solid;
 }
 
 
@@ -96,4 +98,25 @@
   border: none;
   cursor:pointer;
   overflow: hidden;  
+}
+
+.addBtn {
+    width: 45px;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden; 
+}
+
+.listMenu {
+  width: 90%;
+  background-color: white;
+}
+
+.addTalentToList {
+  display: flex;
+  /* background-color: red; */
+  width: 60%;
+  flex-direction: row;
 }
