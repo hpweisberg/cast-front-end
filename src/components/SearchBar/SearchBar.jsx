@@ -19,7 +19,8 @@ const SearchBar = (props) => {
     <>
     <div className={styles.searchContainer}>
       <form onSubmit={handleSubmit}>
-        <button className={styles.submitBtn} type="submit"><Icon name='MagnifierGlass' /></button>
+        <button className={styles.submitBtn} type="submit"><Icon name='MagnifierGlass' />
+        </button>
         <input name="query" 
             type="text"
             autoComplete="off"

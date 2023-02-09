@@ -32,11 +32,11 @@ const TalentSearch = (props) => {
     setInputValue('')
   }
 
-  const handleClearSearch = () => {
+  const handleClearSearch = (e) => {
+    // until form is removed, all this does is refresh the page. Remove e parameter if form is removed
     setTalentSearch(talentData)
     setInputValue('')
   }
-
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -47,24 +47,43 @@ const TalentSearch = (props) => {
     fetchTalent()
   }, [])
 
-
-
   if (!talentSearch) return "loading"
 
   return (
     <>
-        <button className={styles.btnBackground} onClick={handleClearSearch}>
-          <Icon className={styles.btnBackground} name='Reset' />
-        </button>
-      <div className={styles.searchBarLine}>
-        <SearchBar
-          className={styles.searchBar}
-          value={inputValue}
-          handleTalentSearch={handleTalentSearch}
-          handleUserInput={handleUserInput}
-          handleClearSearch={handleClearSearch}
-        />
-      </div>
+
+      {/* <div className={styles.searchContainer}>
+        <Icon name='MagnifierGlass' />
+        <input 
+          type='text' 
+          className={styles.searchBar} 
+          placeholder={'Juggler'}
+        >
+        </input>
+        <Icon name='Reset' />
+      </div> */}
+
+      <SearchBar 
+        className={styles.searchBar} 
+        value={inputValue} 
+        handleTalentSearch={handleTalentSearch} 
+        handleUserInput={handleUserInput}
+        handleClearSearch={handleClearSearch}
+      />
+        {/* remove form and put onClick back on button for handleClear search if we dont want page to refersh */}
+        <form onSubmit={handleClearSearch}>
+          <button className={styles.btnBackground} type="submit">
+            <Icon className={styles.btnBackground} name='Reset' />
+          </button>
+        </form>
+
+      {/* <div className={styles.filterContainer}>
+        <Icon name='Filter' />
+        <select className={styles.filterBar} placeholder={'Filter'}>
+        </select>
+        <Icon name='Reset' />
+      </div> */}
+
 
       {talentSearch.map((talent, idx) => (
         <TalentCard key={idx} talent={talent} />
