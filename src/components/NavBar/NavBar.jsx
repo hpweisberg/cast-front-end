@@ -43,15 +43,17 @@ const NavBar = ({ user, profile, handleLogout }) => {
             </ul>
             :
             <ul>
+              <li><Link to='/'>Home</Link></li>
               <li><Link to='/login'>Log In</Link></li>
-              <li><Link to='/signup'>Sign Up</Link></li>
             </ul>
           }
 
 
-        </nav>
-              )}
-              <img className={styles.logo} src={logo} alt="cast logo" />
+          </nav>
+        )}
+          <Link to='/'>
+            <img className={styles.logo} src={logo} alt="cast logo" />
+          </Link>
       </div>
     </>
   )
