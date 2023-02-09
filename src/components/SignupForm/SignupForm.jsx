@@ -31,7 +31,7 @@ const SignupForm = props => {
     try {
       await authService.signup(formData, photoData.photo)
       props.handleSignupOrLogin()
-      navigate('/profile/create',  {
+      navigate('/profile',  {
         state: {
           signupType: isCd
         }

@@ -29,7 +29,7 @@ const TalentDetails = (props) => {
     e.preventDefault()
     props.handleAddToList(form._id, talent._id)
   }
-
+  console.log('STATE TALENT', talent);
   return (
     <>
       <div className={styles.talentDetailsContainer}>
@@ -46,20 +46,20 @@ const TalentDetails = (props) => {
           <img className={styles.headshotImg} src={talent.photo} alt="headshot" />
 
           <div className={styles.actorDetails}>
-            <p>Union Status: {talent.talentAccount?.unionStatus}</p>
+            <p>Union Status: {talent.unionStatus}</p>
             <p>Location: {talent.location}</p>
           </div>
 
           <div className={styles.line}>
-            <p>Weight: {talent.talentAccount.weight}</p>
-            <p>Height: {talent.talentAccount.height}</p>
+            <p>Weight: {talent.weight}</p>
+            <p>Height: {talent.height}</p>
           </div>
 
           <div className={styles.line}>
-            <p>Eyes: {talent.talentAccount.eyes}</p>
-            <p>Hair: {talent.talentAccount.hair}</p>
+            <p>Eyes: {talent.eyes}</p>
+            <p>Hair: {talent.hair}</p>
           </div>
-            <p>About: {talent.talentAccount.about}</p>
+            <p>About: {talent.about}</p>
           {/* </div> */}
         </div>
 
@@ -69,13 +69,13 @@ const TalentDetails = (props) => {
           <Icon name='Add' />
         </div>
 
-        {talent.talentAccount.experience.map((experience, idx) => 
+        {talent.experience.map((experience, idx) => 
           <Experience key={idx} experience={experience}/>  
         )}
-        {talent.talentAccount.education.map((education, idx) => 
+        {talent.education.map((education, idx) => 
           <Education key={idx} education={education}/>  
         )}
-        {talent.talentAccount.training.map((training, idx) => 
+        {talent.training.map((training, idx) => 
           <Training key={idx} training={training}/>  
         )}
       

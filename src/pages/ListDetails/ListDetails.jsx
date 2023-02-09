@@ -33,7 +33,6 @@ const ListDetails = (props) => {
     }))
   }
 
-  console.log('LIST', list);
   if (!list) return <h1>loading</h1>
 
   return ( 
@@ -43,7 +42,7 @@ const ListDetails = (props) => {
         {list.talent.map((talent, idx) => (
           <div key={talent._id+idx}>
             <button onClick={() => {handleRemoveFromList( (list._id), (talent._id))}}>x</button>
-            <TalentCard profile={talent.profile} talent={talent._id}/>
+            <TalentCard profile={talent.profile} talent={talent}/>
           </div>
         ))}
 
