@@ -57,6 +57,7 @@ const AddExperience = (props) => {
           value={form.type}
           onChange={handleChange}
         >
+          <option value="Please Select">Please Select</option>
           <option value="Film">Film</option>
           <option value="TV">TV</option>
           <option value="Stage">Stage</option>    

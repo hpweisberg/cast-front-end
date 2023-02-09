@@ -17,7 +17,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
     <>
       <div className={styles.navRow}>
 
-
         <div className={styles.menuIcon} onClick={toggle}>
           <Icon name='Menu' />
         </div>
@@ -33,7 +32,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
               {
                 (user.profile)
                 &&
-                <li><Link to={`/cd/${profile.cdAccount._id}/lists`}>Lists</Link></li>
+                <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
               }
               <li><Link to='/profile'>Profile</Link></li>
               {/* Items below here will be removed in final app */}

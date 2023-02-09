@@ -12,9 +12,6 @@ const Experience = (props) => {
       <p>Producing Entity: {experience.producingEntity}</p>
       <p>Director: {experience.director}</p>
       <p>Year: {experience.year}</p>
-      <form onSubmit={()=> props.handleDeleteExperience(props.talentId, experience._id)}>
-        <button type='submit'>Delete</button>
-      </form>
     </>
   );
 }

@@ -72,28 +72,43 @@ console.log('CDID', cdId);
       <p>trades: {profile.talentAccount.trades}</p>
 
       {profile.talentAccount.experience.map(experience => 
-        <Experience 
-          handleDeleteExperience={props.handleDeleteExperience} 
-          key={experience._id} 
-          experience={experience}
-          talentId={talentId}  
-        />  
+        <>
+          <Experience 
+            handleDeleteExperience={props.handleDeleteExperience} 
+            key={experience._id} 
+            experience={experience}
+            talentId={talentId}  
+          />
+          <form onSubmit={()=> props.handleDeleteExperience(talentId, experience._id)}>
+            <button type='submit'>Delete</button>
+          </form>  
+        </>
       )}
       {profile.talentAccount.education.map(education => 
-        <Education 
-          key={education._id} 
-          education={education}
-          talentId={talentId}
-          handleDeleteEducation={props.handleDeleteEducation}
-          />  
+        <>
+          <Education 
+            key={education._id} 
+            education={education}
+            talentId={talentId}
+            handleDeleteEducation={props.handleDeleteEducation}
+            />
+            <form onSubmit={()=> props.handleDeleteEducation(talentId, education._id)}>
+              <button type='submit'>Delete</button>
+            </form>  
+        </>
       )}
       {profile.talentAccount.training.map(training => 
-        <Training 
-          key={training._id} 
-          training={training}
-          talentId={talentId}
-          handleDeleteTraining={props.handleDeleteTraining}
-          />  
+        <>
+          <Training 
+            key={training._id} 
+            training={training}
+            talentId={talentId}
+            handleDeleteTraining={props.handleDeleteTraining}
+          />
+          <form onSubmit={()=> props.handleDeleteTraining(talentId, training._id)}>
+            <button type='submit'>Delete</button>
+          </form>  
+        </>
       )}
 
       <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
