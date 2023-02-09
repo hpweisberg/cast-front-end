@@ -27,6 +27,7 @@ const TalentSearch = (props) => {
   }
   console.log('SEARCH', talentSearch);
   console.log('DATA', talentData);
+  
   const handleResetSearchInput = () => {
     setInputValue('')
   }
@@ -47,7 +48,7 @@ const TalentSearch = (props) => {
   }, [])
 
   if (!talentSearch) return "loading"
-  
+
   return (
     <>
 
@@ -83,10 +84,11 @@ const TalentSearch = (props) => {
         <Icon name='Reset' />
       </div> */}
 
+
       {talentSearch.map((talent, idx) => (
-        <TalentCard key={idx} talent={talent}/>
+        <TalentCard key={idx} talent={talent} />
       ))}
-      
+
     </>
   )
 }
