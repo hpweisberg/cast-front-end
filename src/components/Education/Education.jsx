@@ -1,5 +1,4 @@
 const Education = (props) => {
-  console.log('inside experience:::', props.experience)
   return ( 
     <>
     <h1>Education:</h1> 
