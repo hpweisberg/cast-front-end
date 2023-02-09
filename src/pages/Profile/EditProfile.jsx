@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Profile from "./Profile";
 
+
 const EditProfile = (props) => {
   const location = useLocation()
   const signupType = location.state?.signupType
@@ -18,7 +19,6 @@ const EditProfile = (props) => {
   const [photoData, setPhotoData] = useState({})
 
   //* edit profile
-
 
   const [form, setForm] = useState({
     pronouns: profile.pronouns,
@@ -40,8 +40,6 @@ const EditProfile = (props) => {
 
   //* edit talentAccount
 
-
-  // need to handle add skills
   const [talentForm, setTalentForm] = useState({
     unionStatus: profile.talentAccount?.unionStatus,
     hair: profile.talentAccount?.hair,
@@ -52,7 +50,7 @@ const EditProfile = (props) => {
     skills: profile.talentAccount?.skills,
     trades: profile.talentAccount?.trades,
     reelLink: profile.talentAccount?.reelLink,
-    talentId: talentId
+    talentId: talentId,
   })
 
   const handleTalentChange = ({target}) => {
@@ -95,7 +93,6 @@ const EditProfile = (props) => {
     }
     renderHelp()
   },)
-
 
   return (
     <>
@@ -222,8 +219,6 @@ const EditProfile = (props) => {
                 <option value="Please Select">Please Select</option>
                 <option value="Brown">Brown</option>
               </select>
-              
-
 
               <label htmlFor="trades-input">Trades</label>
               <select

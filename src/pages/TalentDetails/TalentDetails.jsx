@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, Navigate } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
+import { Link } from "react-router-dom"
 
 // Services
 import * as talentService from "../../services/talentService"
@@ -20,34 +21,40 @@ const TalentDetails = (props) => {
   })
   const location = useLocation()
   const talent = location.state?.talent
-  
+
   const handleChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleAddToList(form._id, talent._id)
+    props.handleAddToList(form._id, talent._id, props.profile.cdAccount._id)
   }
-  console.log('STATE TALENT', talent);
+
+  console.log("profile test ", props.profile.cdAccount._id)
+
   return (
     <>
+
+    
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
-          <button className={styles.backBtn}><Icon name='Back' /></button>
+        <Link to={`/talent/`} className={styles.link}> <button className={styles.backBtn} ><Icon name='Back' /></button></Link>
           <div className={styles.nameGroup}>
             <h1>{talent.name}</h1>
             <h6>{talent.profile?.pronouns}</h6>
           </div>
-          <button className={styles.editBtn}><Icon name='Edit' /></button>
+          <Link to={`/profile/`} className={styles.link}><button className={styles.editBtn}><Icon name='Edit' /></button></Link>
         </div>
         {/* this commented out div seems to be making things act wonky. */}
-        {/* <div className={styles.headshotDeatils}></div> */}
-          <img className={styles.headshotImg} src={talent.photo} alt="headshot" />
+        <div className={styles.headshotDeatils}>
+
+          <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
+        </div>
 
           <div className={styles.actorDetails}>
             <p>Union Status: {talent.unionStatus}</p>
-            <p>Location: {talent.location}</p>
+            <p>Location: {talent.profile.location}</p>
           </div>
 
           <div className={styles.line}>
@@ -64,7 +71,11 @@ const TalentDetails = (props) => {
         </div>
 
         <div className={styles.buttonLinks}>
-          <Icon name='Reels' />
+          <Link to={talent.reelLink}>
+          <button>
+            <Icon name='Reels' />
+            </button>
+          </Link>
           <Icon name='Calendar' />
           <Icon name='Add' />
         </div>
@@ -80,18 +91,18 @@ const TalentDetails = (props) => {
         )}
       
         <form onSubmit={handleSubmit}>
-            <select
-                required
-                name='_id'
-                value={form._id}
-                onChange={handleChange}
-                placeholder={`select a list`}
-            >
-              <option>Select a List</option>
+          <select
+              required
+              name='_id'
+              value={form._id}
+              onChange={handleChange}
+              placeholder={`select a list`}
+          >
+            <option>Select a List</option>
               {props.lists.map(list => (
                 <option key={list._id} value={list._id}>{list.titleOfList}</option>
               ))}
-            </select>
+          </select>
             <button type='submit'>Add to List!</button>
         </form>
     </>

@@ -27,15 +27,16 @@ const TalentSearch = (props) => {
   }
   console.log('SEARCH', talentSearch);
   console.log('DATA', talentData);
+  
   const handleResetSearchInput = () => {
     setInputValue('')
   }
 
-  const handleClearSearch = () => {
+  const handleClearSearch = (e) => {
+    // until form is removed, all this does is refresh the page. Remove e parameter if form is removed
     setTalentSearch(talentData)
     setInputValue('')
   }
-
 
   useEffect(() => {
     const fetchTalent = async () => {
@@ -46,13 +47,12 @@ const TalentSearch = (props) => {
     fetchTalent()
   }, [])
 
-
   if (!talentSearch) return "loading"
 
   return (
     <>
 
-      <div className={styles.searchContainer}>
+      {/* <div className={styles.searchContainer}>
         <Icon name='MagnifierGlass' />
         <input 
           type='text' 
@@ -61,29 +61,34 @@ const TalentSearch = (props) => {
         >
         </input>
         <Icon name='Reset' />
-      </div>
+      </div> */}
 
       <SearchBar 
         className={styles.searchBar} 
         value={inputValue} 
         handleTalentSearch={handleTalentSearch} 
         handleUserInput={handleUserInput}
+        handleClearSearch={handleClearSearch}
       />
-        <button onClick={handleClearSearch}>
-          clear
-        </button>
+        {/* remove form and put onClick back on button for handleClear search if we dont want page to refersh */}
+        <form onSubmit={handleClearSearch}>
+          <button className={styles.btnBackground} type="submit">
+            <Icon className={styles.btnBackground} name='Reset' />
+          </button>
+        </form>
 
-      <div className={styles.filterContainer}>
+      {/* <div className={styles.filterContainer}>
         <Icon name='Filter' />
         <select className={styles.filterBar} placeholder={'Filter'}>
         </select>
         <Icon name='Reset' />
-      </div>
+      </div> */}
+
 
       {talentSearch.map((talent, idx) => (
-        <TalentCard key={idx} talent={talent}/>
+        <TalentCard key={idx} talent={talent} />
       ))}
-      
+
     </>
   )
 }
