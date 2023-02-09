@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import styles from './SearchBar.module.css'
+import Icon from '../Icon/Icon'
 
 
 const SearchBar = (props) => {
@@ -14,15 +16,17 @@ const SearchBar = (props) => {
   }
   return (
     <>
-    <div>
+    <div className={styles.searchBar}>
       <form onSubmit={handleSubmit}>
         <input name="query" 
             type="text"
             autoComplete="off"
             value={formData.query} 
             onChange={handleChange}
+            className={styles.inputBar}
             />
-        <button type="submit">Search</button>
+        <button className={styles.submitBtn} type="submit"><Icon name='MagnifierGlass' /></button>
+        
       </form>
 
     </div>

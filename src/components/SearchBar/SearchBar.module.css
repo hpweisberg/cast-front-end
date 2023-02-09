@@ -1,0 +1,21 @@
+.searchBar {
+  max-width: 300px;
+}
+
+.inputBar {
+  max-width: 300px;
+}
+
+.inputBar {
+  background-color: rgb(223, 220, 220);
+  height: 25px;
+  width: 80%;
+  border-radius: 15px;
+  display: relative;
+  padding-left: 20px;
+}
+
+.submitBtn, .submitBtn > * {
+  width: 45px;
+  
+}
