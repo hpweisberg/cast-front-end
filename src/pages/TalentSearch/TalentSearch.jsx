@@ -27,6 +27,7 @@ const TalentSearch = (props) => {
   }
   console.log('SEARCH', talentSearch);
   console.log('DATA', talentData);
+  
   const handleResetSearchInput = () => {
     setInputValue('')
   }
@@ -49,43 +50,26 @@ const TalentSearch = (props) => {
 
 
   if (!talentSearch) return "loading"
-  
+
   return (
     <>
-
-      {/* <div className={styles.searchContainer}>
-        <Icon name='MagnifierGlass' />
-        <input 
-          type='text' 
-          className={styles.searchBar} 
-          placeholder={'Juggler'}
-        >
-        </input>
-        <Icon name='Reset' />
-      </div> */}
-
-      <SearchBar 
-        className={styles.searchBar} 
-        value={inputValue} 
-        handleTalentSearch={handleTalentSearch} 
-        handleUserInput={handleUserInput}
-        handleClearSearch={handleClearSearch}
-      />
         <button className={styles.btnBackground} onClick={handleClearSearch}>
           <Icon className={styles.btnBackground} name='Reset' />
         </button>
-
-      {/* <div className={styles.filterContainer}>
-        <Icon name='Filter' />
-        <select className={styles.filterBar} placeholder={'Filter'}>
-        </select>
-        <Icon name='Reset' />
-      </div> */}
+      <div className={styles.searchBarLine}>
+        <SearchBar
+          className={styles.searchBar}
+          value={inputValue}
+          handleTalentSearch={handleTalentSearch}
+          handleUserInput={handleUserInput}
+          handleClearSearch={handleClearSearch}
+        />
+      </div>
 
       {talentSearch.map((talent, idx) => (
-        <TalentCard key={idx} talent={talent}/>
+        <TalentCard key={idx} talent={talent} />
       ))}
-      
+
     </>
   )
 }

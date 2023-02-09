@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useLocation } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
+import { Link } from "react-router-dom"
 
 // Services
 import * as talentService from "../../services/talentService"
@@ -36,7 +37,7 @@ const TalentDetails = (props) => {
     <>
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
-          <button className={styles.backBtn}><Icon name='Back' /></button>
+        <Link to={`/talent/`} className={styles.link}> <button className={styles.backBtn} ><Icon name='Back' /></button></Link>
           <div className={styles.nameGroup}>
             <h1>{talent.name}</h1>
             <h6>{talent.profile?.pronouns}</h6>
@@ -44,8 +45,10 @@ const TalentDetails = (props) => {
           <button className={styles.editBtn}><Icon name='Edit' /></button>
         </div>
         {/* this commented out div seems to be making things act wonky. */}
-        {/* <div className={styles.headshotDeatils}></div> */}
+        <div className={styles.headshotDeatils}>
+
           <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
+        </div>
 
           <div className={styles.actorDetails}>
             <p>Union Status: {talent.unionStatus}</p>
