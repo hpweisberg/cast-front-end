@@ -33,7 +33,6 @@ const ListDetails = (props) => {
     }))
   }
 
-  console.log('LIST', list);
   if (!list) return <h1>loading</h1>
 
   return ( 
