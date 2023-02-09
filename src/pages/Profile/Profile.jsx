@@ -21,9 +21,9 @@ const Profile = (props) => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
       if(profileData.isCd) {
-        setCdId(profileData.cdAccount._id)
+        setCdId(profileData.cdAccount)
       } else {
-        setTalentId(profileData.talentAccount._id)
+        setTalentId(profileData.talentAccount)
       }
     }
     fetchProfile()
@@ -62,6 +62,7 @@ console.log('CDID', cdId);
       {profile.talentAccount ?
       <>
       <h1>talent account details</h1>
+      <img src={profile.image} alt="user talent pic" ></img>
       <p>About: {profile.talentAccount.about}</p>
       <p>Union Status: {profile.talentAccount.unionStatus}</p>
       <p>Hair: {profile.talentAccount.hair}</p>
