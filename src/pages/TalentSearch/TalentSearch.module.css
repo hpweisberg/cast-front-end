@@ -33,3 +33,11 @@
   color: red;
   background-color: red;
 }
+
+.btnBackground {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;        
+}

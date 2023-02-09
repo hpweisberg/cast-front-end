@@ -10,23 +10,24 @@ const SearchBar = (props) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
+  
   const handleSubmit = evt => {
     evt.preventDefault()
     props.handleTalentSearch(formData)
   }
   return (
     <>
-    <div className={styles.searchBar}>
+    <div className={styles.searchContainer}>
       <form onSubmit={handleSubmit}>
+        <button className={styles.submitBtn} type="submit"><Icon name='MagnifierGlass' /></button>
         <input name="query" 
             type="text"
             autoComplete="off"
             value={formData.query} 
             onChange={handleChange}
             className={styles.inputBar}
+            placeholder='Juggler'
             />
-        <button className={styles.submitBtn} type="submit"><Icon name='MagnifierGlass' /></button>
-        
       </form>
 
     </div>

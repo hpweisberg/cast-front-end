@@ -2,3 +2,7 @@
   background-image: url('./assets/plus.svg');
   background-repeat: repeat;
 } */
+
+.icon {
+  width: 35px;
+}

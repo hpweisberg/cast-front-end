@@ -37,27 +37,31 @@ const Landing = ({ user }) => {
           <Link to='/login' className={styles.logInBtn}>Log In</Link>
         </div>
 
-        <div className='createAccountCTA'>
+        <div className={styles.createAccountCTA}>
           <p>Create your account today</p>
-          <Link 
-            to='/signup'
-            className={styles.actorsBtn}
-            state={{signupType: "talent"}}
-          >
-            Actors
-          </Link>
-          <Link 
-            to='/signup' 
-            className={styles.cdBtn}
-            state={{signupType: "cd"}}
-          >
-              Casting Directors
+          <div className="ctaButtons">
+
+            <Link 
+              to='/signup'
+              className={styles.actorsBtn}
+              state={{signupType: "talent"}}
+              >
+              Actors
             </Link>
+            <Link 
+              to='/signup' 
+              className={styles.cdBtn}
+              state={{signupType: "cd"}}
+              >
+                Casting Directors
+            </Link>
+          </div>
+
         </div>
 
       </div>
 
-      <SignupCTA />
+      {/* <SignupCTA /> */}
     </main>
   )
 }
