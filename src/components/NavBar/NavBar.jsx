@@ -27,19 +27,19 @@ const NavBar = ({ user, profile, handleLogout }) => {
 
           {user ?
             <ul>
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/talent'>Talent Search</Link></li>
-              <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
-              <li><Link to='/profile'>Profile</Link></li>
+              <li><Link to='/' onClick={toggle} >Home</Link></li>
+              <li><Link to='/talent' onClick={toggle} >Talent Search</Link></li>
+              <li><Link to={`/cd/${profile.cdAccount?._id}/lists`} onClick={toggle} >Lists</Link></li>
+              <li><Link to='/profile' onClick={toggle} >Profile</Link></li>
               {/* Items below here will be removed in final app */}
-              <li><Link to='/profiles'>Profiles</Link></li>
-              <li><Link to='/change-password'>Change Password</Link></li>
-              <li><Link to='' onClick={handleLogout}>LOG OUT</Link></li>
+              <li><Link to='/profiles' onClick={toggle} >Profiles</Link></li>
+              <li><Link to='/change-password' onClick={toggle} >Change Password</Link></li>
+              <li><Link to='' onClick={handleLogout} >LOG OUT</Link></li>
             </ul>
             :
             <ul>
-              <li><Link to='/'>Home</Link></li>
-              <li><Link to='/login'>Log In</Link></li>
+              <li><Link to='/' onClick={toggle} >Home</Link></li>
+              <li><Link to='/login' onClick={toggle} >Log In</Link></li>
             </ul>
           }
 
