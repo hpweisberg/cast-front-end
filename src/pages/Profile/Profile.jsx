@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 
+import './Profile.css'
+
 import * as profileService from '../../services/profileService'
 
 import Experience from "../../components/Experience/Experience";
@@ -14,16 +16,16 @@ const Profile = (props) => {
   const [profile, setProfile] = useState({})
   const [talentId, setTalentId] = useState(null)
   const [cdId, setCdId] = useState(null)
-
+  console.log(profile);
 
   useEffect(() => {
     const fetchProfile = async () => {
       const profileData = await profileService.getProfile(props.user.profile)
       setProfile(profileData)
       if(profileData.isCd) {
-        setCdId(profileData.cdAccount._id)
+        setCdId(profileData.cdAccount)
       } else {
-        setTalentId(profileData.talentAccount._id)
+        setTalentId(profileData.talentAccount)
       }
     }
     fetchProfile()
@@ -32,44 +34,36 @@ const Profile = (props) => {
 
 
   console.log('PROFILE', profile);
-console.log('TALENTID', talentId);
-console.log('CDID', cdId);
+  console.log('TALENTID', talentId);
+  console.log('CDID', cdId);
   
   if(!profile) return "loading"
 
   return ( 
-    <>
-      <h1>Profile Component</h1>
-      <Link 
-        to="/profile/edit"
-        state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
-      >
-        Edit Profile
-      </Link>
-      <p>Name: {profile.name}</p>
-      <p>{profile.photo}</p>
+    <section className="profileDetails">
+      <h1>{profile.name}</h1>
+      {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
       <p>Pronouns: {profile.pronouns}</p>
       <p>Location: {profile.location}</p>
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
-      {profile.cdAccount ?
-        <p>Company {profile.cdAccount.company}</p>
-        :
-        ""
-      }
+      {profile.cdAccount && <p>Company {profile.cdAccount.company}</p>}
       
-      {profile.talentAccount ?
+      {profile.talentAccount
+      
+      &&
+
       <>
-      <h1>talent account details</h1>
+
       <p>About: {profile.talentAccount.about}</p>
       <p>Union Status: {profile.talentAccount.unionStatus}</p>
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
-      <p>height: {profile.talentAccount.height}</p>
+      <p>Height: {profile.talentAccount.height}</p>
       <p>Weight: {profile.talentAccount.weight}</p>
-      <p>skills: {profile.talentAccount.skills}</p>
-      <p>trades: {profile.talentAccount.trades}</p>
+      <p>Skills: {profile.talentAccount.skills}</p>
+      <p>Trades: {profile.talentAccount.trades}</p>
 
       {profile.talentAccount.experience.map(experience => 
         <>
@@ -79,11 +73,13 @@ console.log('CDID', cdId);
             experience={experience}
             talentId={talentId}  
           />
-          <form onSubmit={()=> props.handleDeleteExperience(talentId, experience._id)}>
+          <form onSubmit={()=> props.handleDeleteExperience(talentId._id, experience._id)}>
             <button type='submit'>Delete</button>
           </form>  
         </>
       )}
+      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
+
       {profile.talentAccount.education.map(education => 
         <>
           <Education 
@@ -92,11 +88,13 @@ console.log('CDID', cdId);
             talentId={talentId}
             handleDeleteEducation={props.handleDeleteEducation}
             />
-            <form onSubmit={()=> props.handleDeleteEducation(talentId, education._id)}>
+            <form onSubmit={()=> props.handleDeleteEducation(talentId._id, education._id)}>
               <button type='submit'>Delete</button>
             </form>  
         </>
       )}
+      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
+
       {profile.talentAccount.training.map(training => 
         <>
           <Training 
@@ -105,20 +103,25 @@ console.log('CDID', cdId);
             talentId={talentId}
             handleDeleteTraining={props.handleDeleteTraining}
           />
-          <form onSubmit={()=> props.handleDeleteTraining(talentId, training._id)}>
+          <form onSubmit={()=> props.handleDeleteTraining(talentId._id, training._id)}>
             <button type='submit'>Delete</button>
           </form>  
         </>
       )}
-
-      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
-      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
       <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       </>
-      :
-      ""
-    }
-    </> 
+      }
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link 
+          to="/profile/edit"
+          state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
+        >
+          Edit Profile
+        </Link>
+      }
+    </section> 
   );
 }
 

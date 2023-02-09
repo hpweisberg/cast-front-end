@@ -15,7 +15,7 @@ const TalentCard = ( {profile, talent} ) => {
     <div className={styles.center}>
       <Link to={`/talent/${talent._id}`} state={{talent}} className={styles.link}>
         <section className={styles.talentCardContainer}>
-          <img src={talent.headshot} alt="user talent pic" className={styles.photo}></img>
+          {(talent.headshot) ? <img src={talent.headshot} alt="user talent pic" className={styles.photo}></img> : <p>NO HEADSHOT</p>}
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
             <h3>{talent.name}</h3>

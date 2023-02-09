@@ -14,3 +14,15 @@
 .inputContainer {
   margin-bottom: 1rem;
 }
+
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent !important;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}

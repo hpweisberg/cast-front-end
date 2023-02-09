@@ -12,7 +12,7 @@ const AddTraining = (props) => {
     institution: '',
     focus: '',
     teacher: '',
-    talentProfileId: talentId
+    talentProfileId: talentId._id
   })
   
   const handleChange = ({target}) => {

@@ -1,0 +1,23 @@
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.profileDetails * {
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  align-self: center;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+.profileDetails > p {
+  margin: 8px 0;
+  font-size: 16px;
+}

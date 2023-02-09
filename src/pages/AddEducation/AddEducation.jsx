@@ -19,7 +19,7 @@ const AddEducation = (props) => {
     major: '',
     graduated: checked,
     year: '',
-    talentProfileId: talentId
+    talentProfileId: talentId._id
   })
   
   const handleChange = ({target}) => {

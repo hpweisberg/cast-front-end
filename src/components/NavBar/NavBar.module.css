@@ -19,6 +19,10 @@
   transform: translateX(-100%);
 }
 
+.menu h4 {
+  font-size: 16px;
+}
+
 .menu, .open {
   transform: translateX(0);
 }
@@ -27,6 +31,7 @@ ul {
   list-style-type: none;
   text-align: center;
   padding: 0;
+  font-size: 12px;
 }
 
 a {

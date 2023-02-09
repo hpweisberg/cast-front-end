@@ -153,7 +153,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profile = await profileService.getProfile(user.profile)
+      const profile = await profileService.getProfile(user.profile._id)
       setProfile(profile)
     }
     if (user) fetchProfile()
