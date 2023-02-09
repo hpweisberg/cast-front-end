@@ -25,7 +25,7 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
   
   return ( 
     <div id='listIndex'>
-      <h1>List Index</h1> 
+      <h1>Your Lists</h1> 
       {
         (lists.length)
 

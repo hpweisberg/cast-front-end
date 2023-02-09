@@ -18,7 +18,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
       <div className={styles.navRow}>
 
 
-        <div className={styles.menuIcon} onClick={toggle}>
+        <div className={styles.menuIcon} id={styles.menuIcon} onClick={toggle}>
           <Icon name='Menu' />
         </div>
         {isOpen && (
