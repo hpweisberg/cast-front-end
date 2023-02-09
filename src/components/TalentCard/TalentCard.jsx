@@ -13,19 +13,28 @@ const TalentCard = ( {profile, talent} ) => {
 
   return (
     <div className={styles.center}>
-      <Link to={`/talent/${talent._id}`} state={{talent}} className={styles.link}>
         <section className={styles.talentCardContainer}>
-          {(talent.headshot) ? <img src={talent.headshot} alt="user talent pic" className={styles.photo}></img> : <p>NO HEADSHOT</p>}
+          <Link to={`/talent/${talent._id}`} state={{talent}} className={styles.link}>
+            {(talent.headshot) ? 
+                <img src={talent.headshot} alt="user talent pic" className={styles.photo}></img> 
+                : 
+                <p>NO HEADSHOT</p>
+            }
+          </Link>
+          
           <div className={styles.overflow}></div>
           <div className={styles.glanceInfo}>
             <h3>{talent.name}</h3>
             <p className={styles.pronouns}>{talent.profile?.pronouns}</p>
             <p className={styles.union}>{talent.unionStatus}</p>
             <p className={styles.location}>{talent.profile?.location}</p>
-            <p className={styles.reelsIcon}><Icon name='Reels' className={styles.reelsIcon} /> {talent.reel}</p>
+            <p className={styles.reelsIcon}>
+              <Link to={talent.reelLink}>
+                <Icon name='Reels' className={styles.reelsIcon} />
+              </Link>
+            </p>
           </div>
         </section>
-      </Link>
     </div>
   )
 }
