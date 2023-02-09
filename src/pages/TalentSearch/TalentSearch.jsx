@@ -25,7 +25,11 @@ const TalentSearch = (props) => {
   const handleUserInput = (e) => {
     setInputValue(e.target.value)
   }
-
+  console.log('SEARCH', talentSearch);
+  console.log('DATA', talentData);
+  const handleResetSearchInput = () => {
+    setInputValue('')
+  }
 
   const handleClearSearch = () => {
     setTalentSearch(talentData)
@@ -47,15 +51,24 @@ const TalentSearch = (props) => {
 
   return (
     <>
+
       <div className={styles.searchContainer}>
         <Icon name='MagnifierGlass' />
-        <input type='text' className={styles.searchBar} placeholder={'Juggler'}>
-
-        </input>  
-      <Icon name='Reset' />
-
+        <input 
+          type='text' 
+          className={styles.searchBar} 
+          placeholder={'Juggler'}
+        >
+        </input>
+        <Icon name='Reset' />
       </div>
-      <SearchBar className={styles.searchBar} value={inputValue} handleTalentSearch={handleTalentSearch} handleUserInput={handleUserInput} />
+
+      <SearchBar 
+        className={styles.searchBar} 
+        value={inputValue} 
+        handleTalentSearch={handleTalentSearch} 
+        handleUserInput={handleUserInput}
+      />
         <button onClick={handleClearSearch}>
           clear
         </button>

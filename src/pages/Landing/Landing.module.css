@@ -4,6 +4,9 @@
   flex-direction: column;
 }
 
+.container * {
+  text-align: center;
+}
 
 .actorsBtn, .cdBtn {
   padding: 0.6em 2em;
@@ -19,6 +22,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   text-decoration: none;
+  margin: 5px;
 }
 
 .actorsBtn:before, .cdBtn:before {
@@ -141,4 +145,8 @@
   left: 0;
   top: 0;
   border-radius: 10px;
+}
+
+.logInCTA {
+  margin: 0 0 32px 0;
 }
