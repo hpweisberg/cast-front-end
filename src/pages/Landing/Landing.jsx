@@ -37,7 +37,7 @@ const Landing = ({ user }) => {
           <Link to='/login' className={styles.logInBtn}>Log In</Link>
         </div>
 
-        <div className='createAccountCTA'>
+        <div className={styles.createAccountCTA}>
           <p>Create your account today</p>
           <div className="ctaButtons">
 
