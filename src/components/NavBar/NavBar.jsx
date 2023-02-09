@@ -18,6 +18,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
       <div className={styles.navRow}>
 
         <div className={styles.menuIcon} onClick={toggle}>
+
           <Icon name='Menu' />
         </div>
         {isOpen && (
@@ -26,7 +27,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
 
           {user ?
             <ul>
-              <li>Welcome, {user.name}</li>
+              <h4>Welcome, {user.name}</h4>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
               {
