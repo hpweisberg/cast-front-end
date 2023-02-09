@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, Navigate } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
 
 // Services
@@ -21,17 +21,17 @@ const TalentDetails = (props) => {
   const location = useLocation()
   const talent = location.state?.talent
 
-  console.log("talent", talent)
-  
   const handleChange = ({target}) => {
     setForm({...form, [target.name]: target.value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleAddToList(form._id, talent._id)
+    props.handleAddToList(form._id, talent._id, props.profile.cdAccount._id)
   }
-  console.log('STATE TALENT', talent);
+
+  console.log("profile test ", props.profile.cdAccount._id)
+
   return (
     <>
       <div className={styles.talentDetailsContainer}>
@@ -82,18 +82,18 @@ const TalentDetails = (props) => {
         )}
       
         <form onSubmit={handleSubmit}>
-            <select
-                required
-                name='_id'
-                value={form._id}
-                onChange={handleChange}
-                placeholder={`select a list`}
-            >
-              <option>Select a List</option>
+          <select
+              required
+              name='_id'
+              value={form._id}
+              onChange={handleChange}
+              placeholder={`select a list`}
+          >
+            <option>Select a List</option>
               {props.lists.map(list => (
                 <option key={list._id} value={list._id}>{list.titleOfList}</option>
               ))}
-            </select>
+          </select>
             <button type='submit'>Add to List!</button>
         </form>
     </>
