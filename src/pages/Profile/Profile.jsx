@@ -41,13 +41,13 @@ const Profile = (props) => {
 
   return ( 
     <section className="profileDetails">
-      <h1>{profile.name}</h1>
-      {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
+      <h1 id="name">{profile.name}</h1>
       <p>Pronouns: {profile.pronouns}</p>
+      {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
       <p>Location: {profile.location}</p>
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
-      <p>Website: {profile.website}</p>
+      <a href={`${profile.website}`}>Visit {profile.name}'s website</a>
       {profile.cdAccount && <p>Company {profile.cdAccount.company}</p>}
       
       {profile.talentAccount
@@ -65,6 +65,7 @@ const Profile = (props) => {
       <p>Skills: {profile.talentAccount.skills}</p>
       <p>Trades: {profile.talentAccount.trades}</p>
 
+      <h2>Experience</h2>
       {profile.talentAccount.experience.map(experience => 
         <>
           <Experience 
@@ -74,12 +75,17 @@ const Profile = (props) => {
             talentId={talentId}  
           />
           <form onSubmit={()=> props.handleDeleteExperience(talentId._id, experience._id)}>
-            <button type='submit'>Delete</button>
+            <button id="remove" type='submit'>Remove Record</button>
           </form>  
         </>
       )}
-      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
+      }
 
+      <h2>Education</h2> 
       {profile.talentAccount.education.map(education => 
         <>
           <Education 
@@ -89,12 +95,17 @@ const Profile = (props) => {
             handleDeleteEducation={props.handleDeleteEducation}
             />
             <form onSubmit={()=> props.handleDeleteEducation(talentId._id, education._id)}>
-              <button type='submit'>Delete</button>
+              <button id="remove" type='submit'>Remove Record</button>
             </form>  
         </>
       )}
-      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
+      }
 
+      <h2>Training</h2> 
       {profile.talentAccount.training.map(training => 
         <>
           <Training 
@@ -104,11 +115,15 @@ const Profile = (props) => {
             handleDeleteTraining={props.handleDeleteTraining}
           />
           <form onSubmit={()=> props.handleDeleteTraining(talentId._id, training._id)}>
-            <button type='submit'>Delete</button>
+            <button id="remove" type='submit'>Remove Record</button>
           </form>  
         </>
       )}
-      <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
+      }
       </>
       }
       {

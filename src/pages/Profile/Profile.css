@@ -13,11 +13,37 @@ img {
   align-self: center;
 }
 
-h1 {
-  font-size: 36px;
+
+
+.profileDetails h2 {
+  font-size: 24px;
+  text-align: left;
+  margin: 0;
 }
 
 .profileDetails > p {
   margin: 8px 0;
   font-size: 16px;
+}
+
+.profileDetails > a {
+  text-decoration: underline;
+  margin: 8px 0;
+  font-size: 16px;
+
+}
+
+.profileDetails form {
+  align-self: right;
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+#remove {
+  text-align: right;
+  padding: 0;
+}
+
+#name {
+  font-size: 32px;
 }

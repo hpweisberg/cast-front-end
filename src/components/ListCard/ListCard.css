@@ -25,13 +25,13 @@
   gap: 4px;
 }
 
-h4 {
+.card h4 {
   margin: 0 0 0 8px;
   font-size: 24px;
   justify-content: center;
 }
 
-p {
+.card p {
   font-size: 24px;
   margin: 0;
 }

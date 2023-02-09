@@ -1,18 +1,16 @@
-
+import '../Experience/Experience.css'
 
 const Training = (props) => {
   const training = props.training
   
-
-
   return ( 
-    <>
-      <h1>Training Component</h1> 
-      <p>Instituion: {training.institution}</p>
+    <div className='recordCard'>
+
+      <h3>{training.institution}</h3>
       <p>Focus: {training.focus}</p>
       <p>Teacher: {training.teacher}</p>
-    </>
+    </div>
   );
 }
- 
+
 export default Training;

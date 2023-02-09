@@ -34,7 +34,7 @@ ul {
   font-size: 12px;
 }
 
-a {
+.navRow a {
   text-decoration: none;
   color: black;
 }
