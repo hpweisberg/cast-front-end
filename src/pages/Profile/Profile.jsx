@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 
+import './Profile.css'
+
 import * as profileService from '../../services/profileService'
 
 import Experience from "../../components/Experience/Experience";
@@ -32,45 +34,46 @@ const Profile = (props) => {
 
 
   console.log('PROFILE', profile);
-console.log('TALENTID', talentId);
-console.log('CDID', cdId);
+  console.log('TALENTID', talentId);
+  console.log('CDID', cdId);
   
   if(!profile) return "loading"
 
   return ( 
-    <>
-      <h1>Profile Component</h1>
-      <Link 
-        to="/profile/edit"
-        state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
-      >
-        Edit Profile
-      </Link>
-      <p>Name: {profile.name}</p>
-      <p>{profile.photo}</p>
+    <section className="profileDetails">
+      {
+        (profile.talentAccount === talentId)
+      &&
+        <Link 
+          to="/profile/edit"
+          state={{isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile}}
+        >
+          Edit Profile
+        </Link>
+      }
+      <h1>{profile.name}</h1>
+      {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
       <p>Pronouns: {profile.pronouns}</p>
       <p>Location: {profile.location}</p>
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
       <p>Website: {profile.website}</p>
-      {profile.cdAccount ?
-        <p>Company {profile.cdAccount.company}</p>
-        :
-        ""
-      }
+      {profile.cdAccount && <p>Company {profile.cdAccount.company}</p>}
       
-      {profile.talentAccount ?
+      {profile.talentAccount
+      
+      &&
+
       <>
-      <h1>talent account details</h1>
-      <img src={profile.image} alt="user talent pic" ></img>
+
       <p>About: {profile.talentAccount.about}</p>
       <p>Union Status: {profile.talentAccount.unionStatus}</p>
       <p>Hair: {profile.talentAccount.hair}</p>
       <p>eyes: {profile.talentAccount.eyes}</p>
-      <p>height: {profile.talentAccount.height}</p>
+      <p>Height: {profile.talentAccount.height}</p>
       <p>Weight: {profile.talentAccount.weight}</p>
-      <p>skills: {profile.talentAccount.skills}</p>
-      <p>trades: {profile.talentAccount.trades}</p>
+      <p>Skills: {profile.talentAccount.skills}</p>
+      <p>Trades: {profile.talentAccount.trades}</p>
 
       {profile.talentAccount.experience.map(experience => 
         <>
@@ -85,6 +88,8 @@ console.log('CDID', cdId);
           </form>  
         </>
       )}
+      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
+
       {profile.talentAccount.education.map(education => 
         <>
           <Education 
@@ -98,6 +103,8 @@ console.log('CDID', cdId);
             </form>  
         </>
       )}
+      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
+
       {profile.talentAccount.training.map(training => 
         <>
           <Training 
@@ -111,15 +118,10 @@ console.log('CDID', cdId);
           </form>  
         </>
       )}
-
-      <Link to="/profile/add-experience" state={{talentId: talentId}}>Add Experience</Link>
-      <Link to="/profile/add-education" state={{talentId: talentId}}>Add Education</Link>
       <Link to="/profile/add-training" state={{talentId: talentId}}>Add Training</Link>
       </>
-      :
-      ""
-    }
-    </> 
+      }
+    </section> 
   );
 }
 
