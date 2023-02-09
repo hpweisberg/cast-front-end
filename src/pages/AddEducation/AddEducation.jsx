@@ -61,15 +61,12 @@ const AddEducation = (props) => {
         onChange={handleChange}
       />
 
-      <p>checkboxx</p>
-      <label htmlFor="graduated-input"></label>
+      <label htmlFor="graduated-input">Graduated?</label>
       <input 
         id="graduated-input"
         type="checkbox"
         checked={checked}
         onChange={handleCheckbox}
-        
-
       />
 
       <label htmlFor="year-input">Year</label>

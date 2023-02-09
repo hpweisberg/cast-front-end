@@ -12,7 +12,8 @@ const NavBar = ({ user, profile, handleLogout }) => {
     console.log('toggle is working')
     setIsOpen(!isOpen)
   }
-
+  console.log(user);
+  console.log(profile);
   return (
     <>
       <div className={styles.navRow}>

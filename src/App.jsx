@@ -191,7 +191,7 @@ const App = () => {
     }
   }
   
-  console.log(profile);
+  console.log('PROFILE', profile);
 
   return (
     <>
