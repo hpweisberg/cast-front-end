@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 import { useEffect } from 'react'
+import Profile from '../../pages/Profile/Profile'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -21,7 +22,7 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
-
+console.log(props);
   const handleChangePhoto = (evt) => {
     setPhotoData({ photo: evt.target.files[0] })
   }
@@ -112,23 +113,27 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="photo-upload" className={styles.label}>
-          Upload Photo
-        </label>
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </div>
+      {
+        (!isCd)
+      &&
+        <div className={styles.inputContainer}>
+          <label htmlFor="photo-upload" className={styles.label}>
+            Upload Headshot
+          </label>
+          <input
+            type="file"
+            id="photo-upload"
+            name="photo"
+            onChange={handleChangePhoto}
+          />
+        </div>
+      }
       <div className={styles.inputContainer}>
         <button disabled={isFormInvalid()} className={styles.button}>
-          Sign Up
+          SIGN UP
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button>CANCEL</button>
         </Link>
       </div>
     </form>
