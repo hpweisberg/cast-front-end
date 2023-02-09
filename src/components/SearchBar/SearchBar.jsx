@@ -15,6 +15,12 @@ const SearchBar = (props) => {
     evt.preventDefault()
     props.handleTalentSearch(formData)
   }
+
+  const resetForm = (e) => {
+    setFormData({query: ''})
+    props.handleClearSearch()
+  }
+  
   return (
     <>
     <div className={styles.searchContainer}>
@@ -27,9 +33,11 @@ const SearchBar = (props) => {
             value={formData.query} 
             onChange={handleChange}
             className={styles.inputBar}
-            placeholder='Juggler'
             />
       </form>
+        <button onClick={resetForm} className={styles.btnBackground}>
+          <Icon className={styles.btnBackground} name='Reset' />
+        </button>
 
     </div>
     </>
