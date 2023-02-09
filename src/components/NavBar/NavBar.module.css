@@ -3,7 +3,7 @@
   cursor: pointer;
   display: inline-block;
   padding: 10px 15px;
-
+  align-self: center;
 }
 
   .menu {
@@ -12,8 +12,8 @@
     left: -100%;
     width: 80%;
     height: 100%;
-    background-color: slategray;
-    color: white;
+    /* background-color: slategray; */
+    color: black;
     transition: transform 0.3s ease-out;
     transform: translateX(-100%);
   }
@@ -22,12 +22,27 @@
   transform: translateX(0);
 }
 
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .navRow {
   display: flex;
+
+  justify-content: space-between;
+  width: 90%;
 }
 
 .logo {
   width: 100px;
+  height: 60px;
   justify-content: center;
   align-items: center;
 }

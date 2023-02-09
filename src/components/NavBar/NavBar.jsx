@@ -27,7 +27,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
 
           {user ?
             <ul>
-              <li>Welcome, {user.name}</li>
+              <h4>Welcome, {user.name}</h4>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
               {
