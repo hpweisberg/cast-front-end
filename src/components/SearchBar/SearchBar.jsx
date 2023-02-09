@@ -33,6 +33,7 @@ const SearchBar = (props) => {
             value={formData.query} 
             onChange={handleChange}
             className={styles.inputBar}
+            placeholder="Enter search query..."
             />
       </form>
         <button onClick={resetForm} className={styles.btnBackground}>
