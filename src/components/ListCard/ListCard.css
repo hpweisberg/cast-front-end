@@ -25,7 +25,7 @@
   gap: 4px;
 }
 
-#listIndex > h4 {
+h4 {
   margin: 0 0 0 8px;
   font-size: 24px;
   justify-content: center;

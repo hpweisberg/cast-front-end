@@ -23,7 +23,7 @@ return (
       <div className='people'>
         <p>{list.talent?.length}</p>
         <Icon name='People' />
-      </div>  
+      </div> 
     </Link>
 
 )

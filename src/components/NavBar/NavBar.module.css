@@ -1,14 +1,10 @@
 .menuIcon > * {
-  width: 100px;
+  width: 60px;
   height: 40px;
   cursor: pointer;
   display: inline-block;
   padding: 10px 55px 10px 15px;
   align-self: center;
-}
-
-#menuIcon {
-  width: 100px;
 }
 
 .menu {
