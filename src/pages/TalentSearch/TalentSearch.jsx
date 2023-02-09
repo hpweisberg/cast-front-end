@@ -46,8 +46,6 @@ const TalentSearch = (props) => {
 
   if (!talentSearch) return "loading"
 
-  console.log('this is the inputValue:',inputValue)
-  console.log('talent Data Value::',talentData)
   return (
     <>
       <div className={styles.searchContainer}>

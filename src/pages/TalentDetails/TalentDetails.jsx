@@ -14,7 +14,7 @@ import Icon from "../../components/Icon/Icon"
 
 const TalentDetails = (props) => {
   const { talentId } = useParams()
-  // const [talent, setTalent] = useState(null)
+
   const [form, setForm] = useState({
     _id: ''
   })
@@ -31,8 +31,8 @@ const TalentDetails = (props) => {
     e.preventDefault()
     props.handleAddToList(form._id, talent._id)
   }
-  // console.log('FORM', form._id);
-  // console.log('TALENT',talent._id);
+
+  
   return (
     <>
       <div className={styles.talentDetailsContainer}>

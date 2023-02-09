@@ -1,9 +1,8 @@
-import { useParams } from "react-router-dom";
-import TalentCard from "../TalentCard/TalentCard";
+// import { useParams } from "react-router-dom";
+// import TalentCard from "../TalentCard/TalentCard";
 
 const Experience = (props) => {
 
-  console.log('inside experience:::', props.experience)
   return ( 
     <>
     
