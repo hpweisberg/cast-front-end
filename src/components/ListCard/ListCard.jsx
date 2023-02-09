@@ -8,8 +8,7 @@ import * as cdService from '../../services/cdService'
 // import styles from './ListCard.module.css'
 
 const ListCard = ({ list, profile, handleDeleteList }) => {
-
-
+console.log(list);
 
 // useEffect(() => {
 //   const fetchList = async () => {
@@ -18,11 +17,10 @@ const ListCard = ({ list, profile, handleDeleteList }) => {
 //   }
 //   fetchList()
 // }, [profile.cdAccount, list._id])
-
 return (
   <>
-    <button onClick={()=>{handleDeleteList((list._id))}}>x</button>
-    <Link to={`/cd/${profile.cdAccount}/lists/${list._id}`}>
+    <button onClick={()=>{handleDeleteList((list?.id))}}>x</button>
+    <Link to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
       <h4>
         {list.titleOfList}
       </h4>

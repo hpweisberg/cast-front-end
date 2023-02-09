@@ -13,6 +13,8 @@ const TalentCard = (props, {talent} ) => {
   console.log('talent test:', talent)
 
 
+
+
   return (
     <div className={styles.center}>
       <Link to={`/talent/${props.talent._id}`} state={{talent: props.talent}} className={styles.link}>

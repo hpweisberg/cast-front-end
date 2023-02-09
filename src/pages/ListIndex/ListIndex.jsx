@@ -14,8 +14,6 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
     titleOfList: ''
   })
 
-  const { id } = useParams()
-
   // useEffect(() => {
   //   const fetchLists = async () => {
   //     const lists = await cdService.indexLists(id)
@@ -34,7 +32,8 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
     e.preventDefault()
     handleCreateList(newListForm)
   }
-  console.log('LIST INDEX', lists);
+  console.log('NEW LIST FORM', newListForm);
+  console.log(profile);
   // const handleCreateList = async (e) => {
   //   e.preventDefault()
   //   const newList = await cdService.newList(profile.cdAccount, newListForm)
@@ -46,14 +45,25 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
   return ( 
     <>
       <h1>List Index</h1> 
-      {lists.map((list, idx) => (
-          <ListCard 
-            profile={profile} 
-            list={list} 
-            key={idx}
-            handleDeleteList={handleDeleteList}
-          />
-      ))}
+      {
+        (lists.length)
+
+        ?
+
+        lists.map((list, idx) => (
+            <ListCard 
+              profile={profile} 
+              list={list} 
+              key={idx}
+              handleDeleteList={handleDeleteList}
+            />
+        ))
+
+        :
+
+        <h3>Create a List!</h3>
+
+        }
       <h1>New List</h1>
       <form onSubmit={handleSubmit} className={styles.newListGroup}>
         <input
@@ -65,9 +75,9 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
           onChange={handleChange}
           className={styles.listInput}
         />
-        {/* <Button variant="contained" type='submit'>
+        <button variant="contained" type='submit'>
           Create New List
-        </Button> */}
+        </button>
       </form>
     </>
   );

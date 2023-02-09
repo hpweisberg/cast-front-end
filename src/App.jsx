@@ -161,28 +161,36 @@ const App = () => {
   
   useEffect(() => {
     const fetchLists = async () => {
-      const lists = await cdService.indexLists(profile.cdAccount)
+      const lists = await cdService.indexLists(profile.cdAccount._id)
       setLists(lists)
     }
     if (profile?.cdAccount) fetchLists()
   }, [profile])
 
   const handleCreateList = async (listData) => {
-    const newList = await cdService.newList(profile?.cdAccount, listData)
+    const newList = await cdService.newList(profile?.cdAccount._id, listData)
     setLists([...lists, newList])
   }
 
   const handleDeleteList = async (listId) => {
-    await cdService.deleteList(listId, profile.cdAccount)
+    await cdService.deleteList(listId, profile.cdAccount._id)
     setLists(lists.filter(list => list._id !== listId))
   }
+
   const handleAddToList = async (listId, talent) => {
     try {
-      await cdService.addToList(profile.cdAccount, listId, talent)
+      const updatedList = await cdService.addToList(profile.cdAccount._id, listId, talent)
+      setLists(lists.map((l) => { 
+        return l._id === updatedList._id
+          ? updatedList
+          : l
+      }))
     } catch (error) {
       console.log(error);
     }
   }
+
+
   
   return (
     <>
@@ -309,7 +317,7 @@ const App = () => {
           path='/cd/:id/lists/:listId'
           element={
             <ProtectedRoute user={user}>
-              <ListDetails />
+              <ListDetails lists={lists} setLists={setLists} cd={profile.cdAccount}/>
             </ProtectedRoute>
           }
         /> 
