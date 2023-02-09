@@ -12,8 +12,8 @@ import Training from "../../components/Training/Training";
 const Profile = (props) => {
   
   const [profile, setProfile] = useState({})
-  const [talentId, setTalentId] = useState('')
-  const [cdId, setCdId] = useState('')
+  const [talentId, setTalentId] = useState(null)
+  const [cdId, setCdId] = useState(null)
 
 
   useEffect(() => {
@@ -28,8 +28,12 @@ const Profile = (props) => {
     }
     fetchProfile()
   }, [props.user.profile])
-  
 
+
+
+  console.log('PROFILE', profile);
+console.log('TALENTID', talentId);
+console.log('CDID', cdId);
   
   if(!profile) return "loading"
 
