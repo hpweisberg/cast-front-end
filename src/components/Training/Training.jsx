@@ -1,27 +1,16 @@
-import styles from './Training.module.css'
+
 
 const Training = (props) => {
   const training = props.training
+  
+  return ( 
+    <div className='recordCard'>
 
-
-
-  return (
-    <>
-      <h1>Training</h1>
-      <div className={styles.container}>
-        <div className={styles.left}>
-          <p><span className={styles.smallText}>Instituion: </span></p>
-          <p><span className={styles.smallText}>Focus: </span></p>
-          <p><span className={styles.smallText}>Teacher:  </span></p>
-        </div>
-        <div className={styles.right}>
-          <p>{training.institution}</p>
-          <p>{training.focus}</p>
-          <p>{training.teacher}</p>
-        </div>
-      </div>
-    </>
+      <h3>{training.institution}</h3>
+      <p>Focus: {training.focus}</p>
+      <p>Teacher: {training.teacher}</p>
+    </div>
   );
 }
-
+ 
 export default Training;
