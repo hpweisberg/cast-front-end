@@ -30,11 +30,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <h4>Welcome, {user.name}</h4>
               <li><Link to='/'>Home</Link></li>
               <li><Link to='/talent'>Talent Search</Link></li>
-              {
-                (user.profile.cdAccount)
-                &&
-                <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
-              }
+              <li><Link to={`/cd/${profile.cdAccount?._id}/lists`}>Lists</Link></li>
               <li><Link to='/profile'>Profile</Link></li>
               {/* Items below here will be removed in final app */}
               <li><Link to='/profiles'>Profiles</Link></li>

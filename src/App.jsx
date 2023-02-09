@@ -191,6 +191,8 @@ const App = () => {
     }
   }
   
+  console.log(profile);
+
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />
