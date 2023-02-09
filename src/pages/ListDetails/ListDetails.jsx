@@ -43,7 +43,7 @@ const ListDetails = (props) => {
         {list.talent.map((talent, idx) => (
           <div key={talent._id+idx}>
             <button onClick={() => {handleRemoveFromList( (list._id), (talent._id))}}>x</button>
-            <TalentCard profile={talent.profile} talent={talent._id}/>
+            <TalentCard profile={talent.profile} talent={talent}/>
           </div>
         ))}
 
