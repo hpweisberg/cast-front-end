@@ -35,6 +35,8 @@ const TalentDetails = (props) => {
   console.log('STATE TALENT', talent);
   return (
     <>
+
+    
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
         <Link to={`/talent/`} className={styles.link}> <button className={styles.backBtn} ><Icon name='Back' /></button></Link>
@@ -42,7 +44,7 @@ const TalentDetails = (props) => {
             <h1>{talent.name}</h1>
             <h6>{talent.profile?.pronouns}</h6>
           </div>
-          <button className={styles.editBtn}><Icon name='Edit' /></button>
+          <Link to={`/profile/`} className={styles.link}><button className={styles.editBtn}><Icon name='Edit' /></button></Link>
         </div>
         {/* this commented out div seems to be making things act wonky. */}
         <div className={styles.headshotDeatils}>
