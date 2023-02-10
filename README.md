@@ -37,7 +37,6 @@ This app was born out of a desire to optimize a very manual casting process. Ins
 - Express.js
 - Netlify
 - Fly.io
-- Google Auth
 
 ## Future Enhancements
 
