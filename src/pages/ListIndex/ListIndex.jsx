@@ -27,9 +27,9 @@ const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
       {
         profile.isCd
       ?
-        <div id='listIndex' className={styles.container}>
+        <div id='list-index' className={styles.container}>
           <h1>New List</h1>
-          <form onSubmit={handleSubmit} className="newListGroup">
+          <form onSubmit={handleSubmit} className="new-list-group">
             <input
               required
               type="text"
@@ -37,7 +37,7 @@ const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
               id="title-input"
               placeholder="Title of List"
               onChange={handleChange}
-              className="listInput"
+              className="list-input"
             />
             <button variant="contained" id="submit" type="submit">
               Create New List
