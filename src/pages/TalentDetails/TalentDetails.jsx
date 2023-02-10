@@ -92,7 +92,7 @@ const TalentDetails = (props) => {
           </select>
             <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
         </form>
-        </div>
+        </div> 
 
         {talent.experience.map((experience, idx) => 
           <Experience key={idx} experience={experience}/>  
