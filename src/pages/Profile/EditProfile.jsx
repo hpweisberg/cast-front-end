@@ -94,7 +94,7 @@ const EditProfile = (props) => {
     <>
       <div className={styles.container}>
         <h2>Edit Profile Details</h2>
-        <form onSubmit={handleProfileSubmit}>
+        <form className={styles.column} onSubmit={handleProfileSubmit}>
           <label htmlFor="pronouns-input">Pronouns</label>
           <select
             name="pronouns"
@@ -137,7 +137,7 @@ const EditProfile = (props) => {
           <div className={styles.container}>
 
             <h2>Talent Account Details</h2>
-            <form onSubmit={handleTalentSubmit}>
+            <form className={styles.column} onSubmit={handleTalentSubmit}>
               <label htmlFor="union-status-input">Union Status</label>
               <select
                 name="unionStatus"
