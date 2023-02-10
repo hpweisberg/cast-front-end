@@ -6,14 +6,13 @@ import * as React from 'react';
 import './ListIndex.css'
 
 
-const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
+const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
 
   const [newListForm, setNewListForm] = useState({
     titleOfList: ''
   })
 
-  
-  const handleChange = ({target}) => {
+  const handleChange = ({ target }) => {
     setNewListForm({ ...newListForm, [target.name]: target.value })
   }
 
@@ -22,29 +21,23 @@ const ListIndex = ({profile, lists, handleCreateList, handleDeleteList}) => {
     handleCreateList(newListForm)
   }
 
-  
-  return ( 
+  return (
     <div id='listIndex'>
-      <h1>Your Lists</h1> 
+      <h1>Your Lists</h1>
       {
         (lists.length)
-
-        ?
-
-        lists.map((list, idx) => (
-            <ListCard 
-              profile={profile} 
-              list={list} 
+          ?
+          lists.map((list, idx) => (
+            <ListCard
+              profile={profile}
+              list={list}
               key={idx}
               handleDeleteList={handleDeleteList}
             />
-        ))
-
-        :
-
-        <h3>Create a List!</h3>
-
-        }
+          ))
+          :
+          <h3>Create a List!</h3>
+      }
       <h1>New List</h1>
       <form onSubmit={handleSubmit} className="newListGroup">
         <input

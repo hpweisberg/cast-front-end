@@ -13,7 +13,7 @@ const index = async () => {
   }
 }
 
-const show = async(id) => {
+const show = async (id) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
@@ -148,7 +148,7 @@ const deleteExperience = async (talentId, experienceId) => {
     })
     return res.json()
   } catch (error) {
-  console.log(error)
+    console.log(error)
   }
 }
 
@@ -162,7 +162,7 @@ const deleteEducation = async (talentId, educationId) => {
     })
     return res.json()
   } catch (error) {
-  console.log(error)
+    console.log(error)
   }
 }
 
@@ -176,7 +176,7 @@ const deleteTraining = async (talentId, trainingId) => {
     })
     return res.json()
   } catch (error) {
-  console.log(error)
+    console.log(error)
   }
 }
 
@@ -186,7 +186,7 @@ const searchTalent = async (formData) => {
     const res = await fetch(`${BASE_URL}/${formData.query}`)
     return res.json()
   } catch (error) {
-  console.log(error)
+    console.log(error)
   }
 }
 
