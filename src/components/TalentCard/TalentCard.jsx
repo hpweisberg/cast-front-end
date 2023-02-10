@@ -18,7 +18,7 @@ const TalentCard = ({ profile, talent }) => {
         </Link>
         <div className={styles.overflow}></div>
         <div className={styles.glanceInfo}>
-          <h3>{talent.name}</h3>
+          <h3 className={styles.talentName}>{talent.name}</h3>
           <p className={styles.pronouns}>{talent.profile?.pronouns}</p>
           <p className={styles.union}>{talent.unionStatus}</p>
           <p className={styles.location}>{talent.profile?.location}</p>
