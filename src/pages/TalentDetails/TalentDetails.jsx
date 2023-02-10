@@ -37,7 +37,7 @@ const TalentDetails = (props) => {
           </div>
           <Link to={`/profile/`} className={styles.link}><button className={styles.editBtn}><Icon name='Edit' /></button></Link>
         </div>
-        {/* this commented out div seems to be making things act wonky. */}
+
         <div className={styles.headshotDeatils}>
           <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
         </div>
