@@ -11,7 +11,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
   const toggle = () => {
     setIsOpen(!isOpen)
   }
-
+  
   return (
     <>
       <div className={styles.navRow}>
@@ -27,7 +27,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to={`/cd/${profile.cdAccount?._id}/lists`} onClick={toggle} >Lists</Link></li>
               <li><Link to='/profile' onClick={toggle} >Profile</Link></li>
               {/* Items below here will be removed in final app */}
-              <li><Link to='/profiles' onClick={toggle} >Profiles</Link></li>
               <li><Link to='/change-password' onClick={toggle} >Change Password</Link></li>
               <li><Link to='' onClick={handleLogout} >LOG OUT</Link></li>
             </ul>

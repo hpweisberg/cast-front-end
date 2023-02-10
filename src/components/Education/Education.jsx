@@ -1,4 +1,3 @@
-import '../Experience/Experience.css'
 import styles from './Education.module.css'
 
 const Education = (props) => {

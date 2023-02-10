@@ -12,6 +12,7 @@ import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education"
 import Training from "../../components/Training/Training";
 
+
 const Profile = (props) => {
 
   const [profile, setProfile] = useState({})
@@ -56,7 +57,7 @@ const Profile = (props) => {
           <p>About: {profile.talentAccount.about}</p>
           <p>Union Status: {profile.talentAccount.unionStatus}</p>
           <p>Hair: {profile.talentAccount.hair}</p>
-          <p>eyes: {profile.talentAccount.eyes}</p>
+          <p>Eyes: {profile.talentAccount.eyes}</p>
           <p>Height: {profile.talentAccount.height}</p>
           <p>Weight: {profile.talentAccount.weight}</p>
           <p>Skills: {profile.talentAccount.skills}</p>
