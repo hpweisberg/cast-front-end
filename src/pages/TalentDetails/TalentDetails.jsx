@@ -119,7 +119,7 @@ const TalentDetails = (props) => {
               ))}
           </select>
             <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
-        </form> */}
+        </form> */} 
     </>
   )
 }
