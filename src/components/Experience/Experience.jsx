@@ -6,11 +6,23 @@ const Experience = (props) => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.recordCard}>
-          <h3>{experience.productionTitle} ({experience.year}, {experience.type})</h3>
+        <div className={styles.left}>
+          <p>Title:</p>
+          <p>Role: </p>
+          <p>Type: </p>
+          <p>Year: </p>
+          <p>Produced by: </p>
+          <p>Director: </p>
+        </div>
+        <div className={styles.right}>
+          <p>{experience.productionTitle}</p>
+          <p>
           <p>{experience.role}</p>
-          <p>Produced by: {experience.producingEntity}</p>
-          <p>Director: {experience.director}</p>
+          {experience.type}
+          </p>
+          <p>{experience.year}</p>
+          <p>{experience.producingEntity}</p>
+          <p>{experience.director}</p>
         </div>
       </div>
     </>
