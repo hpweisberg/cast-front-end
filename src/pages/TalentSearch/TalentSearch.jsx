@@ -29,7 +29,7 @@ const TalentSearch = (props) => {
     const fetchTalent = async () => {
       const data = await talentService.index()
       setTalentData(data)
-      setTalentSearch(data)
+      setTalentSearch(data.sort((a, b) => a.name.localeCompare(b.name)))
     }
     fetchTalent()
   }, [])
