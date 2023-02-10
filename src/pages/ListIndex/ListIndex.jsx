@@ -24,23 +24,29 @@ const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
 
   return (
     <>
-      <div id='listIndex' className={styles.container}>
-        <h1>New List</h1>
-        <form onSubmit={handleSubmit} className="newListGroup">
-          <input
-            required
-            type="text"
-            name="titleOfList"
-            id="title-input"
-            placeholder="Title of List"
-            onChange={handleChange}
-            className="listInput"
-          />
-          <button variant="contained" id="submit" type="submit">
-            Create New List
-          </button>
-        </form>
-      </div>
+      {
+        profile.isCd
+      ?
+        <div id='list-index' className={styles.container}>
+          <h1>New List</h1>
+          <form onSubmit={handleSubmit} className="new-list-group">
+            <input
+              required
+              type="text"
+              name="titleOfList"
+              id="title-input"
+              placeholder="Title of List"
+              onChange={handleChange}
+              className="list-input"
+            />
+            <button variant="contained" id="submit" type="submit">
+              Create New List
+            </button>
+          </form>
+        </div>
+      :
+        <h3 id='not-cd' className={styles.container}>Make a Casting Director account!</h3>
+      }
       <div className={styles.container}>
 
         <h1>Your Lists</h1>

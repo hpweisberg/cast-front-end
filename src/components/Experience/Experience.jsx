@@ -16,10 +16,8 @@ const Experience = (props) => {
         </div>
         <div className={styles.right}>
           <p>{experience.productionTitle}</p>
-          <p>
           <p>{experience.role}</p>
-          {experience.type}
-          </p>
+          <p>{experience.type}</p>
           <p>{experience.year}</p>
           <p>{experience.producingEntity}</p>
           <p>{experience.director}</p>
