@@ -30,8 +30,7 @@ This app was born out of a desire to optimize a very manual casting process. Ins
 - React
 - Javascript
 - HTML
-- EJS
-- Bootstrap
+- Mongoose
 - Node.js
 - Express.js
 - Netlify
@@ -43,3 +42,4 @@ This app was born out of a desire to optimize a very manual casting process. Ins
  - Talent will be able to share availability with Casting Directors right in the app. 
  - Direct messages. 
  - Process casting contracts to make the entire casting process digial and centralized. 
+ - Talent will be able to add special skills to their profile for casting directors to easily search for the right person for the job.
