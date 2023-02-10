@@ -22,7 +22,6 @@ const Landing = ({ user }) => {
   //   e.preventDefault()
   //   setSignupType('CD')
   // }
-  console.log(user);
   return (
     <main className={styles.container}>
       

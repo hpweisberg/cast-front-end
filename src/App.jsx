@@ -191,7 +191,6 @@ const App = () => {
     }
   }
   
-  console.log(profile);
 
   return (
     <>

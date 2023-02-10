@@ -9,7 +9,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
-    console.log('toggle is working')
     setIsOpen(!isOpen)
   }
 
