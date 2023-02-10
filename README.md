@@ -1,6 +1,6 @@
 ## Welcome to Cast!
 
-<img width="100%" src="">
+<img width="100%" src="./src/assets/screenshotHome.png">
 
 
 <br>
@@ -9,11 +9,13 @@
 
 <br>
 
+<img width="100%" src="./src/assets/screenshotTalent.png">
+
 This app was born out of a desire to optimize a very manual casting process. Instead of sifting through resumes one by one, Cast allows Talent to setup a profile and have Casting Directors reach out to them. It's more simple, streamined, and modern. 
 
 ## Getting Started
 
-- <a href="">Here</a> is a link to the deployed application. 
+- <a href="https://castapp.netlify.app/">Here</a> is a link to the deployed application. 
 - <a href="https://trello.com/b/wsoBthTD/team-board-unit-3-project">Here</a> is a link to the the app's planning materials. 
 
 ## Features
