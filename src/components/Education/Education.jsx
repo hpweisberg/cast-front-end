@@ -6,7 +6,6 @@ const Education = (props) => {
 
   return (
     <>
-      <h1>Education </h1>
       <div className={styles.container}>
         <div className={styles.left}>
           <p>Institution: </p>

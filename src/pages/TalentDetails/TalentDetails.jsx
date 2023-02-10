@@ -79,12 +79,15 @@ const TalentDetails = (props) => {
           <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
         </form>
       </div>
+      {talent.experience ? <h1>Experience </h1> : ''}
       {talent.experience.map((experience, idx) =>
         <Experience key={idx} experience={experience} />
       )}
+      {talent.education ? <h1>Education </h1> : ''}
       {talent.education.map((education, idx) =>
         <Education key={idx} education={education} />
       )}
+      {talent.training ? <h1>Training </h1> : ''}
       {talent.training.map((training, idx) =>
         <Training key={idx} training={training} />
       )}
