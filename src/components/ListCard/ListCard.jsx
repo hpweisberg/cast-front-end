@@ -7,13 +7,13 @@ const ListCard = ({ list, profile, handleDeleteList }) => {
 
 return (
 
-    <Link className='card'to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
+    <Link className='card' to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
       <button onClick={()=>{handleDeleteList((list?.id))}}>x</button>
-      <h4 class="list-card-text">
+      <h4 className="list-card-text">
         {list.titleOfList}
       </h4>
       <div className='people'>
-        <p class="list-card-text">{list.talent?.length}</p>
+        <p className="list-card-text">{list.talent?.length}</p>
         <Icon name='People' />
       </div> 
     </Link>

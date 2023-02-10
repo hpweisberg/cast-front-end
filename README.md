@@ -1,6 +1,6 @@
 ## Welcome to Cast!
 
-<img width="100%" src="./src/assets/screenshotHome.png">
+<img width="30%" src="./src/assets/screenshotHome.png">
 
 
 <br>
@@ -37,7 +37,6 @@ This app was born out of a desire to optimize a very manual casting process. Ins
 - Express.js
 - Netlify
 - Fly.io
-- Google Auth
 
 ## Future Enhancements
 

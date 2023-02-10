@@ -53,7 +53,7 @@
 .headshotDeatils {
   display: flex;
   justify-content: center;
-  
+
 }
 
 .headshotDeatils > * {
@@ -66,6 +66,7 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
+  object-fit: cover;
 }
 
 .actorDetails > * {
