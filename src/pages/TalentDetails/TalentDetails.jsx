@@ -37,6 +37,7 @@ const TalentDetails = (props) => {
             <h6>{talent.profile?.pronouns}</h6>
           </div>
           <Link to={`/profile/`} className={styles.link}><button className={styles.editBtn}><Icon name='BlankHold' /></button></Link>
+
         </div>
 
         <div className={styles.headshotDeatils}>
