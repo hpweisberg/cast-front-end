@@ -9,7 +9,7 @@
 
 <br>
 
-<img width="100%" src="./src/assets/screenshotTalent.png">
+<img width="30%" src="./src/assets/screenshotTalent.png">
 
 This app was born out of a desire to optimize a very manual casting process. Instead of sifting through resumes one by one, Cast allows Talent to setup a profile and have Casting Directors reach out to them. It's more simple, streamined, and modern. 
 
