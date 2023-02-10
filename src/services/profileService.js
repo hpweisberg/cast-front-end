@@ -11,6 +11,7 @@ async function getAllProfiles() {
 
 
 const getProfile = async (profileId) => {
+  console.log('profileId: ', profileId)
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`
     , {
