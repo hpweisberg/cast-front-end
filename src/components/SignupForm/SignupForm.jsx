@@ -22,7 +22,6 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
-console.log(props);
   const handleChangePhoto = (evt) => {
     setPhotoData({ photo: evt.target.files[0] })
   }

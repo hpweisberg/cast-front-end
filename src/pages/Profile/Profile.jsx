@@ -16,7 +16,6 @@ const Profile = (props) => {
   const [profile, setProfile] = useState({})
   const [talentId, setTalentId] = useState(null)
   const [cdId, setCdId] = useState(null)
-  console.log(profile);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -32,11 +31,6 @@ const Profile = (props) => {
   }, [props.user.profile])
 
 
-
-  console.log('PROFILE', profile);
-  console.log('TALENTID', talentId);
-  console.log('CDID', cdId);
-  
   if(!profile) return "loading"
 
   return ( 

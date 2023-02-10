@@ -31,8 +31,6 @@ const TalentDetails = (props) => {
     props.handleAddToList(form._id, talent._id, props.profile.cdAccount._id)
   }
 
-  // console.log("profile test ", props.profile.cdAccount._id)
-
   return (
     <>
 
