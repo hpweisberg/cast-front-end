@@ -1,6 +1,6 @@
 ## Welcome to Cast!
 
-<img width="100%" src="./src/assets/screenshotHome.png">
+<img width="30%" src="./src/assets/screenshotHome.png">
 
 
 <br>
