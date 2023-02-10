@@ -12,6 +12,8 @@ const EditProfile = (props) => {
   const cdId = location.state?.cdId
   const profile = location.state?.profile
 
+  const [photoData, setPhotoData] = useState({})
+
   //* edit profile
 
   const [form, setForm] = useState({
@@ -44,7 +46,7 @@ const EditProfile = (props) => {
     skills: profile.talentAccount?.skills,
     trades: profile.talentAccount?.trades,
     reelLink: profile.talentAccount?.reelLink,
-    talentId: talentId,
+    talentId: talentId._id,
   })
 
   const handleTalentChange = ({ target }) => {
