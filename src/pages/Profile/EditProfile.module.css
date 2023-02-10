@@ -10,3 +10,9 @@
   padding: 1em;
   border-radius: 15px;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+}
