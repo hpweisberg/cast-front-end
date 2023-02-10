@@ -24,9 +24,9 @@ const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
 
   return (
     <>
-      {
+      {/* {
         profile.isCd
-      ?
+      ? */}
         <div id='list-index' className={styles.container}>
           <h1>New List</h1>
           <form onSubmit={handleSubmit} className="new-list-group">
@@ -44,9 +44,9 @@ const ListIndex = ({ profile, lists, handleCreateList, handleDeleteList }) => {
             </button>
           </form>
         </div>
-      :
+      {/* :
         <h3 id='not-cd' className={styles.container}>Make a Casting Director account!</h3>
-      }
+      } */}
       <div className={styles.container}>
 
         <h1>Your Lists</h1>
