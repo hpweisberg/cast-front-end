@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styles from './Profile.module.css'
 
 import { useEffect } from "react";
 import { useState } from "react";
@@ -34,6 +35,8 @@ const Profile = (props) => {
 
   return (
     <section className="profileDetails">
+      <div className={styles.container}>
+
       <h1 id="talentName">{profile.name}</h1>
       <p>{profile.pronouns}</p>
       {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
@@ -42,11 +45,14 @@ const Profile = (props) => {
       <p>Email: {props.user.email}</p>
       <a href={`${profile.website}`}>Visit {profile.name}'s website</a>
       {profile.cdAccount && <p>Company {profile.cdAccount.company}</p>}
+      </div>
 
       {profile.talentAccount
 
-        &&
-        <>
+&&
+<>
+<div className={styles.container}>
+
           <p>About: {profile.talentAccount.about}</p>
           <p>Union Status: {profile.talentAccount.unionStatus}</p>
           <p>Hair: {profile.talentAccount.hair}</p>
@@ -55,6 +61,11 @@ const Profile = (props) => {
           <p>Weight: {profile.talentAccount.weight}</p>
           <p>Skills: {profile.talentAccount.skills}</p>
           <p>Trades: {profile.talentAccount.trades}</p>
+          </div>
+          <div className={styles.container}>
+          </div>
+          <div className={styles.container}>
+
           <h2>Experience</h2>
           {
             (profile.talentAccount === talentId)
@@ -68,12 +79,16 @@ const Profile = (props) => {
                 key={experience._id}
                 experience={experience}
                 talentId={talentId}
-              />
+                />
               <form onSubmit={() => props.handleDeleteExperience(talentId._id, experience._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
           )}
+          </div>
+
+          <div className={styles.container}>
+
           <h2>Education</h2>
           {
             (profile.talentAccount === talentId)
@@ -87,12 +102,16 @@ const Profile = (props) => {
                 education={education}
                 talentId={talentId}
                 handleDeleteEducation={props.handleDeleteEducation}
-              />
+                />
               <form onSubmit={() => props.handleDeleteEducation(talentId._id, education._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
           )}
+          </div>
+
+          <div className={styles.container}>
+
           <h2>Training</h2>
           {
             (profile.talentAccount === talentId)
@@ -106,25 +125,30 @@ const Profile = (props) => {
                 training={training}
                 talentId={talentId}
                 handleDeleteTraining={props.handleDeleteTraining}
-              />
+                />
               <form onSubmit={() => props.handleDeleteTraining(talentId._id, training._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
           )}
+          </div>
         </>
       }
+      <div className={styles.container}>
+
       {
         (profile.talentAccount === talentId)
         &&
         <Link
-          id="editLink"
-          to="/profile/edit"
-          state={{ isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile }}
+        id="editLink"
+        to="/profile/edit"
+        className={styles.editProfileBtn}
+        state={{ isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile }}
         >
           Edit Profile
         </Link>
       }
+      </div>
     </section>
   );
 }

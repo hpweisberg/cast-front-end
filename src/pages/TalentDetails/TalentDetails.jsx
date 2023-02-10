@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
 import { Link } from "react-router-dom"
 
+
 // components
 import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education";
@@ -37,7 +38,7 @@ const TalentDetails = (props) => {
           </div>
           <Link to={`/profile/`} className={styles.link}><button className={styles.editBtn}><Icon name='Edit' /></button></Link>
         </div>
-        {/* this commented out div seems to be making things act wonky. */}
+
         <div className={styles.headshotDeatils}>
           <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
         </div>
@@ -79,12 +80,15 @@ const TalentDetails = (props) => {
           <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
         </form>
       </div>
+      {talent.experience ? <h1>Experience </h1> : ''}
       {talent.experience.map((experience, idx) =>
         <Experience key={idx} experience={experience} />
       )}
+      {talent.education ? <h1>Education </h1> : ''}
       {talent.education.map((education, idx) =>
         <Education key={idx} education={education} />
       )}
+      {talent.training ? <h1>Training </h1> : ''}
       {talent.training.map((training, idx) =>
         <Training key={idx} training={training} />
       )}
