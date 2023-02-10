@@ -3,9 +3,9 @@ import '../Experience/Experience.css'
 const Education = (props) => {
   const education = props.education
 
-  return ( 
+  return (
     <>
-      <h1>Education Component</h1> 
+      <h1>Education Component</h1>
       <p>Institution: {education.institution}</p>
       <p>Degree: {education.degree}</p>
       <p>Major: {education.major}</p>
@@ -14,5 +14,5 @@ const Education = (props) => {
     </>
   );
 }
- 
+
 export default Education;

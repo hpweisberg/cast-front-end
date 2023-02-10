@@ -15,15 +15,11 @@ const NavBar = ({ user, profile, handleLogout }) => {
   return (
     <>
       <div className={styles.navRow}>
-
         <div className={styles.menuIcon} onClick={toggle}>
-
           <Icon name='Menu' />
         </div>
         {isOpen && (
-          //? Turnery is stopping styles from working. animation is not working.
           <nav className={`${styles.menu} ${isOpen ? styles.open : styles.menu}`}>
-
           {user ?
             <ul>
               <li><Link to='/' onClick={toggle} >Home</Link></li>
@@ -41,8 +37,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to='/login' onClick={toggle} >Log In</Link></li>
             </ul>
           }
-
-
           </nav>
         )}
           <Link to='/'>

@@ -40,34 +40,34 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [profile, setProfile] = useState('')
   const [lists, setLists] = useState([])
-  
+
   const navigate = useNavigate()
 
-  
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
     navigate('/')
   }
-  
+
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
-  
+
   const handleEditProfile = async (profileData) => {
     try {
       await profileService.update(profileData, user.profile)
       navigate('/profile')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
-  
+
   const handleAddTalentProfile = async (talentData) => {
     try {
       await profileService.createTalentProfile(talentData, user.profile)
       navigate('/profile')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -75,25 +75,25 @@ const App = () => {
     try {
       await talentService.update(talentData)
       navigate('/profile')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
-  
+
   const handleEditCDProfile = async (cdData) => {
     try {
       await cdService.update(cdData)
       navigate('/profile')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
-  
+
   const handleAddCDProfile = async (cdData) => {
     try {
       await profileService.createCDProfile(cdData, user.profile)
       navigate('/profile')
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -158,7 +158,7 @@ const App = () => {
     }
     if (user) fetchProfile()
   }, [user])
-  
+
   useEffect(() => {
     const fetchLists = async () => {
       const lists = await cdService.indexLists(profile.cdAccount._id)
@@ -180,7 +180,7 @@ const App = () => {
   const handleAddToList = async (listId, talent, cdAccountId) => {
     try {
       const updatedList = await cdService.addToList(profile.cdAccount._id, listId, talent)
-      setLists(lists.map((l) => { 
+      setLists(lists.map((l) => {
         return l._id === updatedList._id
           ? updatedList
           : l
@@ -190,7 +190,6 @@ const App = () => {
       console.log(error);
     }
   }
-  
 
   return (
     <>
@@ -221,33 +220,33 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path="/talent"
           element={
             <ProtectedRoute user={user}>
-              <TalentSearch user={user}/>
+              <TalentSearch user={user} />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path="/profile"
           element={
             <ProtectedRoute user={user}>
               {/* <Profile profile={profile}/> */}
-              <Profile 
-                handleDeleteExperience={handleDeleteExperience} 
+              <Profile
+                handleDeleteExperience={handleDeleteExperience}
                 user={user}
                 handleDeleteEducation={handleDeleteEducation}
-                handleDeleteTraining={handleDeleteTraining}  
+                handleDeleteTraining={handleDeleteTraining}
               />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/profile/edit'
           element={
             <ProtectedRoute user={user}>
-              <EditProfile 
+              <EditProfile
                 handleEditProfile={handleEditProfile}
                 handleEditTalentProfile={handleEditTalentProfile}
                 handleEditCDProfile={handleEditCDProfile}
@@ -255,11 +254,11 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/profile/create'
           element={
             <ProtectedRoute user={user}>
-              <CreateProfile 
+              <CreateProfile
                 handleEditProfile={handleEditProfile}
                 handleAddTalentProfile={handleAddTalentProfile}
                 handleAddCDProfile={handleAddCDProfile}
@@ -267,63 +266,62 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/profile/add-experience'
           element={
             <ProtectedRoute user={user}>
-              <AddExperience handleAddExperience={handleAddExperience}/>
+              <AddExperience handleAddExperience={handleAddExperience} />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/profile/add-education'
           element={
             <ProtectedRoute user={user}>
-              <AddEducation handleAddEducation={handleAddEducation}/>
+              <AddEducation handleAddEducation={handleAddEducation} />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/profile/add-training'
           element={
             <ProtectedRoute user={user}>
-              <AddTraining handleAddTraining={handleAddTraining}/>
-
+              <AddTraining handleAddTraining={handleAddTraining} />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path="/talent/:talentId"
           element={
             <ProtectedRoute user={user}>
-              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} profile={profile}/>
+              <TalentDetails lists={lists} handleAddToList={handleAddToList} user={user} profile={profile} />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/cd/:id/lists'
           element={
             <ProtectedRoute user={user}>
-              <ListIndex 
+              <ListIndex
                 handleDeleteList={handleDeleteList}
-                handleCreateList={handleCreateList} 
-                lists={lists} 
-                profile={profile} 
+                handleCreateList={handleCreateList}
+                lists={lists}
+                profile={profile}
               />
             </ProtectedRoute>
           }
         />
-        <Route 
+        <Route
           path='/cd/:id/lists/:listId'
           element={
             <ProtectedRoute user={user}>
-              <ListDetails lists={lists} setLists={setLists} cd={profile.cdAccount}/>
+              <ListDetails lists={lists} setLists={setLists} cd={profile.cdAccount} />
             </ProtectedRoute>
           }
-        /> 
+        />
         <Route
-        path='/SearchBar' element={<SearchBar/>}
-        />  
+          path='/SearchBar' element={<SearchBar />}
+        />
       </Routes>
     </>
   )

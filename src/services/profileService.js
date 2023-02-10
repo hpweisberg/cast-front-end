@@ -14,9 +14,9 @@ const getProfile = async (profileId) => {
   console.log('profileId: ', profileId)
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`
-    , {
-      headers: { 'Authorization': `Bearer ${tokenService.getToken()}`},
-    }
+      , {
+        headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+      }
     )
     return res.json()
   } catch (error) {

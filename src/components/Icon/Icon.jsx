@@ -46,11 +46,6 @@ import Up from '../../assets/icons/up.png'
 import VoiceOver from '../../assets/icons/voiceOver.png'
 import Website from '../../assets/icons/website.png'
 
-
-
-
-
-
 const Icon = ({name}) => {
   const icons = {
     Add: Add,
@@ -106,7 +101,6 @@ const Icon = ({name}) => {
 }
 
 export default Icon
-
 
 //! To use an Icon:
 //import Icon from '../../components/Icon/Icon'

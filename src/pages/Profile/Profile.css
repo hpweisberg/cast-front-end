@@ -21,16 +21,15 @@ img {
   margin: 0;
 }
 
-.profileDetails > p {
+.profileDetails>p {
   margin: 8px 0;
   font-size: 16px;
 }
 
-.profileDetails > a {
+.profileDetails>a {
   text-decoration: underline;
   margin: 8px 0;
   font-size: 16px;
-
 }
 
 .profileDetails form {
@@ -56,7 +55,7 @@ img {
   text-decoration: none;
 }
 
-#editLink{
+#editLink {
   text-align: left;
   text-decoration: none;
 }

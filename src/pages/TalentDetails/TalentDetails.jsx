@@ -1,11 +1,7 @@
-import { useState, useEffect } from "react"
-import { useParams, useLocation, Navigate } from "react-router-dom"
+import { useState } from "react"
+import { useLocation } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
 import { Link } from "react-router-dom"
-
-// Services
-import * as talentService from "../../services/talentService"
-// import * as profileService from "../../services/profileService"
 
 // components
 import Experience from "../../components/Experience/Experience";
@@ -14,7 +10,6 @@ import Training from "../../components/Training/Training";
 import Icon from "../../components/Icon/Icon"
 
 const TalentDetails = (props) => {
-  const { talentId } = useParams()
 
   const [form, setForm] = useState({
     _id: ''
@@ -22,8 +17,8 @@ const TalentDetails = (props) => {
   const location = useLocation()
   const talent = location.state?.talent
 
-  const handleChange = ({target}) => {
-    setForm({...form, [target.name]: target.value})
+  const handleChange = ({ target }) => {
+    setForm({ ...form, [target.name]: target.value })
   }
 
   const handleSubmit = (e) => {
@@ -33,11 +28,9 @@ const TalentDetails = (props) => {
 
   return (
     <>
-
-    
       <div className={styles.talentDetailsContainer}>
         <div className={styles.topRow}>
-        <Link to={`/talent/`} className={styles.link}> <button className={styles.backBtn} ><Icon name='Back' /></button></Link>
+          <Link to={`/talent/`} className={styles.link}> <button className={styles.backBtn} ><Icon name='Back' /></button></Link>
           <div className={styles.nameGroup}>
             <h1>{talent.name}</h1>
             <h6>{talent.profile?.pronouns}</h6>
@@ -46,78 +39,55 @@ const TalentDetails = (props) => {
         </div>
         {/* this commented out div seems to be making things act wonky. */}
         <div className={styles.headshotDeatils}>
-
           <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
         </div>
-
-          <div className={styles.actorDetails}>
-            <p>Union Status: {talent.unionStatus}</p>
-            <p>Location: {talent.profile.location}</p>
-          </div>
-
-          <div className={styles.line}>
-            <p>Weight: {talent.weight}</p>
-            <p>Height: {talent.height}</p>
-          </div>
-
-          <div className={styles.line}>
-            <p>Eyes: {talent.eyes}</p>
-            <p>Hair: {talent.hair}</p>
-          </div>
-            <p className={styles.aboutMe}>About: {talent.about}</p>
-          {/* </div> */}
+        <div className={styles.actorDetails}>
+          <p>Union Status: {talent.unionStatus}</p>
+          <p>Location: {talent.profile.location}</p>
         </div>
-
-        <div className={styles.buttonLinks}>
-          <Link to={talent.reelLink}>
+        <div className={styles.line}>
+          <p>Weight: {talent.weight}</p>
+          <p>Height: {talent.height}</p>
+        </div>
+        <div className={styles.line}>
+          <p>Eyes: {talent.eyes}</p>
+          <p>Hair: {talent.hair}</p>
+        </div>
+        <p className={styles.aboutMe}>About: {talent.about}</p>
+        {/* </div> */}
+      </div>
+      <div className={styles.buttonLinks}>
+        <Link to={talent.reelLink}>
           <button>
             <Icon name='Reels' />
-            </button>
-          </Link>
-          <form className={styles.addTalentToList} onSubmit={handleSubmit}>
+          </button>
+        </Link>
+        <form className={styles.addTalentToList} onSubmit={handleSubmit}>
           <select
-              required
-              name='_id'
-              value={form._id}
-              onChange={handleChange}
-              placeholder={`select a list`}
-              className={styles.listMenu}
+            required
+            name='_id'
+            value={form._id}
+            onChange={handleChange}
+            placeholder={`select a list`}
+            className={styles.listMenu}
           >
             <option>Select a List</option>
-              {props.lists.map(list => (
-                <option key={list._id} value={list._id}>{list.titleOfList}</option>
-              ))}
+            {props.lists.map(list => (
+              <option key={list._id} value={list._id}>{list.titleOfList}</option>
+            ))}
           </select>
-            <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
+          <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
         </form>
-        </div> 
-
-        {talent.experience.map((experience, idx) => 
-          <Experience key={idx} experience={experience}/>  
-        )}
-        {talent.education.map((education, idx) => 
-          <Education key={idx} education={education}/>  
-        )}
-        {talent.training.map((training, idx) => 
-          <Training key={idx} training={training}/>  
-        )}
-      
-        {/* <form className={styles.addTalentToList} onSubmit={handleSubmit}>
-          <select
-              required
-              name='_id'
-              value={form._id}
-              onChange={handleChange}
-              placeholder={`select a list`}
-              className={styles.listMenu}
-          >
-            <option>Select a List</option>
-              {props.lists.map(list => (
-                <option key={list._id} value={list._id}>{list.titleOfList}</option>
-              ))}
-          </select>
-            <button className={styles.addBtn} type='submit'><Icon name='Add' /></button>
-        </form> */} 
+      </div>
+      {talent.experience.map((experience, idx) =>
+        <Experience key={idx} experience={experience} />
+      )}
+      {talent.education.map((education, idx) =>
+        <Education key={idx} education={education} />
+      )}
+      {talent.training.map((training, idx) =>
+        <Training key={idx} training={training} />
+      )}
     </>
   )
 }
