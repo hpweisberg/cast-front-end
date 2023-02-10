@@ -13,7 +13,6 @@ const ListDetails = (props) => {
   useEffect(() => {
     const fetchList = async () => {
       const listData = await cdService.showList(id, listId)
-      console.log('LIST DATA', listData);
       setList(listData)
     }
     fetchList()

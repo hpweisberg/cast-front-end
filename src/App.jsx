@@ -153,7 +153,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profile = await profileService.getProfile(user.profile._id)
+      const profile = await profileService.getProfile(user.profile)
       setProfile(profile)
     }
     if (user) fetchProfile()
@@ -190,8 +190,6 @@ const App = () => {
       console.log(error);
     }
   }
-
-  console.log(profile);
 
   return (
     <>

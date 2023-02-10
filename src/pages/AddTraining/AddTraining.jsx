@@ -6,8 +6,6 @@ const AddTraining = (props) => {
   const location = useLocation()
   const talentId = location.state?.talentId
 
-  console.log(talentId)
-
   const [form, setForm] = useState({
     institution: '',
     focus: '',
