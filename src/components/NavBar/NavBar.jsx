@@ -9,7 +9,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => {
-    console.log('toggle is working')
     setIsOpen(!isOpen)
   }
   console.log(user);
@@ -17,15 +16,11 @@ const NavBar = ({ user, profile, handleLogout }) => {
   return (
     <>
       <div className={styles.navRow}>
-
         <div className={styles.menuIcon} onClick={toggle}>
-
           <Icon name='Menu' />
         </div>
         {isOpen && (
-          //? Turnery is stopping styles from working. animation is not working.
           <nav className={`${styles.menu} ${isOpen ? styles.open : styles.menu}`}>
-
           {user ?
             <ul>
               <li><Link to='/' onClick={toggle} >Home</Link></li>
@@ -33,7 +28,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to={`/cd/${profile.cdAccount?._id}/lists`} onClick={toggle} >Lists</Link></li>
               <li><Link to='/profile' onClick={toggle} >Profile</Link></li>
               {/* Items below here will be removed in final app */}
-              <li><Link to='/profiles' onClick={toggle} >Profiles</Link></li>
               <li><Link to='/change-password' onClick={toggle} >Change Password</Link></li>
               <li><Link to='' onClick={handleLogout} >LOG OUT</Link></li>
             </ul>
@@ -43,8 +37,6 @@ const NavBar = ({ user, profile, handleLogout }) => {
               <li><Link to='/login' onClick={toggle} >Log In</Link></li>
             </ul>
           }
-
-
           </nav>
         )}
           <Link to='/'>

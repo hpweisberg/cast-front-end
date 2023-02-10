@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import TalentCard from "../../components/TalentCard/TalentCard";
 import * as cdService from '../../services/cdService'
 
@@ -13,7 +13,6 @@ const ListDetails = (props) => {
   useEffect(() => {
     const fetchList = async () => {
       const listData = await cdService.showList(id, listId)
-      console.log('LIST DATA', listData);
       setList(listData)
     }
     fetchList()
@@ -22,11 +21,11 @@ const ListDetails = (props) => {
   const handleRemoveFromList = async (listId, talentId) => {
     await cdService.removeFromList(props.cd._id, listId, talentId)
     const updatedList = {
-      ...list, 
+      ...list,
       talent: list.talent.filter(talent => talent._id !== talentId)
     }
     setList(updatedList)
-    props.setLists(props.lists.map((l) => { 
+    props.setLists(props.lists.map((l) => {
       return l._id === list._id
         ? updatedList
         : l
@@ -35,16 +34,16 @@ const ListDetails = (props) => {
 
   if (!list) return <h1>loading</h1>
 
-  return ( 
+  return (
     <>
-      <h1>List Details Component!</h1> 
+      <h1>List Details Component!</h1>
       <h3>{list?.titleOfList}</h3>
-        {list.talent.map((talent, idx) => (
-          <div key={talent._id+idx}>
-            <button onClick={() => {handleRemoveFromList( (list._id), (talent._id))}}>x</button>
-            <TalentCard profile={talent.profile} talent={talent}/>
-          </div>
-        ))}
+      {list.talent.map((talent, idx) => (
+        <div key={talent._id + idx}>
+          <button onClick={() => { handleRemoveFromList((list._id), (talent._id)) }}>x</button>
+          <TalentCard profile={talent.profile} talent={talent} />
+        </div>
+      ))}
 
     </>
   );

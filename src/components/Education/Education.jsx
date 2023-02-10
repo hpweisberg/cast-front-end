@@ -1,15 +1,28 @@
-import '../Experience/Experience.css'
+import styles from './Education.module.css'
 
 const Education = (props) => {
   const education = props.education
 
-  return ( 
-    <div id="edu" className='recordCard'>
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <p>Institution: </p>
+          <p>Degree: </p>
+          <p>Major: </p>
+          <p>Graduated: </p>
+          <p>Year: </p>
+        </div>
+        <div className={styles.right}>
 
-      <h3>{education.institution}</h3> 
-      <p>{education.degree} {education.major} {education.graduated && education.year}</p>
-
-    </div>
+          <p>{education.institution}</p>
+          <p>{education.degree}</p>
+          <p>{education.major}</p>
+          <p>{education.graduated ? "Yes" : "No"}</p>
+          <p>{education.year}</p>
+        </div>
+      </div>
+    </>
   );
 }
 

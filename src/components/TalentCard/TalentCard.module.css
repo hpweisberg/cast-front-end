@@ -14,7 +14,7 @@
   background-color: whitesmoke;
   text-decoration: none;
   cursor: pointer;
-  
+
   max-width: 100%;
   height: 165px;
   display: flex;
@@ -37,7 +37,8 @@
   border-radius: 15px;
   padding-right: .5rem;
   max-height: 165px;
-  /* object-fit: cover; */
+
+  object-fit: cover;
 }
 
 .glanceInfo {
@@ -51,7 +52,7 @@
 }
 
 .glanceInfo > h3 {
-  font-size: var(--fs-700);
+  font-size: var(--fs-600);
   margin: 0;
 }
 
@@ -60,8 +61,9 @@
   margin: 0;
 }
 
-.union, .location {
-  font-size: var(--fs-600);
+.union,
+.location {
+  font-size: var(--fs-500);
   font-style: italic;
 }
 
@@ -69,7 +71,9 @@
 .union {
   margin-bottom: 0;
 }
-.location, .location {
+
+.location,
+.location {
   margin-top: 0;
 }
 
@@ -83,9 +87,16 @@
 .reelsIcon {
   position: relative;
   margin: 0;
-  
+
 }
 
 .overflow {
   text-overflow: ellipsis;
+}
+
+.talentName {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 25.5vw;
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import TalentCard from "../../components/TalentCard/TalentCard";
-import Icon from "../../components/Icon/Icon";
 import * as talentService from '../../services/talentService'
 import styles from './TalentSearch.module.css'
 
@@ -12,10 +11,6 @@ const TalentSearch = (props) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleTalentSearch = ({ query }) => {
-    // debugger
-    // take the form Query string form searchBar
-    // filter all talent profiles for Query string
-    // set useState to all talent profiles that match Query string.
     const filteredList = talentSearch.filter((talent) => {
       return JSON.stringify(talent).toLocaleLowerCase().includes(query.toLocaleLowerCase())
     })
@@ -43,38 +38,16 @@ const TalentSearch = (props) => {
 
   return (
     <>
-
-      {/* <div className={styles.searchContainer}>
-        <Icon name='MagnifierGlass' />
-        <input 
-          type='text' 
-          className={styles.searchBar} 
-          placeholder={'Juggler'}
-        >
-        </input>
-        <Icon name='Reset' />
-      </div> */}
-
-      <SearchBar 
-        className={styles.searchBar} 
-        value={inputValue} 
-        handleTalentSearch={handleTalentSearch} 
+      <SearchBar
+        className={styles.searchBar}
+        value={inputValue}
+        handleTalentSearch={handleTalentSearch}
         handleUserInput={handleUserInput}
         handleClearSearch={handleClearSearch}
       />
-
-      {/* <div className={styles.filterContainer}>
-        <Icon name='Filter' />
-        <select className={styles.filterBar} placeholder={'Filter'}>
-        </select>
-        <Icon name='Reset' />
-      </div> */}
-
-
       {talentSearch.map((talent, idx) => (
         <TalentCard key={idx} talent={talent} />
       ))}
-
     </>
   )
 }

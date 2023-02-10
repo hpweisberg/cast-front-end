@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 import { useEffect } from 'react'
-import Profile from '../../pages/Profile/Profile'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -22,7 +21,7 @@ const SignupForm = props => {
       [e.target.name]: e.target.value,
     })
   }
-console.log(props);
+
   const handleChangePhoto = (evt) => {
     setPhotoData({ photo: evt.target.files[0] })
   }
@@ -32,7 +31,7 @@ console.log(props);
     try {
       await authService.signup(formData, photoData.photo)
       props.handleSignupOrLogin()
-      navigate('/profile/create',  {
+      navigate('/profile/create', {
         state: {
           signupType: isCd
         }
@@ -46,14 +45,14 @@ console.log(props);
 
   useEffect(() => {
     const signupTypeToBoolean = async () => {
-      if(props.signupType === 'talent') {
+      if (props.signupType === 'talent') {
         setIsCd(false)
-      } else if(props.signupType === 'cd') {
+      } else if (props.signupType === 'cd') {
         setIsCd(true)
       }
     }
     signupTypeToBoolean()
-  },[props.signupType])
+  }, [props.signupType])
 
   const { name, email, password, passwordConf } = formData
 
@@ -115,7 +114,7 @@ console.log(props);
       </div>
       {
         (!isCd)
-      &&
+        &&
         <div className={styles.inputContainer}>
           <label htmlFor="photo-upload" className={styles.label}>
             Upload Headshot
