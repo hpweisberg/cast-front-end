@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 import styles from "./TalentDetails.module.css"
 import { Link } from "react-router-dom"
 
+
 // components
 import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education";

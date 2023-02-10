@@ -12,7 +12,7 @@ const Education = (props) => {
           <p>Degree: </p>
           <p>Major: </p>
           <p>Graduated: </p>
-          <p>Year: {education.year}</p>
+          <p>Year: </p>
         </div>
         <div className={styles.right}>
 
