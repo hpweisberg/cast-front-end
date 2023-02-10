@@ -63,7 +63,8 @@ const Profile = (props) => {
           <p>Skills: {profile.talentAccount.skills}</p>
           <p>Trades: {profile.talentAccount.trades}</p>
           </div>
-
+          <div className={styles.container}>
+          </div>
           <div className={styles.container}>
 
           <h2>Experience</h2>

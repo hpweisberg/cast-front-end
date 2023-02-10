@@ -9,11 +9,11 @@ return (
 
     <Link className='card'to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
       <button onClick={()=>{handleDeleteList((list?.id))}}>x</button>
-      <h4>
+      <h4 class="list-card-text">
         {list.titleOfList}
       </h4>
       <div className='people'>
-        <p>{list.talent?.length}</p>
+        <p class="list-card-text">{list.talent?.length}</p>
         <Icon name='People' />
       </div> 
     </Link>
