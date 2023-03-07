@@ -24,7 +24,7 @@ const AddTraining = (props) => {
 
   return (
     <>
-      <h1>Add Training Component</h1>
+      <h1>Add Training</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="institution-input">Institution</label>
         <input

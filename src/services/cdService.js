@@ -28,6 +28,7 @@ const indexLists = async (cdId) => {
 }
 
 const update = async (cdData) => {
+  console.log("cdData.cdId", cdData.cdId)
   try {
     const res = await fetch(`${BASE_URL}/${cdData.cdId}`, {
       method: 'PATCH',
@@ -39,7 +40,7 @@ const update = async (cdData) => {
     })
     return res.json()
   } catch (error) {
-    console.log(error)
+    console.log("ERROR", error)
   }
 }
 

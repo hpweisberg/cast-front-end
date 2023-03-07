@@ -27,7 +27,7 @@ const AddExperience = (props) => {
 
   return (
     <>
-      <h1>Add Experience Component</h1>
+      <h1>Add Experience</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="production-title-input">Production Title</label>
         <input

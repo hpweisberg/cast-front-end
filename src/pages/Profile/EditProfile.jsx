@@ -19,7 +19,7 @@ const EditProfile = (props) => {
   const [form, setForm] = useState({
     pronouns: profile.pronouns,
     location: profile.location,
-    phoneNumber: profile.location,
+    phoneNumber: profile.phoneNumber,
     website: profile.website,
     isCd: profile.isCd
   })
@@ -46,7 +46,7 @@ const EditProfile = (props) => {
     skills: profile.talentAccount?.skills,
     trades: profile.talentAccount?.trades,
     reelLink: profile.talentAccount?.reelLink,
-    talentId: talentId._id,
+    talentId: talentId?._id,
   })
 
   const handleTalentChange = ({ target }) => {

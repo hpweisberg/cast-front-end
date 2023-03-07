@@ -33,7 +33,7 @@ const AddEducation = (props) => {
 
   return (
     <>
-      <h1>Add Education Component</h1>
+      <h1>Add Education</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="institution-input">Intitution</label>
         <input
