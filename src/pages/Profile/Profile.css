@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.profileDetails div {
+  margin: 10px;
 }
 
 .profileDetails * {
@@ -58,4 +64,18 @@ img {
 #editLink {
   text-align: left;
   text-decoration: none;
+}
+
+#about-me-details {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#detail {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  font-weight: bold
 }
