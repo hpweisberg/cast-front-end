@@ -1,3 +1,14 @@
+
+
+/* old navbar styling  */
+
+.navRow {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 15px;
+}
+
 .menuIcon > * {
   width: 60px;
   height: 40px;
@@ -7,18 +18,23 @@
   align-self: center;
 }
 
+
 .menu {
-  /* position: fixed; */
   top: 0;
   left: -100%;
   width: 80%;
   height: 100%;
-  /* background-color: slategray; */
   color: black;
   transition: transform 0.3s ease-out;
   transform: translateX(-100%);
 }
 
+.logo {
+  width: 100px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
 .menu h4 {
   font-size: 16px;
 }
@@ -37,23 +53,4 @@ ul {
 .navRow a {
   text-decoration: none;
   color: black;
-}
-
-.navRow {
-  display: flex;
-
-  justify-content: space-between;
-  width: 90%;
-  margin: 15px;
-}
-
-.logo {
-  width: 100px;
-  height: 60px;
-  justify-content: center;
-  align-items: center;
-}
-
-.open {
-  /* background-color: red; */
 }
