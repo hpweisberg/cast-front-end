@@ -18,3 +18,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.edit-profile {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.edit-profile-details form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile button {
+  border: 1px solid black;
+  width: 30%;
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Open Sans';
+  background-color: rgb(50, 255, 47);
+  font-weight: bold;
+  opacity: 1;
+}
+
+.edit-profile button:hover {
+  opacity: .7;
+}
+
+.action-btns a {
+  padding:10px;
+}
