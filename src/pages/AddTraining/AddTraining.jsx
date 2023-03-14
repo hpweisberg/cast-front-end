@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import styles from './AddTraining.module.css'
 
 const AddTraining = (props) => {
 
@@ -24,8 +25,10 @@ const AddTraining = (props) => {
 
   return (
     <>
-      <h1>Add Training Component</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+
+      <h1>Add Training</h1>
+      <form className={styles.column} onSubmit={handleSubmit}>
         <label htmlFor="institution-input">Institution</label>
         <input
           type="text"
@@ -52,6 +55,7 @@ const AddTraining = (props) => {
         />
         <button type="submit">Submit</button>
       </form>
+      </div>
     </>
   );
 }

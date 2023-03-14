@@ -2,6 +2,7 @@ import Add from '../../assets/icons/add.png'
 import Age from '../../assets/icons/age.png'
 import Back from '../../assets/icons/back.png'
 import Blacklist from '../../assets/icons/blacklist.png'
+import BlankHold from '../../assets/icons/blankHold.png'
 import Calendar from '../../assets/icons/calendar.png'
 import Commerical from '../../assets/icons/commerical.png'
 import Company from '../../assets/icons/company.png'
@@ -46,12 +47,14 @@ import Up from '../../assets/icons/up.png'
 import VoiceOver from '../../assets/icons/voiceOver.png'
 import Website from '../../assets/icons/website.png'
 
+
 const Icon = ({name}) => {
   const icons = {
     Add: Add,
     Age: Age,
     Back: Back,
     Blacklist: Blacklist,
+    BlankHold: BlankHold,
     Calendar: Calendar,
     Commerical: Commerical,
     Company: Company,
