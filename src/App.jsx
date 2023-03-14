@@ -56,7 +56,8 @@ const App = () => {
 
   const handleEditProfile = async (profileData) => {
     try {
-      await profileService.update(profileData, user.profile)
+      const updatedProfile = await profileService.update(profileData, user.profile)
+      setProfile(updatedProfile)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -91,7 +92,8 @@ const App = () => {
 
   const handleAddCDProfile = async (cdData) => {
     try {
-      await profileService.createCDProfile(cdData, user.profile)
+      const updated = await profileService.createCDProfile(cdData, user.profile)
+      setProfile(updated)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -161,7 +163,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchLists = async () => {
-      const lists = await cdService.indexLists(profile.cdAccount._id)
+      const lists = await cdService.indexLists(profile.cdAccount)
       setLists(lists)
     }
     if (profile?.cdAccount) fetchLists()
@@ -190,7 +192,7 @@ const App = () => {
       console.log(error);
     }
   }
-
+  console.log('profile: ', profile)
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />

@@ -38,7 +38,7 @@ async function addPhoto(photoData, profileId) {
 
 const update = async (profileData, profileId) => {
   try {
-    console.log(profileData)
+    console.log('PROFILEDATA', profileData)
     const res = await fetch(`${BASE_URL}/${profileId}`, {
       method: 'PATCH',
       headers: {
