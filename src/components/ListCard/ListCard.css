@@ -1,7 +1,5 @@
 .card {
   background-color: rgb(167, 168, 158);
-  text-decoration: none;
-  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,6 +36,8 @@
   margin: 0;
 }
 
-.card a {
-
+.card * {
+  text-decoration: none;
+  color: black;
+  
 }

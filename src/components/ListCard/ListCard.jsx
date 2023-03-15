@@ -6,17 +6,19 @@ import './ListCard.css'
 const ListCard = ({ list, profile, handleDeleteList }) => {
 
 return (
+    <div className='card'>
 
-    <Link className='card'to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
-      <button onClick={()=>{handleDeleteList((list?.id))}}>x</button>
+      <button onClick={()=>{handleDeleteList((list?._id))}}>x</button>
       <h4>
-        {list.titleOfList}
+        <Link to={`/cd/${profile.cdAccount._id}/lists/${list._id}`}>
+          {list.titleOfList}
+        </Link>
       </h4>
       <div className='people'>
         <p>{list.talent?.length}</p>
         <Icon name='People' />
       </div> 
-    </Link>
+    </div>
 
 )
 }
