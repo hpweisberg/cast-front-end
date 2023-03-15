@@ -1,5 +1,7 @@
 .card {
   background-color: rgb(167, 168, 158);
+  text-decoration: none;
+  color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,4 +36,8 @@
 .card p {
   font-size: 24px;
   margin: 0;
+}
+
+.card a {
+
 }
