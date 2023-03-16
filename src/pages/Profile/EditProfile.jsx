@@ -75,6 +75,7 @@ const EditProfile = (props) => {
     props.handleEditCDProfile(CDForm)
     props.handleEditProfile(form)
   }
+  console.log('cdId', cdId)
 
   const [render, setRender] = useState(false)
 
@@ -89,6 +90,7 @@ const EditProfile = (props) => {
     }
     renderHelp()
   },)
+  console.log(CDForm)
 
   return (
     <>

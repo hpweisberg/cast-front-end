@@ -29,6 +29,7 @@ const indexLists = async (cdId) => {
 
 const update = async (cdData) => {
   try {
+    console.log('CD DATA', cdData);
     const res = await fetch(`${BASE_URL}/${cdData.cdId}`, {
       method: 'PATCH',
       headers: {

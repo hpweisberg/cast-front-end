@@ -13,23 +13,26 @@ import Education from "../../components/Education/Education"
 import Training from "../../components/Training/Training";
 
 const Profile = (props) => {
+  const {profile} = props
 
-  const [profile, setProfile] = useState({})
-  const [talentId, setTalentId] = useState(null)
-  const [cdId, setCdId] = useState(null)
+  // const [profile, setProfile] = useState({})
+  // const [talentId, setTalentId] = useState(null)
+  // const [cdId, setCdId] = useState(null)
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const profileData = await profileService.getProfile(props.user.profile)
-      setProfile(profileData)
-      if (profileData.isCd) {
-        setCdId(profileData.cdAccount)
-      } else {
-        setTalentId(profileData.talentAccount)
-      }
-    }
-    fetchProfile()
-  }, [props.user.profile])
+  // useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     const profileData = await profileService.getProfile(props.user.profile)
+  //     console.log('VIEW PROFILE', profileData)
+  //     setProfile(profileData)
+  //     if (profileData.isCd) {
+  //       setCdId(profileData.cdAccount._id)
+  //     } else {
+  //       setTalentId(profileData.talentAccount)
+  //     }
+  //   }
+  //   fetchProfile()
+  // }, [props.user.profile])
+  console.log('profile: ', profile)
 
   if (!profile) return "loading"
 
@@ -44,7 +47,7 @@ const Profile = (props) => {
       <p>Phone Number: {profile.phoneNumber}</p>
       <p>Email: {props.user.email}</p>
       <a href={`${profile.website}`}>Visit {profile.name}'s website</a>
-      {profile.cdAccount && <p>Company {profile.cdAccount.company}</p>}
+      {profile.isCd && <p>Company: {profile.cdAccount.company}</p>}
       </div>
 
       {profile.talentAccount
@@ -68,9 +71,9 @@ const Profile = (props) => {
 
           <h2>Experience</h2>
           {
-            (profile.talentAccount === talentId)
+            (profile.talentAccount)
             &&
-            <Link className="add" to="/profile/add-experience" state={{ talentId: talentId }}>Add Experience</Link>
+            <Link className="add" to="/profile/add-experience" state={{ talentId: profile.talentAccount?._id }}>Add Experience</Link>
           }
           {profile.talentAccount.experience.map(experience =>
             <>
@@ -78,9 +81,9 @@ const Profile = (props) => {
                 handleDeleteExperience={props.handleDeleteExperience}
                 key={experience._id}
                 experience={experience}
-                talentId={talentId}
+                talentId={profile.talentAccount?._id}
                 />
-              <form onSubmit={() => props.handleDeleteExperience(talentId._id, experience._id)}>
+              <form onSubmit={() => props.handleDeleteExperience(profile.talentAccount?._id, experience?._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
@@ -91,19 +94,19 @@ const Profile = (props) => {
 
           <h2>Education</h2>
           {
-            (profile.talentAccount === talentId)
+            (profile.talentAccount)
             &&
-            <Link className="add" to="/profile/add-education" state={{ talentId: talentId }}>Add Education</Link>
+            <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
           }
           {profile.talentAccount.education.map(education =>
             <>
               <Education
-                key={education._id}
+                key={education?._id}
                 education={education}
-                talentId={talentId}
+                talentId={profile.talentAccount?._id}
                 handleDeleteEducation={props.handleDeleteEducation}
                 />
-              <form onSubmit={() => props.handleDeleteEducation(talentId._id, education._id)}>
+              <form onSubmit={() => props.handleDeleteEducation(profile.talentAccount?._id, education?._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
@@ -114,19 +117,19 @@ const Profile = (props) => {
 
           <h2>Training</h2>
           {
-            (profile.talentAccount === talentId)
+            (profile.talentAccount)
             &&
-            <Link className="add" to="/profile/add-training" state={{ talentId: talentId }}>Add Training</Link>
+            <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
           }
           {profile.talentAccount.training.map(training =>
             <>
               <Training
-                key={training._id}
+                key={training?._id}
                 training={training}
-                talentId={talentId}
+                talentId={profile.talentAccount?._id}
                 handleDeleteTraining={props.handleDeleteTraining}
                 />
-              <form onSubmit={() => props.handleDeleteTraining(talentId._id, training._id)}>
+              <form onSubmit={() => props.handleDeleteTraining(profile.talentAccount?._id, training?._id)}>
                 <button id="remove" type='submit'>REMOVE RECORD</button>
               </form>
             </>
@@ -137,13 +140,13 @@ const Profile = (props) => {
       <div className={styles.container}>
 
       {
-        (profile.talentAccount === talentId)
+        ((profile.talentAccount) || (profile.cdAccount))
         &&
         <Link
         id="editLink"
         to="/profile/edit"
         className={styles.editProfileBtn}
-        state={{ isCd: profile.isCd, talentId: talentId, cdId: cdId, profile: profile }}
+        state={{ isCd: profile.isCd, talentId: profile.talentAccount?._id, cdId: profile.cdAccount?._id, profile: profile }}
         >
           Edit Profile
         </Link>

@@ -18,6 +18,7 @@ const getProfile = async (profileId) => {
         headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
       }
     )
+    console.log('RES', res)
     return res.json()
   } catch (error) {
     console.log(error)
