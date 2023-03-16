@@ -82,7 +82,7 @@ const EditProfile = (props) => {
 
   useEffect(() => {
     const renderHelp = async () => {
-      if (signupType === false || isCd === false) {
+      if (isCd === false) {
         setRender(false)
       } else {
         setRender(true)
@@ -90,7 +90,6 @@ const EditProfile = (props) => {
     }
     renderHelp()
   },)
-  console.log(CDForm)
 
   return (
     <>

@@ -33,7 +33,7 @@ const SignupForm = props => {
       props.handleSignupOrLogin()
       navigate('/profile/create', {
         state: {
-          signupType: isCd
+          signupType: props.signupType
         }
       })
     } catch (err) {

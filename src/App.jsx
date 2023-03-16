@@ -66,7 +66,8 @@ const App = () => {
 
   const handleAddTalentProfile = async (talentData) => {
     try {
-      await profileService.createTalentProfile(talentData, user.profile)
+      const updated = await profileService.createTalentProfile(talentData, user.profile)
+      setProfile(updated)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -74,7 +75,8 @@ const App = () => {
   }
   const handleEditTalentProfile = async (talentData) => {
     try {
-      await talentService.update(talentData)
+      const updatedTalent = await talentService.update(talentData)
+      profile.talentAccount = updatedTalent
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -194,7 +196,7 @@ const App = () => {
       console.log(error);
     }
   }
-
+  console.log('PROFILE', profile)
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />

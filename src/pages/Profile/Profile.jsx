@@ -15,24 +15,7 @@ import Training from "../../components/Training/Training";
 const Profile = (props) => {
   const {profile} = props
 
-  // const [profile, setProfile] = useState({})
-  // const [talentId, setTalentId] = useState(null)
-  // const [cdId, setCdId] = useState(null)
-
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     const profileData = await profileService.getProfile(props.user.profile)
-  //     console.log('VIEW PROFILE', profileData)
-  //     setProfile(profileData)
-  //     if (profileData.isCd) {
-  //       setCdId(profileData.cdAccount._id)
-  //     } else {
-  //       setTalentId(profileData.talentAccount)
-  //     }
-  //   }
-  //   fetchProfile()
-  // }, [props.user.profile])
-  console.log('profile: ', profile)
+  console.log(profile)
 
   if (!profile) return "loading"
 
@@ -75,7 +58,7 @@ const Profile = (props) => {
             &&
             <Link className="add" to="/profile/add-experience" state={{ talentId: profile.talentAccount?._id }}>Add Experience</Link>
           }
-          {profile.talentAccount.experience.map(experience =>
+          {profile.talentAccount.experience?.map(experience =>
             <>
               <Experience
                 handleDeleteExperience={props.handleDeleteExperience}
@@ -98,7 +81,7 @@ const Profile = (props) => {
             &&
             <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
           }
-          {profile.talentAccount.education.map(education =>
+          {profile.talentAccount.education?.map(education =>
             <>
               <Education
                 key={education?._id}
@@ -121,7 +104,7 @@ const Profile = (props) => {
             &&
             <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
           }
-          {profile.talentAccount.training.map(training =>
+          {profile.talentAccount.training?.map(training =>
             <>
               <Training
                 key={training?._id}
@@ -139,9 +122,9 @@ const Profile = (props) => {
       }
       <div className={styles.container}>
 
-      {
+      {/* {
         ((profile.talentAccount) || (profile.cdAccount))
-        &&
+        && */}
         <Link
         id="editLink"
         to="/profile/edit"
@@ -150,7 +133,7 @@ const Profile = (props) => {
         >
           Edit Profile
         </Link>
-      }
+      {/* } */}
       </div>
     </section>
   );
