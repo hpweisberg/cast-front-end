@@ -1,18 +1,12 @@
 
-#listIndex {
+#list-index {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
 }
 
-
-.listInput {
-  background-color: rgb(226, 226, 226);
-  border-radius: 15px;
-}
-
-.newListGroup {
+.new-list-group {
   margin: 0 16px;
   width: 80%;
   display: flex;
@@ -21,7 +15,9 @@
   align-self: center;
 }
 
-.listInput {
+.list-input {
+  background-color: rgb(226, 226, 226);
+  border-radius: 15px;
   max-width: 200px;
   align-self: center;
   text-align: center;
@@ -39,4 +35,8 @@
 h1 {
   text-align: center;
   margin: 0;
+}
+
+#not-cd {
+  text-align: center;
 }

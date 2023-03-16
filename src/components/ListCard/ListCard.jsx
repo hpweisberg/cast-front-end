@@ -15,7 +15,7 @@ return (
         </Link>
       </h4>
       <div className='people'>
-        <p>{list.talent?.length}</p>
+        <p className="list-card-text">{list.talent?.length}</p>
         <Icon name='People' />
       </div> 
     </div>

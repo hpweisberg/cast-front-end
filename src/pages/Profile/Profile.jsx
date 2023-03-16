@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './Profile.module.css'
+import Icon from "../../components/Icon/Icon";
 
 import { useEffect } from "react";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import * as profileService from '../../services/profileService'
 import Experience from "../../components/Experience/Experience";
 import Education from "../../components/Education/Education"
 import Training from "../../components/Training/Training";
+
 
 const Profile = (props) => {
   const {profile} = props
@@ -42,7 +44,7 @@ const Profile = (props) => {
           <p>About: {profile.talentAccount.about}</p>
           <p>Union Status: {profile.talentAccount.unionStatus}</p>
           <p>Hair: {profile.talentAccount.hair}</p>
-          <p>eyes: {profile.talentAccount.eyes}</p>
+          <p>Eyes: {profile.talentAccount.eyes}</p>
           <p>Height: {profile.talentAccount.height}</p>
           <p>Weight: {profile.talentAccount.weight}</p>
           <p>Skills: {profile.talentAccount.skills}</p>
@@ -121,19 +123,17 @@ const Profile = (props) => {
         </>
       }
       <div className={styles.container}>
-
-      {/* {
-        ((profile.talentAccount) || (profile.cdAccount))
-        && */}
+{/* 
+      <Link to={`/profile/edit`} className={styles.link}><button className={styles.editBtn}></button></Link> */}
         <Link
         id="editLink"
         to="/profile/edit"
         className={styles.editProfileBtn}
         state={{ isCd: profile.isCd, talentId: profile.talentAccount?._id, cdId: profile.cdAccount?._id, profile: profile }}
         >
-          Edit Profile
+          <Icon name='Edit' />
         </Link>
-      {/* } */}
+
       </div>
     </section>
   );

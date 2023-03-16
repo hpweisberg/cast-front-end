@@ -1,5 +1,4 @@
 import styles from './Training.module.css'
-import Icon from '../Icon/Icon';
 
 const Training = (props) => {
   const training = props.training
