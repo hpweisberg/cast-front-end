@@ -46,7 +46,7 @@ const EditProfile = (props) => {
     skills: profile.talentAccount?.skills,
     trades: profile.talentAccount?.trades,
     reelLink: profile.talentAccount?.reelLink,
-    talentId: talentId._id,
+    talentId: talentId,
   })
 
   const handleTalentChange = ({ target }) => {
@@ -75,7 +75,7 @@ const EditProfile = (props) => {
     props.handleEditCDProfile(CDForm)
     props.handleEditProfile(form)
   }
-  console.log('cdId', cdId)
+  console.log('state', location.state)
 
   const [render, setRender] = useState(false)
 
