@@ -24,39 +24,38 @@ const AddTraining = (props) => {
   }
 
   return (
-    <>
-    <div className={styles.container}>
-
-      <h1>Add Training</h1>
-      <form className={styles.column} onSubmit={handleSubmit}>
-        <label htmlFor="institution-input">Institution</label>
-        <input
-          type="text"
-          name="institution"
-          id="institution-input"
-          value={form.institution}
-          onChange={handleChange}
-        />
-        <label htmlFor="focus-input">Focus</label>
-        <input
-          type="text"
-          name="focus"
-          id="focus-input"
-          value={form.focus}
-          onChange={handleChange}
-        />
-        <label htmlFor="teacher-input">Teacher</label>
-        <input
-          type="text"
-          name="teacher"
-          id="teacher-input"
-          value={form.teacher}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div className="edit-profile">
+      <div className="edit-profile-details">
+        <h1>Add Training</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="institution-input">Institution</label>
+          <input
+            type="text"
+            name="institution"
+            id="institution-input"
+            value={form.institution}
+            onChange={handleChange}
+          />
+          <label htmlFor="focus-input">Focus</label>
+          <input
+            type="text"
+            name="focus"
+            id="focus-input"
+            value={form.focus}
+            onChange={handleChange}
+          />
+          <label htmlFor="teacher-input">Teacher</label>
+          <input
+            type="text"
+            name="teacher"
+            id="teacher-input"
+            value={form.teacher}
+            onChange={handleChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </div>
-    </>
+    </div>
   );
 }
 

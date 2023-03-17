@@ -34,11 +34,10 @@ const AddEducation = (props) => {
   }
 
   return (
-    <>
-      <div className={styles.container}>
-      <div className={styles.column}></div>
-      <h1>Add Education</h1>
-        <form className={styles.column} onSubmit={handleSubmit}>
+    <div className="edit-profile">
+      <div className="edit-profile-details">
+        <h1>Add Education</h1>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="institution-input">Intitution</label>
           <input
             type="text"
@@ -63,7 +62,7 @@ const AddEducation = (props) => {
             value={form.major}
             onChange={handleChange}
           />
-          <p>Graduated?</p>
+          <p>checkboxx</p>
           <label htmlFor="graduated-input"></label>
           <input
             id="graduated-input"
@@ -82,7 +81,7 @@ const AddEducation = (props) => {
           <button type="submit">Submit</button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

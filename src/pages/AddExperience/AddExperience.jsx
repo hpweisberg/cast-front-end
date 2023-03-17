@@ -27,10 +27,11 @@ const AddExperience = (props) => {
   }
 
   return (
-    <>
-      <div className={styles.container}>
+    <div className="edit-profile">
+
+      <div className="edit-profile-details">
         <h1>Add Experience</h1>
-        <form className={styles.column} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="production-title-input">Production Title</label>
           <input
             type="text"
@@ -87,7 +88,7 @@ const AddExperience = (props) => {
           <button type="submit">Submit</button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
