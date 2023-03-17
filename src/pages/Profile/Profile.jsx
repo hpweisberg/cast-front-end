@@ -36,25 +36,45 @@ const Profile = (props) => {
       </div>
 
       {profile.talentAccount
-
-&&
-<>
-<div className={styles.container}>
-
-          <p>About: {profile.talentAccount.about}</p>
-          <p>Union Status: {profile.talentAccount.unionStatus}</p>
-          <p>Hair: {profile.talentAccount.hair}</p>
-          <p>Eyes: {profile.talentAccount.eyes}</p>
-          <p>Height: {profile.talentAccount.height}</p>
-          <p>Weight: {profile.talentAccount.weight}</p>
-          <p>Skills: {profile.talentAccount.skills}</p>
-          <p>Trades: {profile.talentAccount.trades}</p>
-          </div>
+        &&
+        <>
           <div className={styles.container}>
+            <div className={styles.container} id="about-me-details">
+              <div id="detail">
+                <p>About:</p>
+                <p>{profile.talentAccount.about}</p>
+              </div>
+              <div id="detail">
+                <p>Union Status:</p>
+                <p>{profile.talentAccount.unionStatus}</p>
+              </div>
+              <div id="detail">
+                <p>Hair:</p>
+                <p>{profile.talentAccount.hair}</p>
+              </div>
+              <div id="detail">
+                <p>Eyes:</p>
+                <p>{profile.talentAccount.eyes}</p>
+              </div>
+              <div id="detail">
+                <p>Height:</p>
+                <p>{profile.talentAccount.height}</p>
+              </div>
+              <div id="detail">
+                <p>Weight:</p>
+                <p>{profile.talentAccount.weight}</p>
+              </div>
+              <div id="detail">
+                <p>Skills:</p>
+                <p>{profile.talentAccount.skills}</p>
+              </div>
+              <div id="detail">
+                <p>Trades:</p>
+                <p>{profile.talentAccount.trades}</p>
+              </div>
+            </div>
           </div>
-          <div className={styles.container}>
 
-          <h2>Experience</h2>
           {
             (profile.talentAccount)
             &&
@@ -74,8 +94,6 @@ const Profile = (props) => {
             </>
           )}
           </div>
-
-          <div className={styles.container}>
 
           <h2>Education</h2>
           {
@@ -99,6 +117,24 @@ const Profile = (props) => {
           </div>
 
           <div className={styles.container}>
+            <div className="education-section">
+              <h2>Education</h2>
+              {profile.talentAccount.education.map(education =>
+                <>
+                  <Education
+                    key={education._id}
+                    education={education}
+                    talentId={talentId}
+                    handleDeleteEducation={props.handleDeleteEducation}
+                  />
+                  <form onSubmit={() => props.handleDeleteEducation(talentId._id, education._id)}>
+                    <button id="remove" type='submit'>REMOVE RECORD</button>
+                  </form>
+                </>
+              )}
+
+            </div>
+          </div>
 
           <h2>Training</h2>
           {
@@ -135,6 +171,7 @@ const Profile = (props) => {
         </Link>
 
       </div>
+
     </section>
   );
 }
