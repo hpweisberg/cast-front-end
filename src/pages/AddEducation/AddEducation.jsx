@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
+import styles from './AddEducation.module.css'
+
 
 const AddEducation = (props) => {
 
