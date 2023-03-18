@@ -8,6 +8,7 @@
   border-radius: 8px;
   position: relative;
   align-content: center;
+  width: 300px;
 }
 
 .card > button {
@@ -40,6 +41,8 @@
   text-decoration: none;
 }
 
-.card {
+.card * {
   text-decoration: none;
+  color: black;
+  
 }

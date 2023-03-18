@@ -41,7 +41,7 @@ const TalentDetails = (props) => {
         </div>
 
         <div className={styles.headshotDeatils}>
-          <img className={styles.headshotImg} src={talent.profile.photo} alt="headshot" />
+          <img className={styles.headshotImg} src={talent.headshot} alt="headshot" />
         </div>
         <div className={styles.actorDetails}>
           <p>Union Status: {talent.unionStatus}</p>

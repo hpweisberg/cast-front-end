@@ -55,7 +55,8 @@ const App = () => {
 
   const handleEditProfile = async (profileData) => {
     try {
-      await profileService.update(profileData, user.profile)
+      const updatedProfile = await profileService.update(profileData, user.profile)
+      setProfile(updatedProfile)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -64,7 +65,8 @@ const App = () => {
 
   const handleAddTalentProfile = async (talentData) => {
     try {
-      await profileService.createTalentProfile(talentData, user.profile)
+      const updated = await profileService.createTalentProfile(talentData, user.profile)
+      setProfile(updated)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -72,7 +74,8 @@ const App = () => {
   }
   const handleEditTalentProfile = async (talentData) => {
     try {
-      await talentService.update(talentData)
+      const updatedTalent = await talentService.update(talentData)
+      profile.talentAccount = updatedTalent
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -81,7 +84,8 @@ const App = () => {
 
   const handleEditCDProfile = async (cdData) => {
     try {
-      await cdService.update(cdData)
+      const updatedCD = await cdService.update(cdData)
+      profile.cdAccount = updatedCD
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -90,7 +94,8 @@ const App = () => {
 
   const handleAddCDProfile = async (cdData) => {
     try {
-      await profileService.createCDProfile(cdData, user.profile)
+      const updated = await profileService.createCDProfile(cdData, user.profile)
+      setProfile(updated)
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -153,6 +158,7 @@ const App = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       const profile = await profileService.getProfile(user.profile)
+      console.log('SET PROFILE', profile)
       setProfile(profile)
     }
     if (user) fetchProfile()
@@ -189,7 +195,7 @@ const App = () => {
       console.log(error);
     }
   }
-
+  console.log('PROFILE', profile)
   return (
     <>
       <NavBar user={user} profile={profile} handleLogout={handleLogout} />
@@ -229,6 +235,7 @@ const App = () => {
                 user={user}
                 handleDeleteEducation={handleDeleteEducation}
                 handleDeleteTraining={handleDeleteTraining}
+                profile={profile}
               />
             </ProtectedRoute>
           }

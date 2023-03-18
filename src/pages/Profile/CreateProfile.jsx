@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-const EditProfile = (props) => {
+const CreateProfile = (props) => {
 
   const location = useLocation()
   const signupType = location.state?.signupType
@@ -67,7 +67,7 @@ const EditProfile = (props) => {
 
   useEffect(() => {
     const renderHelp = async () => {
-      if (signupType === false || isCd === false) {
+      if (signupType === "talent" || isCd === false) {
         setRender(false)
       } else {
         setRender(true)
@@ -239,4 +239,4 @@ const EditProfile = (props) => {
   )
 }
 
-export default EditProfile;
+export default CreateProfile;
