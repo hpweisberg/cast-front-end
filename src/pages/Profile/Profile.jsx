@@ -24,97 +24,101 @@ const Profile = (props) => {
   return (
     <section className="profileDetails">
       <div className={styles.container}>
-
-      <h1 id="talentName">{profile.name}</h1>
-      <p>{profile.pronouns}</p>
-      {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
-      <p>Location: {profile.location}</p>
-      <p>Phone Number: {profile.phoneNumber}</p>
-      <p>Email: {props.user.email}</p>
-      <a href={`${profile.website}`}>Visit {profile.name}'s website</a>
-      {profile.isCd && <p>Company: {profile.cdAccount.company}</p>}
+        <h1 id="talentName">{profile.name}</h1>
+        <p>{profile.pronouns}</p>
+        {profile.photo && <img src={profile.photo} alt="user talent pic" ></img>}
+        <p>Location: {profile.location}</p>
+        <p>Phone Number: {profile.phoneNumber}</p>
+        <p>Email: {props.user.email}</p>
+        <a href={`${profile.website}`}>Visit {profile.name}'s website</a>
+        {profile.isCd && <p>Company: {profile.cdAccount.company}</p>}
       </div>
 
       {profile.talentAccount
         &&
-        <>
-          <div className={styles.container}>
-            <div className={styles.container} id="about-me-details">
-              <div id="detail">
-                <p>About:</p>
-                <p>{profile.talentAccount.about}</p>
-              </div>
-              <div id="detail">
-                <p>Union Status:</p>
-                <p>{profile.talentAccount.unionStatus}</p>
-              </div>
-              <div id="detail">
-                <p>Hair:</p>
-                <p>{profile.talentAccount.hair}</p>
-              </div>
-              <div id="detail">
-                <p>Eyes:</p>
-                <p>{profile.talentAccount.eyes}</p>
-              </div>
-              <div id="detail">
-                <p>Height:</p>
-                <p>{profile.talentAccount.height}</p>
-              </div>
-              <div id="detail">
-                <p>Weight:</p>
-                <p>{profile.talentAccount.weight}</p>
-              </div>
-              <div id="detail">
-                <p>Skills:</p>
-                <p>{profile.talentAccount.skills}</p>
-              </div>
-              <div id="detail">
-                <p>Trades:</p>
-                <p>{profile.talentAccount.trades}</p>
-              </div>
+      <>
+
+        <div className={styles.container}>
+          <div className={styles.container} id="about-me-details">
+            <div id="detail">
+              <p>About:</p>
+              <p>{profile.talentAccount.about}</p>
+            </div>
+            <div id="detail">
+              <p>Union Status:</p>
+              <p>{profile.talentAccount.unionStatus}</p>
+            </div>
+            <div id="detail">
+              <p>Hair:</p>
+              <p>{profile.talentAccount.hair}</p>
+            </div>
+            <div id="detail">
+              <p>Eyes:</p>
+              <p>{profile.talentAccount.eyes}</p>
+            </div>
+            <div id="detail">
+              <p>Height:</p>
+              <p>{profile.talentAccount.height}</p>
+            </div>
+            <div id="detail">
+              <p>Weight:</p>
+              <p>{profile.talentAccount.weight}</p>
+            </div>
+            <div id="detail">
+              <p>Skills:</p>
+              <p>{profile.talentAccount.skills}</p>
+            </div>
+            <div id="detail">
+              <p>Trades:</p>
+              <p>{profile.talentAccount.trades}</p>
             </div>
           </div>
+        </div>
 
-          {
-            (profile.talentAccount)
-            &&
+        {
+          (profile.talentAccount)
+          &&
+          <>
             <Link className="add" to="/profile/add-experience" state={{ talentId: profile.talentAccount?._id }}>Add Experience</Link>
-          }
-          {profile.talentAccount.experience?.map(experience =>
-            <>
-              <Experience
-                handleDeleteExperience={props.handleDeleteExperience}
-                key={experience._id}
-                experience={experience}
-                talentId={profile.talentAccount?._id}
-                />
-              <form onSubmit={() => props.handleDeleteExperience(profile.talentAccount?._id, experience?._id)}>
-                <button id="remove" type='submit'>REMOVE RECORD</button>
-              </form>
-            </>
-          )}
-          </div>
+            {profile.talentAccount.experience?.map(experience =>
+              <>
+                <Experience
+                  handleDeleteExperience={props.handleDeleteExperience}
+                  key={experience._id}
+                  experience={experience}
+                  talentId={profile.talentAccount?._id}
+                  />
+                <form onSubmit={() => props.handleDeleteExperience(profile.talentAccount?._id, experience?._id)}>
+                  <button id="remove" type='submit'>REMOVE RECORD</button>
+                </form>
+              </>
+            )}
+          </>
+        }
+          {/* </div> */}
 
-          <h2>Education</h2>
           {
             (profile.talentAccount)
             &&
-            <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
-          }
-          {profile.talentAccount.education?.map(education =>
             <>
-              <Education
-                key={education?._id}
-                education={education}
-                talentId={profile.talentAccount?._id}
-                handleDeleteEducation={props.handleDeleteEducation}
-                />
-              <form onSubmit={() => props.handleDeleteEducation(profile.talentAccount?._id, education?._id)}>
-                <button id="remove" type='submit'>REMOVE RECORD</button>
-              </form>
+              <h2>Education</h2>
+              <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
+              {profile.talentAccount.education?.map(education =>
+                <>
+                  <Education
+                    key={education?._id}
+                    education={education}
+                    talentId={profile.talentAccount?._id}
+                    handleDeleteEducation={props.handleDeleteEducation}
+                    />
+                  <form onSubmit={() => props.handleDeleteEducation(profile.talentAccount?._id, education?._id)}>
+                    <button id="remove" type='submit'>REMOVE RECORD</button>
+                  </form>
+                </>
+              )}
             </>
-          )}
-          </div>
+          }
+          {/* </div> */}
 
           <div className={styles.container}>
             <div className="education-section">
@@ -124,10 +128,10 @@ const Profile = (props) => {
                   <Education
                     key={education._id}
                     education={education}
-                    talentId={talentId}
+                    // talentId={talentId}
                     handleDeleteEducation={props.handleDeleteEducation}
                   />
-                  <form onSubmit={() => props.handleDeleteEducation(talentId._id, education._id)}>
+                  <form onSubmit={() => props.handleDeleteEducation(props.talentAccount._id, education._id)}>
                     <button id="remove" type='submit'>REMOVE RECORD</button>
                   </form>
                 </>
@@ -136,12 +140,12 @@ const Profile = (props) => {
             </div>
           </div>
 
-          <h2>Training</h2>
           {
             (profile.talentAccount)
             &&
-            <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
-          }
+            <>
+              <h2>Training</h2>
+              <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
           {profile.talentAccount.training?.map(training =>
             <>
               <Training
@@ -155,9 +159,12 @@ const Profile = (props) => {
               </form>
             </>
           )}
-          </div>
+          </>
+          }
+          {/* </div> */}
         </>
       }
+
       <div className={styles.container}>
 {/* 
       <Link to={`/profile/edit`} className={styles.link}><button className={styles.editBtn}></button></Link> */}
