@@ -4,10 +4,11 @@ import Icon from '../../components/Icon/Icon'
 
 import styles from './TalentCard.module.css'
 
-const TalentCard = ({ profile, talent }) => {
+const TalentCard = ({ profile, talent, handleRemoveFromList, list }) => {
 
   return (
     <div className={styles.center}>
+      <button onClick={() => { handleRemoveFromList((list._id), (talent._id)) }}>X</button>
       <section className={styles.talentCardContainer}>
         <Link to={`/talent/${talent._id}`} state={{ talent }} className={styles.link}>
           {(talent.headshot) ?

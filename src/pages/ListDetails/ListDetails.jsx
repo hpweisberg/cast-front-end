@@ -39,8 +39,12 @@ const ListDetails = (props) => {
       <h1>{list?.titleOfList}</h1>
       {list.talent.map((talent, idx) => (
         <div key={talent._id + idx}>
-          <button onClick={() => { handleRemoveFromList((list._id), (talent._id)) }}>x</button>
-          <TalentCard profile={talent.profile} talent={talent} />
+          <TalentCard 
+            list={list} 
+            handleRemoveFromList={handleRemoveFromList} 
+            profile={talent.profile} 
+            talent={talent} 
+          />
         </div>
       ))}
 

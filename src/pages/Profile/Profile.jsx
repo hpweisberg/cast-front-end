@@ -39,22 +39,20 @@ const Profile = (props) => {
 
 &&
 <>
-<div className={styles.container}>
+  <div className={styles.container}>
+    <p>About: {profile.talentAccount.about}</p>
+    <p>Union Status: {profile.talentAccount.unionStatus}</p>
+    <p>Hair: {profile.talentAccount.hair}</p>
+    <p>Eyes: {profile.talentAccount.eyes}</p>
+    <p>Height: {profile.talentAccount.height}</p>
+    <p>Weight: {profile.talentAccount.weight}</p>
+    <p>Skills: {profile.talentAccount.skills}</p>
+    <p>Trades: {profile.talentAccount.trades}</p>
+  </div>
 
-          <p>About: {profile.talentAccount.about}</p>
-          <p>Union Status: {profile.talentAccount.unionStatus}</p>
-          <p>Hair: {profile.talentAccount.hair}</p>
-          <p>Eyes: {profile.talentAccount.eyes}</p>
-          <p>Height: {profile.talentAccount.height}</p>
-          <p>Weight: {profile.talentAccount.weight}</p>
-          <p>Skills: {profile.talentAccount.skills}</p>
-          <p>Trades: {profile.talentAccount.trades}</p>
-          </div>
-          <div className={styles.container}>
-          </div>
-          <div className={styles.container}>
+  <div className={styles.container}>
 
-          <h2>Experience</h2>
+    <h2>Experience</h2>
           {
             (profile.talentAccount)
             &&
@@ -73,11 +71,11 @@ const Profile = (props) => {
               </form>
             </>
           )}
-          </div>
+  </div>
 
-          <div className={styles.container}>
+  <div className={styles.container}>
 
-          <h2>Education</h2>
+        <h2>Education</h2>
           {
             (profile.talentAccount)
             &&
@@ -96,9 +94,9 @@ const Profile = (props) => {
               </form>
             </>
           )}
-          </div>
+  </div>
 
-          <div className={styles.container}>
+  <div className={styles.container}>
 
           <h2>Training</h2>
           {
@@ -119,7 +117,7 @@ const Profile = (props) => {
               </form>
             </>
           )}
-          </div>
+  </div>
         </>
       }
       <div className={styles.container}>
