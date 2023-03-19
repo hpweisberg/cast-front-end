@@ -1,7 +1,7 @@
+import styles from './EditProfile.module.css'
 import { useState } from "react"
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import styles from './EditProfile.module.css'
 
 
 const EditProfile = (props) => {
@@ -19,7 +19,7 @@ const EditProfile = (props) => {
   const [form, setForm] = useState({
     pronouns: profile.pronouns,
     location: profile.location,
-    phoneNumber: profile.location,
+    phoneNumber: profile.phoneNumber,
     website: profile.website,
     isCd: profile.isCd
   })
@@ -92,8 +92,8 @@ const EditProfile = (props) => {
   },)
 
   return (
-    <>
-      <div className={styles.container}>
+    <div class="edit-profile">
+      <div className="edit-profile-details">
         <h2>Edit Profile Details</h2>
         <form className={styles.column} onSubmit={handleProfileSubmit}>
           <label htmlFor="pronouns-input">Pronouns</label>
@@ -135,7 +135,7 @@ const EditProfile = (props) => {
       </div>
       {(render === false) ?
         <>
-          <div className={styles.container}>
+          <div className="edit-profile-details">
 
             <h2>Talent Account Details</h2>
             <form className={styles.column} onSubmit={handleTalentSubmit}>
@@ -241,7 +241,7 @@ const EditProfile = (props) => {
         :
         <>
           <h2>CD Account</h2>
-          <div className={styles.container}>
+          <div>
             <form onSubmit={handleCDSubmit}>
               <label htmlFor="company-input">Company</label>
               <input
@@ -256,7 +256,7 @@ const EditProfile = (props) => {
           </div>
         </>
       }
-    </>
+    </div>
   )
 }
 
