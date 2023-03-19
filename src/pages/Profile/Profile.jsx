@@ -34,75 +34,59 @@ const Profile = (props) => {
         {profile.isCd && <p>Company: {profile.cdAccount.company}</p>}
       </div>
 
-      {profile.talentAccount
+    {profile.talentAccount
+    &&
+      <>
+        <div className={styles.container}>
+          <p>About: {profile.talentAccount.about}</p>
+          <p>Union Status: {profile.talentAccount.unionStatus}</p>
+          <p>Hair: {profile.talentAccount.hair}</p>
+          <p>Eyes: {profile.talentAccount.eyes}</p>
+          <p>Height: {profile.talentAccount.height}</p>
+          <p>Weight: {profile.talentAccount.weight}</p>
+          <p>Skills: {profile.talentAccount.skills}</p>
+          <p>Trades: {profile.talentAccount.trades}</p>
+        </div>
 
-&&
-<>
-  <div className={styles.container}>
-    <p>About: {profile.talentAccount.about}</p>
-    <p>Union Status: {profile.talentAccount.unionStatus}</p>
-    <p>Hair: {profile.talentAccount.hair}</p>
-    <p>Eyes: {profile.talentAccount.eyes}</p>
-    <p>Height: {profile.talentAccount.height}</p>
-    <p>Weight: {profile.talentAccount.weight}</p>
-    <p>Skills: {profile.talentAccount.skills}</p>
-    <p>Trades: {profile.talentAccount.trades}</p>
-  </div>
-  <div className={styles.container}>
-
-        {
-          (profile.talentAccount)
-          &&
-          <>
-            <Link className="add" to="/profile/add-experience" state={{ talentId: profile.talentAccount?._id }}>Add Experience</Link>
-            {profile.talentAccount.experience?.map(experience =>
-              <>
-                <Experience
-                  handleDeleteExperience={props.handleDeleteExperience}
-                  key={experience._id}
-                  experience={experience}
-                  talentId={profile.talentAccount?._id}
-                  />
-                <form onSubmit={() => props.handleDeleteExperience(profile.talentAccount?._id, experience?._id)}>
-                  <button id="remove" type='submit'>REMOVE RECORD</button>
-                </form>
-              </>
-            )}
-          </>
-        }
-          {/* </div> */}
-
-          {
-            (profile.talentAccount)
-            &&
+        <div className={styles.container}>
+          <h2>Experience</h2>
+          <Link className="add" to="/profile/add-experience" state={{ talentId: profile.talentAccount?._id }}>Add Experience</Link>
+          {profile.talentAccount.experience?.map(experience =>
             <>
-              <h2>Education</h2>
-              <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
-              {profile.talentAccount.education?.map(education =>
-                <>
-                  <Education
-                    key={education?._id}
-                    education={education}
-                    talentId={profile.talentAccount?._id}
-                    handleDeleteEducation={props.handleDeleteEducation}
-                    />
-                  <form onSubmit={() => props.handleDeleteEducation(profile.talentAccount?._id, education?._id)}>
-                    <button id="remove" type='submit'>REMOVE RECORD</button>
-                  </form>
-                </>
-              )}
+              <Experience
+                handleDeleteExperience={props.handleDeleteExperience}
+                key={experience._id}
+                experience={experience}
+                talentId={profile.talentAccount?._id}
+                />
+              <form onSubmit={() => props.handleDeleteExperience(profile.talentAccount?._id, experience?._id)}>
+                <button id="remove" type='submit'>REMOVE RECORD</button>
+              </form>
             </>
-          }
-          {/* </div> */}
+          )}
+        </div>
 
-  <div className={styles.container}>
-
-          {
-            (profile.talentAccount)
-            &&
+        <div className={styles.container}>
+          <h2>Education</h2>
+          <Link className="add" to="/profile/add-education" state={{ talentId: profile.talentAccount?._id }}>Add Education</Link>
+          {profile.talentAccount.education?.map(education =>
             <>
-              <h2>Training</h2>
-              <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
+              <Education
+                key={education?._id}
+                education={education}
+                talentId={profile.talentAccount?._id}
+                handleDeleteEducation={props.handleDeleteEducation}
+                />
+              <form onSubmit={() => props.handleDeleteEducation(profile.talentAccount?._id, education?._id)}>
+                <button id="remove" type='submit'>REMOVE RECORD</button>
+              </form>
+            </>
+          )}
+        </div>
+
+        <div className={styles.container}>
+          <h2>Training</h2>
+          <Link className="add" to="/profile/add-training" state={{ talentId: profile.talentAccount?._id }}>Add Training</Link>
           {profile.talentAccount.training?.map(training =>
             <>
               <Training
@@ -116,11 +100,10 @@ const Profile = (props) => {
               </form>
             </>
           )}
-          </>
-          }
-          {/* </div> */}
-        </>
-      }
+        </div>
+
+      </>
+    }
       <div className={styles.container}>
 
         <Link
