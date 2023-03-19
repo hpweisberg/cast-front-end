@@ -37,6 +37,7 @@ const Profile = (props) => {
     {profile.talentAccount
     &&
       <>
+      
         <div className={styles.container}>
           <p>About: {profile.talentAccount.about}</p>
           <p>Union Status: {profile.talentAccount.unionStatus}</p>
